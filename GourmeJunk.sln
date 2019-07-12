@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C30EDF90
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GourmeJunk.Common", "GourmeJunk.Common\GourmeJunk.Common.csproj", "{C9B3777F-56C5-4B54-8635-CD80B8506583}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GourmeJunk.Data.Common", "Data\GourmeJunk.Data.Common\GourmeJunk.Data.Common.csproj", "{18380FE5-3545-427A-8A24-67F0FC68F105}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,12 +31,17 @@ Global
 		{C9B3777F-56C5-4B54-8635-CD80B8506583}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9B3777F-56C5-4B54-8635-CD80B8506583}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9B3777F-56C5-4B54-8635-CD80B8506583}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18380FE5-3545-427A-8A24-67F0FC68F105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18380FE5-3545-427A-8A24-67F0FC68F105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18380FE5-3545-427A-8A24-67F0FC68F105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18380FE5-3545-427A-8A24-67F0FC68F105}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BFE19988-E9A1-48FB-A88C-62CD9E8EB0A4} = {FF4A3657-AF69-4F7F-B72C-3A3A5F211927}
+		{18380FE5-3545-427A-8A24-67F0FC68F105} = {AE8A758F-F3CD-450E-A44B-2E7F907F3A64}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C9B65A0B-1731-451C-B317-EA3866B1C46C}
