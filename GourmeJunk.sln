@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.452
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GourmeJunk.Web", "Web\GourmeJunk.Web\GourmeJunk.Web.csproj", "{BFE19988-E9A1-48FB-A88C-62CD9E8EB0A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{FF4A3657-AF69-4F7F-B72C-3A3A5F211927}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFE19988-E9A1-48FB-A88C-62CD9E8EB0A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFE19988-E9A1-48FB-A88C-62CD9E8EB0A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFE19988-E9A1-48FB-A88C-62CD9E8EB0A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFE19988-E9A1-48FB-A88C-62CD9E8EB0A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BFE19988-E9A1-48FB-A88C-62CD9E8EB0A4} = {FF4A3657-AF69-4F7F-B72C-3A3A5F211927}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C9B65A0B-1731-451C-B317-EA3866B1C46C}
+	EndGlobalSection
+EndGlobal
