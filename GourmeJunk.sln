@@ -13,13 +13,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{FC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C30EDF90-ED97-47CA-8F2F-3CEBF161BE70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GourmeJunk.Common", "GourmeJunk.Common\GourmeJunk.Common.csproj", "{C9B3777F-56C5-4B54-8635-CD80B8506583}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GourmeJunk.Common", "GourmeJunk.Common\GourmeJunk.Common.csproj", "{C9B3777F-56C5-4B54-8635-CD80B8506583}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GourmeJunk.Data.Common", "Data\GourmeJunk.Data.Common\GourmeJunk.Data.Common.csproj", "{18380FE5-3545-427A-8A24-67F0FC68F105}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GourmeJunk.Data.Common", "Data\GourmeJunk.Data.Common\GourmeJunk.Data.Common.csproj", "{18380FE5-3545-427A-8A24-67F0FC68F105}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GourmeJunk.Data.Models", "Data\GourmeJunk.Data.Models\GourmeJunk.Data.Models.csproj", "{2C47354B-8520-4B24-9C8E-014C3DD99084}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GourmeJunk.Data.Models", "Data\GourmeJunk.Data.Models\GourmeJunk.Data.Models.csproj", "{2C47354B-8520-4B24-9C8E-014C3DD99084}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GourmeJunk.Data", "Data\GourmeJunk.Data\GourmeJunk.Data.csproj", "{8666989A-7343-47AF-BF39-9CFCC7067E4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GourmeJunk.Data", "Data\GourmeJunk.Data\GourmeJunk.Data.csproj", "{8666989A-7343-47AF-BF39-9CFCC7067E4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GourmeJunk.Services.Data", "Services\GourmeJunk.Services.Data\GourmeJunk.Services.Data.csproj", "{1E5BFF66-E74C-49D7-8EBB-8BE186899EC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GourmeJunk.Services.Mapping", "GourmeJunk.Services.Mapping\GourmeJunk.Services.Mapping.csproj", "{1A89F849-8EE0-4507-8EE7-73635D5127D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +51,14 @@ Global
 		{8666989A-7343-47AF-BF39-9CFCC7067E4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8666989A-7343-47AF-BF39-9CFCC7067E4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8666989A-7343-47AF-BF39-9CFCC7067E4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E5BFF66-E74C-49D7-8EBB-8BE186899EC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E5BFF66-E74C-49D7-8EBB-8BE186899EC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E5BFF66-E74C-49D7-8EBB-8BE186899EC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E5BFF66-E74C-49D7-8EBB-8BE186899EC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A89F849-8EE0-4507-8EE7-73635D5127D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A89F849-8EE0-4507-8EE7-73635D5127D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A89F849-8EE0-4507-8EE7-73635D5127D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A89F849-8EE0-4507-8EE7-73635D5127D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +68,8 @@ Global
 		{18380FE5-3545-427A-8A24-67F0FC68F105} = {AE8A758F-F3CD-450E-A44B-2E7F907F3A64}
 		{2C47354B-8520-4B24-9C8E-014C3DD99084} = {AE8A758F-F3CD-450E-A44B-2E7F907F3A64}
 		{8666989A-7343-47AF-BF39-9CFCC7067E4B} = {AE8A758F-F3CD-450E-A44B-2E7F907F3A64}
+		{1E5BFF66-E74C-49D7-8EBB-8BE186899EC8} = {FCEB9F78-6FA8-41EC-BDCA-4126E969A064}
+		{1A89F849-8EE0-4507-8EE7-73635D5127D6} = {FCEB9F78-6FA8-41EC-BDCA-4126E969A064}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C9B65A0B-1731-451C-B317-EA3866B1C46C}
