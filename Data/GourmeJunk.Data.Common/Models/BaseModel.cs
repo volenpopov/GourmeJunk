@@ -6,6 +6,7 @@ namespace GourmeJunk.Data.Common.Models
     {
         public TKey Id { get; set; }
 
-        public DateTime CreatedOn { get; set; }        
+        public DateTime CreatedOn { get; set; }
+        public DateTime? LastModifiedOn { get; set; }
     }
 }

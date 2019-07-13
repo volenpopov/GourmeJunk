@@ -5,5 +5,7 @@ namespace GourmeJunk.Data.Common.Models
     public interface IAuditableEntity
     {
         DateTime CreatedOn { get; set; }
+
+        DateTime? LastModifiedOn { get; set; }
     }
 }
