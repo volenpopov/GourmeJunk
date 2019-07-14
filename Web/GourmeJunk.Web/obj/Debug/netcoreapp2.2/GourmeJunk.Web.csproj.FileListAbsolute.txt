@@ -35,3 +35,12 @@ E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\bin\Debug\netcoreapp2.
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\bin\Debug\netcoreapp2.2\GourmeJunk.Services.Mapping.dll
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\bin\Debug\netcoreapp2.2\GourmeJunk.Services.Mapping.pdb
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.g.cshtml.cs
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\bin\Debug\netcoreapp2.2\GourmeJunk.Models.ViewModels.dll
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\bin\Debug\netcoreapp2.2\GourmeJunk.Services.dll
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\bin\Debug\netcoreapp2.2\GourmeJunk.Services.pdb
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\bin\Debug\netcoreapp2.2\GourmeJunk.Models.ViewModels.pdb
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Category\Index.g.cshtml.cs
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\_ViewImports.g.cshtml.cs
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\_ViewStart.g.cshtml.cs
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CreateButtonPartial.g.cshtml.cs
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_TableButtonPartial.g.cshtml.cs

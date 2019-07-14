@@ -16,6 +16,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\GourmeJunk.Data\GourmeJunk.Data.csproj" />
     <ProjectReference Include="..\..\GourmeJunk.Services.Mapping\GourmeJunk.Services.Mapping.csproj" />
+    <ProjectReference Include="..\..\Services\GourmeJunk.Services.Mapping\GourmeJunk.Services.Mapping.csproj" />
+    <ProjectReference Include="..\..\Services\GourmeJunk.Services\GourmeJunk.Services.csproj" />
   </ItemGroup>
 
 </Project>

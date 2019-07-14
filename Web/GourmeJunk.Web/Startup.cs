@@ -3,6 +3,9 @@ using GourmeJunk.Data.Common;
 using GourmeJunk.Data.Common.Repositories;
 using GourmeJunk.Data.Models;
 using GourmeJunk.Data.Repositories;
+using GourmeJunk.Models.ViewModels.Categories;
+using GourmeJunk.Services;
+using GourmeJunk.Services.Contracts;
 using GourmeJunk.Services.Mapping;
 using GourmeJunk.Web.Models;
 using Microsoft.AspNetCore.Builder;
@@ -43,7 +46,7 @@ namespace GourmeJunk.Web
                     options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
                 });
 
-            services.AddSingleton(this.Configuration);
+            //services.AddSingleton(this.Configuration);
 
             // Identity stores
             services.AddTransient<IUserStore<GourmeJunkUser>, GourmeJunkUserStore>();
@@ -53,11 +56,14 @@ namespace GourmeJunk.Web
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
+
+            //Application Services
+            services.AddScoped<ICategoriesService, CategoriesService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
+            AutoMapperConfig.RegisterMappings(typeof(CategoryViewModel).GetTypeInfo().Assembly);
 
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {

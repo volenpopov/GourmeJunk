@@ -1,4 +1,5 @@
-﻿using GourmeJunk.Services.Contracts;
+﻿using GourmeJunk.Models.ViewModels.Categories;
+using GourmeJunk.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 

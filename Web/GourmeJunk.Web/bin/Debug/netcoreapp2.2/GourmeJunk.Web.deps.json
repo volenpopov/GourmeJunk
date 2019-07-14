@@ -25,6 +25,7 @@
       "GourmeJunk.Web/1.0.0": {
         "dependencies": {
           "GourmeJunk.Data": "1.0.0",
+          "GourmeJunk.Services": "1.0.0",
           "GourmeJunk.Services.Mapping": "1.0.0",
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
@@ -590,6 +591,32 @@
         },
         "compile": {
           "GourmeJunk.Data.Models.dll": {}
+        }
+      },
+      "GourmeJunk.Models.ViewModels/1.0.0": {
+        "dependencies": {
+          "GourmeJunk.Data.Models": "1.0.0",
+          "GourmeJunk.Services.Mapping": "1.0.0"
+        },
+        "runtime": {
+          "GourmeJunk.Models.ViewModels.dll": {}
+        },
+        "compile": {
+          "GourmeJunk.Models.ViewModels.dll": {}
+        }
+      },
+      "GourmeJunk.Services/1.0.0": {
+        "dependencies": {
+          "GourmeJunk.Data.Common": "1.0.0",
+          "GourmeJunk.Data.Models": "1.0.0",
+          "GourmeJunk.Models.ViewModels": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "2.2.6"
+        },
+        "runtime": {
+          "GourmeJunk.Services.dll": {}
+        },
+        "compile": {
+          "GourmeJunk.Services.dll": {}
         }
       },
       "GourmeJunk.Services.Mapping/1.0.0": {
@@ -3931,6 +3958,16 @@
       "sha512": ""
     },
     "GourmeJunk.Data.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GourmeJunk.Models.ViewModels/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GourmeJunk.Services/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
