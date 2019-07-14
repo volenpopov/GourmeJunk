@@ -4776,6 +4776,36 @@
           "bin/placeholder/GourmeJunk.Data.Models.dll": {}
         }
       },
+      "GourmeJunk.Models.ViewModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "GourmeJunk.Data.Models": "1.0.0",
+          "GourmeJunk.Services.Mapping": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GourmeJunk.Models.ViewModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GourmeJunk.Models.ViewModels.dll": {}
+        }
+      },
+      "GourmeJunk.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "GourmeJunk.Data.Common": "1.0.0",
+          "GourmeJunk.Data.Models": "1.0.0",
+          "GourmeJunk.Models.ViewModels": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "2.2.6"
+        },
+        "compile": {
+          "bin/placeholder/GourmeJunk.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GourmeJunk.Services.dll": {}
+        }
+      },
       "GourmeJunk.Services.Mapping/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -13026,6 +13056,16 @@
       "path": "../../Data/GourmeJunk.Data.Models/GourmeJunk.Data.Models.csproj",
       "msbuildProject": "../../Data/GourmeJunk.Data.Models/GourmeJunk.Data.Models.csproj"
     },
+    "GourmeJunk.Models.ViewModels/1.0.0": {
+      "type": "project",
+      "path": "../../Models/GourmeJunk.Models.ViewModels/GourmeJunk.Models.ViewModels.csproj",
+      "msbuildProject": "../../Models/GourmeJunk.Models.ViewModels/GourmeJunk.Models.ViewModels.csproj"
+    },
+    "GourmeJunk.Services/1.0.0": {
+      "type": "project",
+      "path": "../../Services/GourmeJunk.Services/GourmeJunk.Services.csproj",
+      "msbuildProject": "../../Services/GourmeJunk.Services/GourmeJunk.Services.csproj"
+    },
     "GourmeJunk.Services.Mapping/1.0.0": {
       "type": "project",
       "path": "../../Services/GourmeJunk.Services.Mapping/GourmeJunk.Services.Mapping.csproj",
@@ -13035,6 +13075,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "GourmeJunk.Data >= 1.0.0",
+      "GourmeJunk.Services >= 1.0.0",
       "GourmeJunk.Services.Mapping >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
@@ -13080,6 +13121,9 @@
             },
             "E:\\Volen\\Programming\\Github\\GourmeJunk\\Services\\GourmeJunk.Services.Mapping\\GourmeJunk.Services.Mapping.csproj": {
               "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Services\\GourmeJunk.Services.Mapping\\GourmeJunk.Services.Mapping.csproj"
+            },
+            "E:\\Volen\\Programming\\Github\\GourmeJunk\\Services\\GourmeJunk.Services\\GourmeJunk.Services.csproj": {
+              "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Services\\GourmeJunk.Services\\GourmeJunk.Services.csproj"
             }
           }
         }

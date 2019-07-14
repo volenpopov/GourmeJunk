@@ -1,13 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GourmeJunk.Services.Contracts;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace GourmeJunk.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class CategoryController : Controller
     {
-        public IActionResult Index()
+        private readonly ICategoriesService categoriesService;
+
+        public CategoryController(ICategoriesService categoriesService)
         {
-            return View();
+            this.categoriesService = categoriesService;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var categoriesViewModels = await this.categoriesService.GetAllAsync();
+
+            return View(categoriesViewModels);
         }
     }
 }
