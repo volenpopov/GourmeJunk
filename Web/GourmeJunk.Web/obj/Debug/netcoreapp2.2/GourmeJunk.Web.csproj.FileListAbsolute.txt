@@ -17,7 +17,6 @@ E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cs
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.g.cshtml.cs
-E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.g.cshtml.cs
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.g.cshtml.cs
@@ -34,3 +33,5 @@ E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\bin\Debug\netcoreapp2.
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\bin\Debug\netcoreapp2.2\GourmeJunk.Data.pdb
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\bin\Debug\netcoreapp2.2\GourmeJunk.Data.Common.pdb
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\bin\Debug\netcoreapp2.2\GourmeJunk.Data.Models.pdb
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\bin\Debug\netcoreapp2.2\GourmeJunk.Services.Mapping.dll
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\bin\Debug\netcoreapp2.2\GourmeJunk.Services.Mapping.pdb

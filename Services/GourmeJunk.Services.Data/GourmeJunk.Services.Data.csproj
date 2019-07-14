@@ -4,4 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\GourmeJunk.Data.Common\GourmeJunk.Data.Common.csproj" />
+    <ProjectReference Include="..\..\Data\GourmeJunk.Data.Models\GourmeJunk.Data.Models.csproj" />
+  </ItemGroup>
+
 </Project>
