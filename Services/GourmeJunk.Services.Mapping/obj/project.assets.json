@@ -936,11 +936,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Volen\\Programming\\Github\\GourmeJunk\\GourmeJunk.Services.Mapping\\GourmeJunk.Services.Mapping.csproj",
+      "projectUniqueName": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Services\\GourmeJunk.Services.Mapping\\GourmeJunk.Services.Mapping.csproj",
       "projectName": "GourmeJunk.Services.Mapping",
-      "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\GourmeJunk.Services.Mapping\\GourmeJunk.Services.Mapping.csproj",
+      "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Services\\GourmeJunk.Services.Mapping\\GourmeJunk.Services.Mapping.csproj",
       "packagesPath": "C:\\Users\\volenpopov\\.nuget\\packages\\",
-      "outputPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\GourmeJunk.Services.Mapping\\obj\\",
+      "outputPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Services\\GourmeJunk.Services.Mapping\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

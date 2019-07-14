@@ -18,9 +18,4 @@
     <ProjectReference Include="..\..\GourmeJunk.Services.Mapping\GourmeJunk.Services.Mapping.csproj" />
   </ItemGroup>
 
-
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Views\" />
-  </ItemGroup>
-
 </Project>

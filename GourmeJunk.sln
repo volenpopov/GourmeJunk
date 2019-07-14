@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GourmeJunk.Data", "Data\Gou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GourmeJunk.Services.Data", "Services\GourmeJunk.Services.Data\GourmeJunk.Services.Data.csproj", "{1E5BFF66-E74C-49D7-8EBB-8BE186899EC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GourmeJunk.Services.Mapping", "GourmeJunk.Services.Mapping\GourmeJunk.Services.Mapping.csproj", "{1A89F849-8EE0-4507-8EE7-73635D5127D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GourmeJunk.Services.Mapping", "Services\GourmeJunk.Services.Mapping\GourmeJunk.Services.Mapping.csproj", "{1A89F849-8EE0-4507-8EE7-73635D5127D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
