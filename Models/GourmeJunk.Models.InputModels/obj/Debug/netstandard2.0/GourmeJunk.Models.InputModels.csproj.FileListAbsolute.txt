@@ -1,0 +1,9 @@
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\bin\Debug\netstandard2.0\GourmeJunk.Models.InputModels.deps.json
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\bin\Debug\netstandard2.0\GourmeJunk.Models.InputModels.dll
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\bin\Debug\netstandard2.0\GourmeJunk.Models.InputModels.pdb
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\obj\Debug\netstandard2.0\GourmeJunk.Models.InputModels.csprojAssemblyReference.cache
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\obj\Debug\netstandard2.0\GourmeJunk.Models.InputModels.csproj.CoreCompileInputs.cache
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\obj\Debug\netstandard2.0\GourmeJunk.Models.InputModels.AssemblyInfoInputs.cache
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\obj\Debug\netstandard2.0\GourmeJunk.Models.InputModels.AssemblyInfo.cs
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\obj\Debug\netstandard2.0\GourmeJunk.Models.InputModels.dll
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\obj\Debug\netstandard2.0\GourmeJunk.Models.InputModels.pdb

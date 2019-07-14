@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GourmeJunk.Models.InputMode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GourmeJunk.Models.ViewModels", "Models\GourmeJunk.Models.ViewModels\GourmeJunk.Models.ViewModels.csproj", "{71AEA491-B6E9-4047-BEFB-EFF7C4B74EA1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GourmeJunk.Services", "Services\GourmeJunk.Services\GourmeJunk.Services.csproj", "{C42AB0A6-B7BD-46FA-9C03-594074ACB3A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{71AEA491-B6E9-4047-BEFB-EFF7C4B74EA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71AEA491-B6E9-4047-BEFB-EFF7C4B74EA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71AEA491-B6E9-4047-BEFB-EFF7C4B74EA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C42AB0A6-B7BD-46FA-9C03-594074ACB3A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C42AB0A6-B7BD-46FA-9C03-594074ACB3A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C42AB0A6-B7BD-46FA-9C03-594074ACB3A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C42AB0A6-B7BD-46FA-9C03-594074ACB3A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -93,6 +99,7 @@ Global
 		{5DD3DB85-AF29-4311-B0AD-2EF446889932} = {7A009C9C-3FA4-402A-8857-9B564951B869}
 		{764B18AF-6F3D-4197-84B5-EFDEA668BAD0} = {7A009C9C-3FA4-402A-8857-9B564951B869}
 		{71AEA491-B6E9-4047-BEFB-EFF7C4B74EA1} = {7A009C9C-3FA4-402A-8857-9B564951B869}
+		{C42AB0A6-B7BD-46FA-9C03-594074ACB3A9} = {FCEB9F78-6FA8-41EC-BDCA-4126E969A064}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C9B65A0B-1731-451C-B317-EA3866B1C46C}
