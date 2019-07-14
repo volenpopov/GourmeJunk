@@ -1,8 +1,7 @@
-﻿using GourmeJunk.Common;
-using GourmeJunk.Models.Common;
-using GourmeJunk.Models.InputModels._AdminInputModels;
-using GourmeJunk.Models.ViewModels.Categories;
+﻿using GourmeJunk.Models.InputModels._AdminInputModels;
 using GourmeJunk.Services.Contracts;
+using GourmeJunk.Web.Common;
+using GourmeJunk.Web.Filters;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -31,20 +30,14 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ModelStateValidationActionFilter]
         public async Task<IActionResult> Create(CategoryCreateInputModel model)
         {
-            model.Name = model.Name.Trim();
-
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
             var alreadyExists = await this.categoriesService.CheckIfCategoryExistsAsync(model.Name);
 
             if (alreadyExists)
             {
-                model.StatusMessage = string.Format(GlobalConstants.Error.EntityAlreadyExists, model.Name);
+                model.StatusMessage = string.Format(WebConstants.Error.EntityAlreadyExists, model.Name);
 
                 return View(model);
             }

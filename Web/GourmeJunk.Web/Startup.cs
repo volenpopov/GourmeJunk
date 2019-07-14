@@ -7,6 +7,7 @@ using GourmeJunk.Models.ViewModels.Categories;
 using GourmeJunk.Services;
 using GourmeJunk.Services.Contracts;
 using GourmeJunk.Services.Mapping;
+using GourmeJunk.Web.Filters;
 using GourmeJunk.Web.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,7 +33,6 @@ namespace GourmeJunk.Web
         {
             services.AddDbContext<GourmeJunkDbContext>(options =>
                     options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
-
 
             services.AddMvc(options =>
                 {
