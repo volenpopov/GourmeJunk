@@ -7,6 +7,7 @@ using GourmeJunk.Data.Models;
 using GourmeJunk.Models.ViewModels.Categories;
 using GourmeJunk.Services.Contracts;
 using GourmeJunk.Services.Mapping;
+using GourmeJunk.Models.InputModels._AdminInputModels;
 
 namespace GourmeJunk.Services
 {
@@ -22,11 +23,27 @@ namespace GourmeJunk.Services
         public async Task<IEnumerable<CategoryViewModel>> GetAllAsync()
         {
             var categoriesViewModels = await this.categoriesRepository               
-                .All()
+                .AllAsNoTracking()
                 .To<CategoryViewModel>()
                 .ToArrayAsync();
 
             return categoriesViewModels;
+        }
+
+        public async Task<bool> CheckIfCategoryExistsAsync(string categoryName)
+        {
+            return await this.categoriesRepository
+                .AllAsNoTracking()
+                .AnyAsync(category => category.Name == categoryName);
+        }
+
+        public async Task CreateCategoryAsync(CategoryCreateInputModel model)
+        {
+            var category = new Category { Name = model.Name };
+
+            await this.categoriesRepository.AddAsync(category);
+
+            await this.categoriesRepository.SaveChangesAsync();
         }
     }
 }

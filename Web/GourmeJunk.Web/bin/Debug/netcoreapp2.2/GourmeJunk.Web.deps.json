@@ -24,7 +24,9 @@
     ".NETCoreApp,Version=v2.2": {
       "GourmeJunk.Web/1.0.0": {
         "dependencies": {
+          "GourmeJunk.Common": "1.0.0",
           "GourmeJunk.Data": "1.0.0",
+          "GourmeJunk.Models.InputModels": "1.0.0",
           "GourmeJunk.Services": "1.0.0",
           "GourmeJunk.Services.Mapping": "1.0.0",
           "Microsoft.AspNetCore.App": "2.2.0",
@@ -557,6 +559,14 @@
           }
         }
       },
+      "GourmeJunk.Common/1.0.0": {
+        "runtime": {
+          "GourmeJunk.Common.dll": {}
+        },
+        "compile": {
+          "GourmeJunk.Common.dll": {}
+        }
+      },
       "GourmeJunk.Data/1.0.0": {
         "dependencies": {
           "GourmeJunk.Data.Common": "1.0.0",
@@ -593,6 +603,25 @@
           "GourmeJunk.Data.Models.dll": {}
         }
       },
+      "GourmeJunk.Models.Common/1.0.0": {
+        "runtime": {
+          "GourmeJunk.Models.Common.dll": {}
+        },
+        "compile": {
+          "GourmeJunk.Models.Common.dll": {}
+        }
+      },
+      "GourmeJunk.Models.InputModels/1.0.0": {
+        "dependencies": {
+          "GourmeJunk.Models.Common": "1.0.0"
+        },
+        "runtime": {
+          "GourmeJunk.Models.InputModels.dll": {}
+        },
+        "compile": {
+          "GourmeJunk.Models.InputModels.dll": {}
+        }
+      },
       "GourmeJunk.Models.ViewModels/1.0.0": {
         "dependencies": {
           "GourmeJunk.Data.Models": "1.0.0",
@@ -609,6 +638,7 @@
         "dependencies": {
           "GourmeJunk.Data.Common": "1.0.0",
           "GourmeJunk.Data.Models": "1.0.0",
+          "GourmeJunk.Models.InputModels": "1.0.0",
           "GourmeJunk.Models.ViewModels": "1.0.0",
           "Microsoft.EntityFrameworkCore": "2.2.6"
         },
@@ -3947,6 +3977,11 @@
       "path": "system.text.encoding.codepages/4.5.0",
       "hashPath": "system.text.encoding.codepages.4.5.0.nupkg.sha512"
     },
+    "GourmeJunk.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "GourmeJunk.Data/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -3958,6 +3993,16 @@
       "sha512": ""
     },
     "GourmeJunk.Data.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GourmeJunk.Models.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GourmeJunk.Models.InputModels/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -634,6 +634,29 @@
           "bin/placeholder/GourmeJunk.Data.Models.dll": {}
         }
       },
+      "GourmeJunk.Models.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/GourmeJunk.Models.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GourmeJunk.Models.Common.dll": {}
+        }
+      },
+      "GourmeJunk.Models.InputModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "GourmeJunk.Models.Common": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GourmeJunk.Models.InputModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GourmeJunk.Models.InputModels.dll": {}
+        }
+      },
       "GourmeJunk.Models.ViewModels/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -2748,6 +2771,16 @@
       "path": "../../Data/GourmeJunk.Data.Models/GourmeJunk.Data.Models.csproj",
       "msbuildProject": "../../Data/GourmeJunk.Data.Models/GourmeJunk.Data.Models.csproj"
     },
+    "GourmeJunk.Models.Common/1.0.0": {
+      "type": "project",
+      "path": "../../Models/GourmeJunk.Models.Common/GourmeJunk.Models.Common.csproj",
+      "msbuildProject": "../../Models/GourmeJunk.Models.Common/GourmeJunk.Models.Common.csproj"
+    },
+    "GourmeJunk.Models.InputModels/1.0.0": {
+      "type": "project",
+      "path": "../../Models/GourmeJunk.Models.InputModels/GourmeJunk.Models.InputModels.csproj",
+      "msbuildProject": "../../Models/GourmeJunk.Models.InputModels/GourmeJunk.Models.InputModels.csproj"
+    },
     "GourmeJunk.Models.ViewModels/1.0.0": {
       "type": "project",
       "path": "../../Models/GourmeJunk.Models.ViewModels/GourmeJunk.Models.ViewModels.csproj",
@@ -2763,6 +2796,7 @@
     ".NETStandard,Version=v2.0": [
       "GourmeJunk.Data.Common >= 1.0.0",
       "GourmeJunk.Data.Models >= 1.0.0",
+      "GourmeJunk.Models.InputModels >= 1.0.0",
       "GourmeJunk.Models.ViewModels >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 2.2.6",
       "NETStandard.Library >= 2.0.3"
@@ -2803,6 +2837,9 @@
             },
             "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Models\\GourmeJunk.Data.Models.csproj": {
               "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Models\\GourmeJunk.Data.Models.csproj"
+            },
+            "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.InputModels\\GourmeJunk.Models.InputModels.csproj": {
+              "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.InputModels\\GourmeJunk.Models.InputModels.csproj"
             },
             "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.ViewModels\\GourmeJunk.Models.ViewModels.csproj": {
               "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.ViewModels\\GourmeJunk.Models.ViewModels.csproj"

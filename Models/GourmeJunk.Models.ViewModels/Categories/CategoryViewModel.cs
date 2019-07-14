@@ -7,8 +7,6 @@ namespace GourmeJunk.Models.ViewModels.Categories
     {
         public string Id { get; set; }
 
-        public string Name { get; set; }
-
-        public string StatusMessage { get; set; }
+        public string Name { get; set; }     
     }
 }

@@ -44,3 +44,12 @@ E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\_ViewStart.g.cshtml.cs
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CreateButtonPartial.g.cshtml.cs
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_TableButtonPartial.g.cshtml.cs
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\bin\Debug\netcoreapp2.2\GourmeJunk.Common.dll
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\bin\Debug\netcoreapp2.2\GourmeJunk.Models.Common.dll
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\bin\Debug\netcoreapp2.2\GourmeJunk.Models.InputModels.dll
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\bin\Debug\netcoreapp2.2\GourmeJunk.Common.pdb
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\bin\Debug\netcoreapp2.2\GourmeJunk.Models.InputModels.pdb
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\bin\Debug\netcoreapp2.2\GourmeJunk.Models.Common.pdb
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Category\Create.g.cshtml.cs
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_StatusMessage.g.cshtml.cs
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CreateAndBackToListButton.g.cshtml.cs

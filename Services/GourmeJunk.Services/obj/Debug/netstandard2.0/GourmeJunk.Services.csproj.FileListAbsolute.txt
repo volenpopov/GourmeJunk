@@ -18,3 +18,7 @@ E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services\obj\Debug\ne
 E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services\bin\Debug\netstandard2.0\GourmeJunk.Services.pdb
 E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services\obj\Debug\netstandard2.0\GourmeJunk.Services.dll
 E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services\obj\Debug\netstandard2.0\GourmeJunk.Services.pdb
+E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services\bin\Debug\netstandard2.0\GourmeJunk.Models.Common.dll
+E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services\bin\Debug\netstandard2.0\GourmeJunk.Models.InputModels.dll
+E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services\bin\Debug\netstandard2.0\GourmeJunk.Models.InputModels.pdb
+E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services\bin\Debug\netstandard2.0\GourmeJunk.Models.Common.pdb

@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\GourmeJunk.Data.Common\GourmeJunk.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\GourmeJunk.Data.Models\GourmeJunk.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Models\GourmeJunk.Models.InputModels\GourmeJunk.Models.InputModels.csproj" />
     <ProjectReference Include="..\..\Models\GourmeJunk.Models.ViewModels\GourmeJunk.Models.ViewModels.csproj" />
   </ItemGroup>
 

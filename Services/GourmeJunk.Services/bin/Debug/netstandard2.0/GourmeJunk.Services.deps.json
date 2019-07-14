@@ -11,6 +11,7 @@
         "dependencies": {
           "GourmeJunk.Data.Common": "1.0.0",
           "GourmeJunk.Data.Models": "1.0.0",
+          "GourmeJunk.Models.InputModels": "1.0.0",
           "GourmeJunk.Models.ViewModels": "1.0.0",
           "Microsoft.EntityFrameworkCore": "2.2.6",
           "NETStandard.Library": "2.0.3"
@@ -533,6 +534,19 @@
           "GourmeJunk.Data.Models.dll": {}
         }
       },
+      "GourmeJunk.Models.Common/1.0.0": {
+        "runtime": {
+          "GourmeJunk.Models.Common.dll": {}
+        }
+      },
+      "GourmeJunk.Models.InputModels/1.0.0": {
+        "dependencies": {
+          "GourmeJunk.Models.Common": "1.0.0"
+        },
+        "runtime": {
+          "GourmeJunk.Models.InputModels.dll": {}
+        }
+      },
       "GourmeJunk.Models.ViewModels/1.0.0": {
         "dependencies": {
           "GourmeJunk.Data.Models": "1.0.0",
@@ -915,6 +929,16 @@
       "sha512": ""
     },
     "GourmeJunk.Data.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GourmeJunk.Models.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GourmeJunk.Models.InputModels/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

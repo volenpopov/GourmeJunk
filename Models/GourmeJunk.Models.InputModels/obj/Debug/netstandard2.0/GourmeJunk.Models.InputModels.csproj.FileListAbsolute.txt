@@ -7,3 +7,8 @@ E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\obj\
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\obj\Debug\netstandard2.0\GourmeJunk.Models.InputModels.AssemblyInfo.cs
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\obj\Debug\netstandard2.0\GourmeJunk.Models.InputModels.dll
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\obj\Debug\netstandard2.0\GourmeJunk.Models.InputModels.pdb
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\bin\Debug\netstandard2.0\GourmeJunk.Models.Common.dll
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.dll
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\bin\Debug\netstandard2.0\GourmeJunk.Models.Common.pdb
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.xml
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\obj\Debug\netstandard2.0\GourmeJunk.Models.InputModels.csproj.CopyComplete
