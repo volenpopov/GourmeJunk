@@ -43,6 +43,10 @@ namespace GourmeJunk.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<Category>()
+                .HasIndex(category => category.Name)
+                .IsUnique();
+
             // Needed for Identity models configuration
             base.OnModelCreating(builder);
 

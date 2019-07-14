@@ -21,5 +21,10 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
             return View(categoriesViewModels);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
