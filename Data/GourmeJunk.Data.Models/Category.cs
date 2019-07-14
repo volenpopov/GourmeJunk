@@ -6,7 +6,8 @@ namespace GourmeJunk.Data.Models
     public class Category : BaseDeletableModel<string>
     {
         [Required]
-        [Display(Name = "Category Name")]        
+        [MaxLength(25)]
+        [Display(Name = "Category Name")]          
         public string Name { get; set; }
     }
 }

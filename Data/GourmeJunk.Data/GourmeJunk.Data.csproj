@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190714075855_AddCategoryModelToDb.cs" />
+    <Compile Remove="Migrations\20190714075855_AddCategoryModelToDb.Designer.cs" />
+    <Compile Remove="Migrations\20190714080005_AddCategoryModelToDb.cs" />
+    <Compile Remove="Migrations\20190714080005_AddCategoryModelToDb.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Seeding\" />
   </ItemGroup>
 
