@@ -4,14 +4,14 @@
     "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.ViewModels\\GourmeJunk.Models.ViewModels.csproj": {}
   },
   "projects": {
-    "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.ViewModels\\GourmeJunk.Models.ViewModels.csproj": {
+    "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Common\\GourmeJunk.Data.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.ViewModels\\GourmeJunk.Models.ViewModels.csproj",
-        "projectName": "GourmeJunk.Models.ViewModels",
-        "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.ViewModels\\GourmeJunk.Models.ViewModels.csproj",
+        "projectUniqueName": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Common\\GourmeJunk.Data.Common.csproj",
+        "projectName": "GourmeJunk.Data.Common",
+        "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Common\\GourmeJunk.Data.Common.csproj",
         "packagesPath": "C:\\Users\\volenpopov\\.nuget\\packages\\",
-        "outputPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.ViewModels\\obj\\",
+        "outputPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -41,6 +41,177 @@
       "frameworks": {
         "netstandard2.0": {
           "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Models\\GourmeJunk.Data.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Models\\GourmeJunk.Data.Models.csproj",
+        "projectName": "GourmeJunk.Data.Models",
+        "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Models\\GourmeJunk.Data.Models.csproj",
+        "packagesPath": "C:\\Users\\volenpopov\\.nuget\\packages\\",
+        "outputPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\volenpopov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Common\\GourmeJunk.Data.Common.csproj": {
+                "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Common\\GourmeJunk.Data.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.ViewModels\\GourmeJunk.Models.ViewModels.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.ViewModels\\GourmeJunk.Models.ViewModels.csproj",
+        "projectName": "GourmeJunk.Models.ViewModels",
+        "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.ViewModels\\GourmeJunk.Models.ViewModels.csproj",
+        "packagesPath": "C:\\Users\\volenpopov\\.nuget\\packages\\",
+        "outputPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.ViewModels\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\volenpopov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Models\\GourmeJunk.Data.Models.csproj": {
+                "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Models\\GourmeJunk.Data.Models.csproj"
+              },
+              "E:\\Volen\\Programming\\Github\\GourmeJunk\\Services\\GourmeJunk.Services.Mapping\\GourmeJunk.Services.Mapping.csproj": {
+                "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Services\\GourmeJunk.Services.Mapping\\GourmeJunk.Services.Mapping.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "E:\\Volen\\Programming\\Github\\GourmeJunk\\Services\\GourmeJunk.Services.Mapping\\GourmeJunk.Services.Mapping.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Services\\GourmeJunk.Services.Mapping\\GourmeJunk.Services.Mapping.csproj",
+        "projectName": "GourmeJunk.Services.Mapping",
+        "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Services\\GourmeJunk.Services.Mapping\\GourmeJunk.Services.Mapping.csproj",
+        "packagesPath": "C:\\Users\\volenpopov\\.nuget\\packages\\",
+        "outputPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Services\\GourmeJunk.Services.Mapping\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\volenpopov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
