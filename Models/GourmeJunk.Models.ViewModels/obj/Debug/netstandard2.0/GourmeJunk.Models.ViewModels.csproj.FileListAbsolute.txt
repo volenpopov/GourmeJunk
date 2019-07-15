@@ -18,3 +18,5 @@ E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\obj\D
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\obj\Debug\netstandard2.0\GourmeJunk.Models.ViewModels.csproj.CopyComplete
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\obj\Debug\netstandard2.0\GourmeJunk.Models.ViewModels.dll
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\obj\Debug\netstandard2.0\GourmeJunk.Models.ViewModels.pdb
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\bin\Debug\netstandard2.0\GourmeJunk.Models.Common.dll
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\bin\Debug\netstandard2.0\GourmeJunk.Models.Common.pdb

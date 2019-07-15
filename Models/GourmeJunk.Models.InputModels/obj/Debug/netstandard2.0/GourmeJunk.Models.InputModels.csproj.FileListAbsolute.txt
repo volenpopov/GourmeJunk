@@ -12,3 +12,5 @@ E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\bin\
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\bin\Debug\netstandard2.0\GourmeJunk.Models.Common.pdb
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.xml
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\obj\Debug\netstandard2.0\GourmeJunk.Models.InputModels.csproj.CopyComplete
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Mvc.Core.dll
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.InputModels\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Mvc.Core.xml

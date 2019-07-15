@@ -179,6 +179,16 @@
           "bin/placeholder/GourmeJunk.Data.Models.dll": {}
         }
       },
+      "GourmeJunk.Models.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/GourmeJunk.Models.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GourmeJunk.Models.Common.dll": {}
+        }
+      },
       "GourmeJunk.Services.Mapping/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -968,6 +978,11 @@
       "path": "../../Data/GourmeJunk.Data.Models/GourmeJunk.Data.Models.csproj",
       "msbuildProject": "../../Data/GourmeJunk.Data.Models/GourmeJunk.Data.Models.csproj"
     },
+    "GourmeJunk.Models.Common/1.0.0": {
+      "type": "project",
+      "path": "../GourmeJunk.Models.Common/GourmeJunk.Models.Common.csproj",
+      "msbuildProject": "../GourmeJunk.Models.Common/GourmeJunk.Models.Common.csproj"
+    },
     "GourmeJunk.Services.Mapping/1.0.0": {
       "type": "project",
       "path": "../../Services/GourmeJunk.Services.Mapping/GourmeJunk.Services.Mapping.csproj",
@@ -977,6 +992,7 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "GourmeJunk.Data.Models >= 1.0.0",
+      "GourmeJunk.Models.Common >= 1.0.0",
       "GourmeJunk.Services.Mapping >= 1.0.0",
       "NETStandard.Library >= 2.0.3"
     ]
@@ -1013,6 +1029,9 @@
           "projectReferences": {
             "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Models\\GourmeJunk.Data.Models.csproj": {
               "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Models\\GourmeJunk.Data.Models.csproj"
+            },
+            "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.Common\\GourmeJunk.Models.Common.csproj": {
+              "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.Common\\GourmeJunk.Models.Common.csproj"
             },
             "E:\\Volen\\Programming\\Github\\GourmeJunk\\Services\\GourmeJunk.Services.Mapping\\GourmeJunk.Services.Mapping.csproj": {
               "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Services\\GourmeJunk.Services.Mapping\\GourmeJunk.Services.Mapping.csproj"

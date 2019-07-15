@@ -1,4 +1,5 @@
 ﻿using GourmeJunk.Models.InputModels._AdminInputModels;
+using GourmeJunk.Models.ViewModels.Categories;
 using GourmeJunk.Services.Contracts;
 using GourmeJunk.Web.Common;
 using GourmeJunk.Web.Filters;
@@ -26,7 +27,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
         public IActionResult Create()
         {
-            return View(new CategoryCreateInputModel());
+            return View();
         }
 
         [HttpPost]
@@ -45,6 +46,46 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
             await this.categoriesService.CreateCategoryAsync(model);
 
             return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Edit(string id)
+        {
+            var categoryEditViewModel = await this.categoriesService.GetCategoryByIdAsync<CategoryEditViewModel>(id);
+
+            return View(categoryEditViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(CategoryEditInputModel model)
+        {
+            var alreadyExists = await this.categoriesService.CheckIfCategoryExistsAsync(model.Name);
+
+            if (alreadyExists || !ModelState.IsValid)
+            {
+                var categoryEditViewModel = new CategoryEditViewModel
+                {
+                    Id = model.Id,
+                    Name = model.Name
+                };
+
+                if (alreadyExists)
+                {
+                    categoryEditViewModel.StatusMessage = string.Format(WebConstants.Error.EntityAlreadyExists, model.Name);                    
+                }
+
+                return View(categoryEditViewModel);
+            }
+
+            await this.categoriesService.EditCategoryAsync(model);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Details(string id)
+        {
+            var categoryDetailsViewModel = await this.categoriesService.GetCategoryByIdAsync<CategoryViewModel>(id);
+
+            return View(categoryDetailsViewModel);
         }
     }
 }

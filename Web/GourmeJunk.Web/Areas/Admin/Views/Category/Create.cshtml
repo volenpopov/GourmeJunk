@@ -4,13 +4,14 @@
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var statusMessage = @Model == null ? null : @Model.StatusMessage;
 }
 
 <br />
 <h2 class="text-info">Create Category</h2>
 <br />
 
-<partial name="_StatusMessage" model="Model.StatusMessage" />
+<partial name="_StatusMessage" model="statusMessage" />
 
 <form method="post" asp-action="Create">
     <div class="border backgroundWhite">

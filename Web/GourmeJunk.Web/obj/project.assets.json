@@ -4814,6 +4814,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "GourmeJunk.Data.Models": "1.0.0",
+          "GourmeJunk.Models.Common": "1.0.0",
           "GourmeJunk.Services.Mapping": "1.0.0"
         },
         "compile": {

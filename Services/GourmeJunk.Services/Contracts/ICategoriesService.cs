@@ -12,5 +12,11 @@ namespace GourmeJunk.Services.Contracts
         Task<bool> CheckIfCategoryExistsAsync(string categoryName);
 
         Task CreateCategoryAsync(CategoryCreateInputModel model);
+
+        Task<TViewModel> GetCategoryByIdAsync<TViewModel>(string id);
+
+        Task EditCategoryAsync(CategoryEditInputModel model);
+
+
     }
 }
