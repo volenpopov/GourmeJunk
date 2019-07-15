@@ -1,6 +1,9 @@
-﻿using GourmeJunk.Models.ViewModels.SubCategories;
+﻿using GourmeJunk.Models.InputModels._AdminInputModels;
+using GourmeJunk.Models.ViewModels.SubCategories;
 using GourmeJunk.Services.Contracts;
+using GourmeJunk.Web.Common;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Threading.Tasks;
 
 namespace GourmeJunk.Web.Areas.Admin.Controllers
@@ -9,11 +12,14 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
     public class SubCategoryController : Controller
     {
         private readonly ISubCategoriesService subCategoriesService;
-        
+        private readonly ICategoriesService categoriesService;
 
-        public SubCategoryController(ISubCategoriesService subCategoriesService)
+        public SubCategoryController(
+            ISubCategoriesService subCategoriesService,
+            ICategoriesService categoriesService)
         {
-            this.subCategoriesService = subCategoriesService;            
+            this.subCategoriesService = subCategoriesService;
+            this.categoriesService = categoriesService;
         }
 
         public async Task<IActionResult> Index()
@@ -30,10 +36,36 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
             return View(subCategoryCreateViewModel);
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> Create()
-        //{
+        [HttpPost]
+        public async Task<IActionResult> Create(SubCategoryCreateInputModel model)
+        {
+            var pairAlreadyExists = await this.subCategoriesService
+                .CheckIfCategorySubCategoryPairExistsAsync(model.Name, model.CategoryId);
 
-        //}
+            if (pairAlreadyExists || !ModelState.IsValid)
+            {
+                var subCategoryCreateViewModel = await this.subCategoriesService.GetSubCategoryCreateViewModel();
+
+                if (pairAlreadyExists)
+                {
+                    var categoryName = await this.categoriesService.GetCategoryNameById(model.CategoryId);
+
+                    subCategoryCreateViewModel.StatusMessage = string.Format(WebConstants.Error.EntityAlreadyExists, $"{model.Name} - {categoryName}");
+                }
+
+                return View(subCategoryCreateViewModel);
+            }
+
+            await this.subCategoriesService.CreateSubCategoryAsync(model);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> GetSubCategories(string id)
+        {
+            var subCategoriesNames = await this.subCategoriesService.GetSubCategoriesOfACategory(id);
+
+            return Json(new SelectList(subCategoriesNames, "Name"));
+        }
     }
 }

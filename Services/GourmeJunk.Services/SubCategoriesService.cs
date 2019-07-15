@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GourmeJunk.Data.Common.Repositories;
 using GourmeJunk.Data.Models;
+using GourmeJunk.Models.InputModels._AdminInputModels;
 using GourmeJunk.Models.ViewModels.SubCategories;
 using GourmeJunk.Services.Contracts;
 using GourmeJunk.Services.Mapping;
@@ -34,13 +35,13 @@ namespace GourmeJunk.Services
             return subCategoriesViewModels;
         }
 
-        public async Task<bool> CheckIfCategorySubCategoryPairExistsAsync(string subCategoryName, string categoryName)
+        public async Task<bool> CheckIfCategorySubCategoryPairExistsAsync(string subCategoryName, string categoryId)
         {
             return await this.subCategories
                 .AllAsNoTracking()
                 .Include(subCategory => subCategory.Category)
                 .AnyAsync(subCategory => subCategory.Name == subCategoryName 
-                          && subCategory.Category.Name == categoryName);
+                          && subCategory.CategoryId == categoryId);
         }
 
         public async Task<SubCategoryCreateViewModel> GetSubCategoryCreateViewModel()
@@ -60,6 +61,30 @@ namespace GourmeJunk.Services
             };
 
             return subCategoryCreateViewModel;
+        }
+
+        public async Task CreateSubCategoryAsync(SubCategoryCreateInputModel model)
+        {
+            var subCategory = new SubCategory
+            {
+                Name = model.Name,
+                CategoryId = model.CategoryId
+            };
+
+            await this.subCategories.AddAsync(subCategory);
+            await this.subCategories.SaveChangesAsync();
+        }
+
+        public async Task<string[]> GetSubCategoriesOfACategory(string categoryId)
+        {
+            var subCategoriesNames = await this.subCategories
+                .AllAsNoTracking()
+                .Include(subCategory => subCategory.Category)
+                .Where(subCategory => subCategory.CategoryId == categoryId)
+                .Select(subCategory => subCategory.Name)
+                .ToArrayAsync();
+
+            return subCategoriesNames;
         }
     }
 }

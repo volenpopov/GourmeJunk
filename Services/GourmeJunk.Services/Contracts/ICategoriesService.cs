@@ -18,5 +18,7 @@ namespace GourmeJunk.Services.Contracts
         Task EditCategoryAsync(CategoryEditInputModel model);
 
         Task DeleteCategoryAsync(string id);
+
+        Task<string> GetCategoryNameById(string id);
     }
 }

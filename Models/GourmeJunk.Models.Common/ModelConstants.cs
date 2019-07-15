@@ -20,6 +20,7 @@
             public const int NameMaxLength = 25;
 
             public const string NameDisplay = "SubCategory Name";
+            public const string MustSelectCategory = "You must select a category.";
         }
 
     }

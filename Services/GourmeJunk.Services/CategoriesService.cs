@@ -44,7 +44,6 @@ namespace GourmeJunk.Services
             var category = new Category { Name = model.Name };
 
             await this.categoriesRepository.AddAsync(category);
-
             await this.categoriesRepository.SaveChangesAsync();
         }
 
@@ -83,6 +82,13 @@ namespace GourmeJunk.Services
             await this.categoriesRepository.SaveChangesAsync();
         }
 
+        public async Task<string> GetCategoryNameById(string id)
+        {
+            var category = await this.GetCategoryById(id);
+
+            return category.Name;
+        }
+
         private async Task<Category> GetCategoryById(string id)
         {
             var category = await this.categoriesRepository
@@ -95,6 +101,6 @@ namespace GourmeJunk.Services
             }
 
             return category;
-        }
+        }       
     }
 }
