@@ -14,5 +14,13 @@
             public const string NameDisplay = "Category Name";
         }
 
+        public class SubCategory
+        {
+            public const int NameMinLength = 3;
+            public const int NameMaxLength = 25;
+
+            public const string NameDisplay = "SubCategory Name";
+        }
+
     }
 }

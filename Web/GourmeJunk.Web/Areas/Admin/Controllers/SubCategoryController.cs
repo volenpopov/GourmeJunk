@@ -1,4 +1,5 @@
-﻿using GourmeJunk.Services.Contracts;
+﻿using GourmeJunk.Models.ViewModels.SubCategories;
+using GourmeJunk.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -8,10 +9,11 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
     public class SubCategoryController : Controller
     {
         private readonly ISubCategoriesService subCategoriesService;
+        
 
         public SubCategoryController(ISubCategoriesService subCategoriesService)
         {
-            this.subCategoriesService = subCategoriesService;
+            this.subCategoriesService = subCategoriesService;            
         }
 
         public async Task<IActionResult> Index()
@@ -21,15 +23,17 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
             return View(subCategoryViewModels);
         }
 
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
         public async Task<IActionResult> Create()
         {
+            var subCategoryCreateViewModel = await this.subCategoriesService.GetSubCategoryCreateViewModel();
 
+            return View(subCategoryCreateViewModel);
         }
+
+        //[HttpPost]
+        //public async Task<IActionResult> Create()
+        //{
+
+        //}
     }
 }

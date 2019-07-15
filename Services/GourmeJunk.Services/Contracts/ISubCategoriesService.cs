@@ -8,6 +8,8 @@ namespace GourmeJunk.Services.Contracts
     {
         Task<IEnumerable<SubCategoryViewModel>> GetAllAsync();
 
-        
+        Task<bool> CheckIfCategorySubCategoryPairExistsAsync(string subCategoryName, string categoryName);
+
+        Task<SubCategoryCreateViewModel> GetSubCategoryCreateViewModel();
     }
 }
