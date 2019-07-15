@@ -4,14 +4,16 @@ using GourmeJunk.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GourmeJunk.Data.Migrations
 {
     [DbContext(typeof(GourmeJunkDbContext))]
-    partial class GourmeJunkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190715141650_AddSubcategoryModel")]
+    partial class AddSubcategoryModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
