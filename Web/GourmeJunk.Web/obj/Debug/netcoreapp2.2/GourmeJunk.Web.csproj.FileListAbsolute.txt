@@ -59,3 +59,4 @@ E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_DetailsAndBackToListButton.g.cshtml.cs
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Category\Delete.g.cshtml.cs
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_DeleteAndBackToListButton.g.cshtml.cs
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\SubCategory\Index.g.cshtml.cs

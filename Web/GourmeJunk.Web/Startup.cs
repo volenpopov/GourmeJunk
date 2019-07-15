@@ -59,6 +59,7 @@ namespace GourmeJunk.Web
 
             //Application Services
             services.AddScoped<ICategoriesService, CategoriesService>();
+            services.AddScoped<ISubCategoriesService, SubCategoriesService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
