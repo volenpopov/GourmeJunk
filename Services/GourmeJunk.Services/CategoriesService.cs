@@ -48,7 +48,7 @@ namespace GourmeJunk.Services
             await this.categoriesRepository.SaveChangesAsync();
         }
 
-        public async Task<TViewModel> GetCategoryByIdAsync<TViewModel>(string id)
+        public async Task<TViewModel> GetCategoryModelByIdAsync<TViewModel>(string id)
         {
             var Category = await this.categoriesRepository
                 .AllAsNoTracking()
@@ -66,18 +66,35 @@ namespace GourmeJunk.Services
 
         public async Task EditCategoryAsync(CategoryEditInputModel model)
         {
-            var Category = await this.categoriesRepository
-                .All()
-                .SingleOrDefaultAsync(categ => categ.Id == model.Id);
+            var category = await GetCategoryById(model.Id);
 
-            if (Category == null)
-            {
-                throw new NullReferenceException(string.Format(ServicesDataConstants.NullReferenceId, nameof(Category), model.Id));
-            }
-
-            Category.Name = model.Name;
+            category.Name = model.Name;
 
             await this.categoriesRepository.SaveChangesAsync();
+        }
+
+
+        //TODO: Check subcategories after the deletion of a category
+        public async Task DeleteCategoryAsync(string id)
+        {
+            var category = await GetCategoryById(id);
+
+            this.categoriesRepository.Delete(category);
+            await this.categoriesRepository.SaveChangesAsync();
+        }
+
+        private async Task<Category> GetCategoryById(string id)
+        {
+            var category = await this.categoriesRepository
+                .All()
+                .SingleOrDefaultAsync(categ => categ.Id == id);
+
+            if (category == null)
+            {
+                throw new NullReferenceException(string.Format(ServicesDataConstants.NullReferenceId, nameof(Data.Models.Category), id));
+            }
+
+            return category;
         }
     }
 }

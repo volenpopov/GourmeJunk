@@ -50,7 +50,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(string id)
         {
-            var categoryEditViewModel = await this.categoriesService.GetCategoryByIdAsync<CategoryEditViewModel>(id);
+            var categoryEditViewModel = await this.categoriesService.GetCategoryModelByIdAsync<CategoryEditViewModel>(id);
 
             return View(categoryEditViewModel);
         }
@@ -83,9 +83,25 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Details(string id)
         {
-            var categoryDetailsViewModel = await this.categoriesService.GetCategoryByIdAsync<CategoryViewModel>(id);
+            var categoryViewModel = await this.categoriesService.GetCategoryModelByIdAsync<CategoryViewModel>(id);
 
-            return View(categoryDetailsViewModel);
+            return View(categoryViewModel);
+        }
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            var categoryVieWModel = await this.categoriesService.GetCategoryModelByIdAsync<CategoryViewModel>(id);
+
+            return View(categoryVieWModel);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public async Task<IActionResult> DeletePost(string id)
+        {
+            await this.categoriesService.DeleteCategoryAsync(id);
+            
+            return RedirectToAction(nameof(Index));
         }
     }
 }

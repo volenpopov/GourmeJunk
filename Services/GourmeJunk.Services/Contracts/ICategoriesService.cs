@@ -13,10 +13,10 @@ namespace GourmeJunk.Services.Contracts
 
         Task CreateCategoryAsync(CategoryCreateInputModel model);
 
-        Task<TViewModel> GetCategoryByIdAsync<TViewModel>(string id);
+        Task<TViewModel> GetCategoryModelByIdAsync<TViewModel>(string id);
 
         Task EditCategoryAsync(CategoryEditInputModel model);
 
-
+        Task DeleteCategoryAsync(string id);
     }
 }
