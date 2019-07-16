@@ -14,8 +14,6 @@ namespace GourmeJunk.Models.ViewModels.SubCategories
         public string CategoryId { get; set; }
         public IEnumerable<CategoryViewModel> CategoryList { get; set; }
 
-        public string[] SubCategoryList { get; set; }
-
         public string StatusMessage { get; set; }
     }
 }

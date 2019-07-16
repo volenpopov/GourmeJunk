@@ -27,7 +27,7 @@ namespace GourmeJunk.Services
         public async Task<IEnumerable<SubCategoryViewModel>> GetAllAsync()
         {
             var subCategoriesViewModels = await this.subCategories
-                .AllAsNoTracking()
+                .AllAsNoTracking()                
                 .Include(subCategory => subCategory.Category)
                 .To<SubCategoryViewModel>()
                 .ToArrayAsync();
@@ -47,17 +47,10 @@ namespace GourmeJunk.Services
         public async Task<SubCategoryCreateViewModel> GetSubCategoryCreateViewModel()
         {
             var categoryList = await this.categoriesService.GetAllAsync();
-
-            var subCategoryList = await this.subCategories
-                .AllAsNoTracking()
-                .Select(subCategory => subCategory.Name)
-                .OrderBy(subCategory => subCategory)
-                .ToArrayAsync();
-
+            
             var subCategoryCreateViewModel = new SubCategoryCreateViewModel
             {
                 CategoryList = categoryList,
-                SubCategoryList = subCategoryList
             };
 
             return subCategoryCreateViewModel;
