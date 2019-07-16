@@ -11,10 +11,12 @@ namespace GourmeJunk.Services.Contracts
 
         Task<bool> CheckIfCategorySubCategoryPairExistsAsync(string subCategoryName, string categoryName);
 
-        Task<SubCategoryCreateViewModel> GetSubCategoryCreateViewModel();
+        Task<SubCategoryCreateViewModel> GetSubCategoryCreateViewModelAsync();
 
         Task CreateSubCategoryAsync(SubCategoryCreateInputModel model);
 
-        Task<string[]> GetSubCategoriesOfACategory(string categoryId);
+        Task<string[]> GetSubCategoriesOfACategoryAsync(string categoryId);
+
+        Task<SubCategoryEditViewModel> GetSubCategoryEditViewModelAsync(string subCategoryId);
     }
 }

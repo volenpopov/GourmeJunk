@@ -1,5 +1,4 @@
 ﻿using GourmeJunk.Models.InputModels._AdminInputModels;
-using GourmeJunk.Models.ViewModels.SubCategories;
 using GourmeJunk.Services.Contracts;
 using GourmeJunk.Web.Common;
 using Microsoft.AspNetCore.Mvc;
@@ -31,7 +30,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Create()
         {
-            var subCategoryCreateViewModel = await this.subCategoriesService.GetSubCategoryCreateViewModel();
+            var subCategoryCreateViewModel = await this.subCategoriesService.GetSubCategoryCreateViewModelAsync ();
 
             return View(subCategoryCreateViewModel);
         }
@@ -44,7 +43,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
             if (pairAlreadyExists || !ModelState.IsValid)
             {
-                var subCategoryCreateViewModel = await this.subCategoriesService.GetSubCategoryCreateViewModel();
+                var subCategoryCreateViewModel = await this.subCategoriesService.GetSubCategoryCreateViewModelAsync();
 
                 if (pairAlreadyExists)
                 {
@@ -61,9 +60,16 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> Edit(string id)
+        {
+            var subCategoryEditViewModel = await this.subCategoriesService.GetSubCategoryEditViewModelAsync(id);
+
+            return View(subCategoryEditViewModel);
+        }
+
         public async Task<IActionResult> GetSubCategories(string id)
         {
-            var subCategoriesNames = await this.subCategoriesService.GetSubCategoriesOfACategory(id);
+            var subCategoriesNames = await this.subCategoriesService.GetSubCategoriesOfACategoryAsync(id);
 
             return Json(new SelectList(subCategoriesNames));
         }

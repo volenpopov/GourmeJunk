@@ -61,18 +61,18 @@ namespace GourmeJunk.Services
 
         public async Task<TViewModel> GetCategoryModelByIdAsync<TViewModel>(string id)
         {
-            var Category = await this.categoriesRepository
+            var category = await this.categoriesRepository
                 .AllAsNoTracking()
                 .Where(categ => categ.Id == id)
                 .To<TViewModel>()
                 .FirstOrDefaultAsync();
 
-            if (Category == null)
+            if (category == null)
             {
                 throw new NullReferenceException(string.Format(ServicesDataConstants.NullReferenceId, nameof(Category), id));
             }
 
-            return Category;
+            return category;
         }
 
         public async Task EditCategoryAsync(CategoryEditInputModel model)
@@ -109,7 +109,7 @@ namespace GourmeJunk.Services
 
             if (category == null)
             {
-                throw new NullReferenceException(string.Format(ServicesDataConstants.NullReferenceId, nameof(Data.Models.Category), id));
+                throw new NullReferenceException(string.Format(ServicesDataConstants.NullReferenceId, nameof(Category), id));
             }
 
             return category;
