@@ -58,13 +58,27 @@ namespace GourmeJunk.Services
 
         public async Task CreateSubCategoryAsync(SubCategoryCreateInputModel model)
         {
-            var subCategory = new SubCategory
-            {
-                Name = model.Name,
-                CategoryId = model.CategoryId
-            };
+            var subCategory = await this.subCategories
+                .AllWithDeleted()
+                .Include(subCateg => subCateg.Category)
+                .SingleOrDefaultAsync(subCateg => subCateg.Name == model.Name 
+                                      && subCateg.CategoryId == model.CategoryId);
 
-            await this.subCategories.AddAsync(subCategory);
+            if (subCategory.IsDeleted)
+            {
+                this.subCategories.Undelete(subCategory);
+            }
+            else
+            {
+                subCategory = new SubCategory
+                {
+                    Name = model.Name,
+                    CategoryId = model.CategoryId
+                };
+
+                await this.subCategories.AddAsync(subCategory);
+            }
+            
             await this.subCategories.SaveChangesAsync();
         }
 
