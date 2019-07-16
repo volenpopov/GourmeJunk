@@ -108,8 +108,11 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete()
+        [ActionName("Delete")]
+        public async Task<IActionResult> DeletePost(string id)
         {
+            await this.subCategoriesService.DeleteSubCategoryAsync(id);
+
             return RedirectToAction(nameof(Index));
         }
 

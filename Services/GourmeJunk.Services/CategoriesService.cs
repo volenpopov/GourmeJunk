@@ -16,10 +16,14 @@ namespace GourmeJunk.Services
     public class CategoriesService : ICategoriesService
     {
         private readonly IDeletableEntityRepository<Category> categoriesRepository;
+        private readonly IDeletableEntityRepository<SubCategory> subCategoriesRepository;
 
-        public CategoriesService(IDeletableEntityRepository<Category> categoriesRepository)
+        public CategoriesService(
+            IDeletableEntityRepository<Category> categoriesRepository,
+            IDeletableEntityRepository<SubCategory> subCategoriesRepository)
         {
             this.categoriesRepository = categoriesRepository;
+            this.subCategoriesRepository = subCategoriesRepository;
         }
 
         public async Task<IEnumerable<CategoryViewModel>> GetAllAsync()
@@ -100,6 +104,17 @@ namespace GourmeJunk.Services
             if (category.IsDeleted)
             {
                 return;
+            }
+
+            //Set each child SubCategory of Category to IsDeleted = True
+            var subCategories = await this.subCategoriesRepository
+                .All()
+                .Where(subCategory => subCategory.CategoryId == id)
+                .ToArrayAsync();
+
+            foreach (var subCategory in subCategories)
+            {
+                this.subCategoriesRepository.Delete(subCategory);
             }
 
             this.categoriesRepository.Delete(category);
