@@ -93,6 +93,26 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> Details(string id)
+        {
+            var subCategoryViewModel = await this.subCategoriesService.GetSubCategoryViewModel(id);
+
+            return View(subCategoryViewModel);
+        }
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            var subCategoryViewModel = await this.subCategoriesService.GetSubCategoryViewModel(id);
+
+            return View(subCategoryViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete()
+        {
+            return RedirectToAction(nameof(Index));
+        }
+
         public async Task<IActionResult> GetSubCategories(string id)
         {
             var subCategoriesNames = await this.subCategoriesService.GetSubCategoriesOfACategoryAsync(id);

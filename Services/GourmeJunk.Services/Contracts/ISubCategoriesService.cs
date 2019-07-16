@@ -20,5 +20,7 @@ namespace GourmeJunk.Services.Contracts
         Task<SubCategoryEditViewModel> GetSubCategoryEditViewModelAsync(string subCategoryId);
 
         Task EditSubCategoryAsync(SubCategoryEditInputModel model);
+
+        Task<SubCategoryViewModel> GetSubCategoryViewModel(string subCategoryId);
     }
 }

@@ -131,6 +131,25 @@ namespace GourmeJunk.Services
             return subCategoriesNames;
         }
 
+        public async Task<SubCategoryViewModel> GetSubCategoryViewModel(string subCategoryId)
+        {
+            var subCategory = await this.GetSubCategoryByIdAsync(subCategoryId);
+
+            if (subCategory.IsDeleted)
+            {
+                throw new InvalidOperationException(string.Format(ServicesDataConstants.GetDeletedEntity, nameof(SubCategory), subCategory.Name));
+            }
+
+            var subCategoryViewModel = new SubCategoryViewModel
+            {
+                Id = subCategoryId,
+                Name = subCategory.Name,
+                CategoryName = subCategory.Category.Name
+            };
+
+            return subCategoryViewModel;
+        }
+
         private async Task<SubCategory> GetSubCategoryByIdAsync(string subCategoryId)
         {
             var subCategory = await this.subCategories
@@ -144,6 +163,6 @@ namespace GourmeJunk.Services
             }
 
             return subCategory;
-        }
+        }       
     }
 }
