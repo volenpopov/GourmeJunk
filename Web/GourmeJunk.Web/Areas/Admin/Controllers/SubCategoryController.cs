@@ -67,6 +67,32 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
             return View(subCategoryEditViewModel);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Edit(SubCategoryEditInputModel model)
+        {
+            var alreadyExists = await this.subCategoriesService
+                .CheckIfCategorySubCategoryPairExistsAsync(model.Name, model.CategoryId);
+
+            if (alreadyExists || !ModelState.IsValid)
+            {
+                var subCategoryEditVieWModel = await this.subCategoriesService
+                    .GetSubCategoryEditViewModelAsync(model.Id);
+
+                if (alreadyExists)
+                {
+                    subCategoryEditVieWModel.StatusMessage = 
+                        string.Format(WebConstants.Error
+                            .EntityAlreadyExists, $"{model.Name} - {subCategoryEditVieWModel.CategoryName}");
+                }
+
+                return View(subCategoryEditVieWModel);
+            }
+
+            await this.subCategoriesService.EditSubCategoryAsync(model);
+
+            return RedirectToAction(nameof(Index));
+        }
+
         public async Task<IActionResult> GetSubCategories(string id)
         {
             var subCategoriesNames = await this.subCategoriesService.GetSubCategoriesOfACategoryAsync(id);

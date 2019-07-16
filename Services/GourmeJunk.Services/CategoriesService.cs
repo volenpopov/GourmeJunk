@@ -45,17 +45,17 @@ namespace GourmeJunk.Services
                 .AllWithDeleted()
                 .SingleOrDefaultAsync(categ => categ.Name == model.Name);
 
-            if (category.IsDeleted)
-            {
-                this.categoriesRepository.Undelete(category);
-            }
-            else
+            if (category == null)
             {
                 category = new Category { Name = model.Name };
 
                 await this.categoriesRepository.AddAsync(category);
             }
-           
+            else if (category.IsDeleted)
+            {
+                this.categoriesRepository.Undelete(category);
+            }
+
             await this.categoriesRepository.SaveChangesAsync();
         }
 
@@ -79,7 +79,14 @@ namespace GourmeJunk.Services
         {
             var category = await GetCategoryById(model.Id);
 
-            category.Name = model.Name;
+            if (category.IsDeleted)
+            {
+                this.categoriesRepository.Undelete(category);
+            }
+            else
+            {
+                category.Name = model.Name;
+            }            
 
             await this.categoriesRepository.SaveChangesAsync();
         }
@@ -89,6 +96,11 @@ namespace GourmeJunk.Services
         public async Task DeleteCategoryAsync(string id)
         {
             var category = await GetCategoryById(id);
+
+            if (category.IsDeleted)
+            {
+                return;
+            }
 
             this.categoriesRepository.Delete(category);
             await this.categoriesRepository.SaveChangesAsync();
@@ -104,7 +116,7 @@ namespace GourmeJunk.Services
         private async Task<Category> GetCategoryById(string id)
         {
             var category = await this.categoriesRepository
-                .All()
+                .AllWithDeleted()
                 .SingleOrDefaultAsync(categ => categ.Id == id);
 
             if (category == null)

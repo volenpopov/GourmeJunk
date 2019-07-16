@@ -85,6 +85,11 @@ namespace GourmeJunk.Services
         {
             var subCategory = await this.GetSubCategoryByIdAsync(subCategoryId);
 
+            if (subCategory.IsDeleted)
+            {
+                throw new InvalidOperationException(string.Format(ServicesDataConstants.GetDeletedEntity, nameof(SubCategory), subCategory.Name));
+            }
+
             var subCategoriesList = await this.GetSubCategoriesOfACategoryAsync(subCategory.CategoryId);
 
             var subCategoryEditViewModel = new SubCategoryEditViewModel
@@ -97,6 +102,22 @@ namespace GourmeJunk.Services
             };
 
             return subCategoryEditViewModel;
+        }
+
+        public async Task EditSubCategoryAsync(SubCategoryEditInputModel model)
+        {
+            var subCategory = await this.GetSubCategoryByIdAsync(model.Id);
+
+            if (subCategory.IsDeleted)
+            {
+                this.subCategories.Undelete(subCategory);
+            }
+            else
+            {
+                subCategory.Name = model.Name;
+            }
+
+            await this.subCategories.SaveChangesAsync();
         }
 
         public async Task<string[]> GetSubCategoriesOfACategoryAsync(string categoryId)
@@ -113,7 +134,7 @@ namespace GourmeJunk.Services
         private async Task<SubCategory> GetSubCategoryByIdAsync(string subCategoryId)
         {
             var subCategory = await this.subCategories
-                .AllAsNoTracking()
+                .AllWithDeleted()
                 .Include(subCateg => subCateg.Category)
                 .SingleOrDefaultAsync(subCateg => subCateg.Id == subCategoryId);
 
