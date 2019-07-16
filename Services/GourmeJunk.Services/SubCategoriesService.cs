@@ -13,11 +13,11 @@ namespace GourmeJunk.Services
 {
     public class SubCategoriesService : ISubCategoriesService
     {
-        private readonly IRepository<SubCategory> subCategories;
+        private readonly IDeletableEntityRepository<SubCategory> subCategories;
         private readonly ICategoriesService categoriesService;
 
         public SubCategoriesService(
-            IRepository<SubCategory> subCategories,
+            IDeletableEntityRepository<SubCategory> subCategories,
             ICategoriesService categoriesService)
         {
             this.subCategories = subCategories;

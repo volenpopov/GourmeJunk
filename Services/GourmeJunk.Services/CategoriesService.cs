@@ -15,9 +15,9 @@ namespace GourmeJunk.Services
 {
     public class CategoriesService : ICategoriesService
     {
-        private readonly IRepository<Category> categoriesRepository;
+        private readonly IDeletableEntityRepository<Category> categoriesRepository;
 
-        public CategoriesService(IRepository<Category> categoriesRepository)
+        public CategoriesService(IDeletableEntityRepository<Category> categoriesRepository)
         {
             this.categoriesRepository = categoriesRepository;
         }
