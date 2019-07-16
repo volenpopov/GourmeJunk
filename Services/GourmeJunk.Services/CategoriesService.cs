@@ -41,9 +41,21 @@ namespace GourmeJunk.Services
 
         public async Task CreateCategoryAsync(CategoryCreateInputModel model)
         {
-            var category = new Category { Name = model.Name };
+            var category = await this.categoriesRepository
+                .AllWithDeleted()
+                .SingleOrDefaultAsync(categ => categ.Name == model.Name);
 
-            await this.categoriesRepository.AddAsync(category);
+            if (category.IsDeleted)
+            {
+                this.categoriesRepository.Undelete(category);
+            }
+            else
+            {
+                category = new Category { Name = model.Name };
+
+                await this.categoriesRepository.AddAsync(category);
+            }
+           
             await this.categoriesRepository.SaveChangesAsync();
         }
 
@@ -101,6 +113,6 @@ namespace GourmeJunk.Services
             }
 
             return category;
-        }       
+        }
     }
 }

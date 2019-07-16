@@ -37,7 +37,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
             var alreadyExists = await this.categoriesService.CheckIfCategoryExistsAsync(model.Name);
 
             if (alreadyExists)
-            {
+            {               
                 model.StatusMessage = string.Format(WebConstants.Error.EntityAlreadyExists, model.Name);
 
                 return View(model);
