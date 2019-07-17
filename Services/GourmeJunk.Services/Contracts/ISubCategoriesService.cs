@@ -15,7 +15,9 @@ namespace GourmeJunk.Services.Contracts
 
         Task CreateSubCategoryAsync(SubCategoryCreateInputModel model);
 
-        Task<string[]> GetSubCategoriesOfACategoryAsync(string categoryId);
+        //Task<string[]> GetSubCategoriesNamesOfACategoryAsync(string categoryId);
+
+        Task<IEnumerable<SubCategoryBaseViewModel>> GetSubCategoriesOfACategoryAsync(string categoryId);
 
         Task<SubCategoryEditViewModel> GetSubCategoryEditViewModelAsync(string subCategoryId);
 

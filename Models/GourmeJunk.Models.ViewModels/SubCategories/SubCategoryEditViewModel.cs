@@ -3,13 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GourmeJunk.Models.ViewModels.SubCategories
 {
-    public class SubCategoryEditViewModel
-    {
-        public string Id { get; set; }
-
-        [Display(Name = ModelConstants.SubCategory.NameDisplay)]
-        public string Name { get; set; }
-
+    public class SubCategoryEditViewModel : SubCategoryBaseViewModel
+    {        
         public string CategoryName { get; set; }
 
         [Display(Name = ModelConstants.Category.NameDisplay)]

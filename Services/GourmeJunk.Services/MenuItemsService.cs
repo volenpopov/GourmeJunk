@@ -12,10 +12,14 @@ namespace GourmeJunk.Services
     public class MenuItemsService : IMenuItemsService
     {
         private readonly IDeletableEntityRepository<MenuItem> menuItems;
+        private readonly ICategoriesService categoriesService;
 
-        public MenuItemsService(IDeletableEntityRepository<MenuItem> menuItems)
+        public MenuItemsService(
+            IDeletableEntityRepository<MenuItem> menuItems,
+            ICategoriesService categoriesService)
         {
             this.menuItems = menuItems;
+            this.categoriesService = categoriesService;
         }
 
         public async Task<IEnumerable<MenuItemViewModel>> GetAllAsync()
@@ -28,6 +32,18 @@ namespace GourmeJunk.Services
                 .ToArrayAsync();
 
             return menuItemViewModels;
+        }
+
+        public async Task<MenuItemCreateViewModel> GetMenuItemCreateViewModel()
+        {
+            var categories = await this.categoriesService.GetAllAsync();
+
+            var menuItemCreateViewModel = new MenuItemCreateViewModel
+            {
+                Categories = categories,                
+            };
+
+            return menuItemCreateViewModel;
         }
     }
 }

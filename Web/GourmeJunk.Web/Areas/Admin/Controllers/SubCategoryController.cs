@@ -120,7 +120,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
         {
             var subCategoriesNames = await this.subCategoriesService.GetSubCategoriesOfACategoryAsync(id);
 
-            return Json(new SelectList(subCategoriesNames));
+            return Json(new SelectList(subCategoriesNames, "Id", "Name"));
         }
     }
 }

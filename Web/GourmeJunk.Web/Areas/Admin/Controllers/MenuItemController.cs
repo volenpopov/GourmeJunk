@@ -22,5 +22,12 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
             return View(menuItemViewModels);
         }
+
+        public async Task<IActionResult> Create()
+        {
+            var menuItemCreateViewModel = await this.menuItemsService.GetMenuItemCreateViewModel();
+
+            return View(menuItemCreateViewModel);
+        }
     }
 }

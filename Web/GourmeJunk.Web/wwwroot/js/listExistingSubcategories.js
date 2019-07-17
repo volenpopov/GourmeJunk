@@ -1,6 +1,6 @@
 ﻿let categoryDropdown = document.getElementById("ddlCategorylist");
 
-function updateSubCategoryList() {
+function updateSubCategoryDrpDwn() {
     let selectedCategory = categoryDropdown.value;
 
     let subCategoryListDiv = document.getElementById("SubCategoryList");
@@ -33,4 +33,4 @@ function updateSubCategoryList() {
         })
 }
 
-categoryDropdown.addEventListener("change", updateSubCategoryList);
+categoryDropdown.addEventListener("change", updateSubCategoryDrpDwn);
