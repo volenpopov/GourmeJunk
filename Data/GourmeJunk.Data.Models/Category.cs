@@ -12,7 +12,7 @@ namespace GourmeJunk.Data.Models
         }
 
         [Required]
-        [MaxLength(DataModelConstants.CategoryMaxLength)]      
+        [MaxLength(DataModelConstants.CategoryNameMaxLength)]      
         public string Name { get; set; }
 
         public virtual ICollection<SubCategory> SubCategories { get; set; }

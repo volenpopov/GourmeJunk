@@ -11,6 +11,8 @@
     <Compile Remove="Migrations\20190714080005_AddCategoryModelToDb.Designer.cs" />
     <Compile Remove="Migrations\20190716092441_EditCategorySubCategoryDeleteToCascde.cs" />
     <Compile Remove="Migrations\20190716092441_EditCategorySubCategoryDeleteToCascde.Designer.cs" />
+    <Compile Remove="Migrations\20190717064731_AddMenuItemModel.cs" />
+    <Compile Remove="Migrations\20190717064731_AddMenuItemModel.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

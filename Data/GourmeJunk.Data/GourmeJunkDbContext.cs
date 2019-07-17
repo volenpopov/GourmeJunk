@@ -24,6 +24,8 @@ namespace GourmeJunk.Data
 
         public DbSet<SubCategory> SubCategories { get; set; }
 
+        public DbSet<MenuItem> MenuItems { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
@@ -47,6 +49,10 @@ namespace GourmeJunk.Data
         {
             builder.Entity<Category>()
                 .HasIndex(category => category.Name)
+                .IsUnique();
+
+            builder.Entity<MenuItem>()
+                .HasIndex(menuItem => menuItem.Name)
                 .IsUnique();
 
             // Needed for Identity models configuration

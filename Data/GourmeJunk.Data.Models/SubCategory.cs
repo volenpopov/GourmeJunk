@@ -6,7 +6,7 @@ namespace GourmeJunk.Data.Models
     public class SubCategory : BaseDeletableModel<string>
     {
         [Required]
-        [MaxLength(DataModelConstants.SubCategoryMaxLength)]
+        [MaxLength(DataModelConstants.SubCategoryNameMaxLength)]
         public string Name { get; set; }
 
         [Required]        
