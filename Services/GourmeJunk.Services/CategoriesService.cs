@@ -95,8 +95,6 @@ namespace GourmeJunk.Services
             await this.categoriesRepository.SaveChangesAsync();
         }
 
-
-        //TODO: Check subcategories after the deletion of a category
         public async Task DeleteCategoryAsync(string id)
         {
             var category = await GetCategoryById(id);
