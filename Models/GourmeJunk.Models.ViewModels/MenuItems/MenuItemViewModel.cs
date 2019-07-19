@@ -1,5 +1,7 @@
 ﻿using GourmeJunk.Data.Models;
+using GourmeJunk.Models.Common;
 using GourmeJunk.Services.Mapping;
+using System.ComponentModel.DataAnnotations;
 
 namespace GourmeJunk.Models.ViewModels.MenuItems
 {
@@ -11,10 +13,12 @@ namespace GourmeJunk.Models.ViewModels.MenuItems
 
         public decimal Price { get; set; }
 
+        [Display(Name = nameof(Category))]
         public string CategoryId { get; set; }
 
         public string CategoryName { get; set; }
 
+        [Display(Name = nameof(SubCategory))]
         public string SubCategoryId { get; set; }
 
         public string SubCategoryName { get; set; }

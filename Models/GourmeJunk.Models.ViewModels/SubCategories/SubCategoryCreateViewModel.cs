@@ -10,7 +10,7 @@ namespace GourmeJunk.Models.ViewModels.SubCategories
         [Display(Name = ModelConstants.SubCategory.NameDisplay)]
         public string Name { get; set; }
 
-        [Display(Name = ModelConstants.Category.NameDisplay)]
+        [Display(Name = ModelConstants.Category.NAME_DISPLAY)]
         public string CategoryId { get; set; }
         public IEnumerable<CategoryViewModel> CategoryList { get; set; }
 

@@ -4,7 +4,7 @@
     {
         public class Error
         {
-            public const string EntityAlreadyExists = "Error: {0} already exists!";            
+            public const string ENTITY_ALREADY_EXISTS = "Error: {0} already exists!";             
         }
     }
 }

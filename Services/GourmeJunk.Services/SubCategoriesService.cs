@@ -15,20 +15,20 @@ namespace GourmeJunk.Services
 {
     public class SubCategoriesService : ISubCategoriesService
     {
-        private readonly IDeletableEntityRepository<SubCategory> subCategories;
+        private readonly IDeletableEntityRepository<SubCategory> subCategoriesRepository;
         private readonly ICategoriesService categoriesService;
 
         public SubCategoriesService(
-            IDeletableEntityRepository<SubCategory> subCategories,
+            IDeletableEntityRepository<SubCategory> subCategoriesRepository,
             ICategoriesService categoriesService)
         {
-            this.subCategories = subCategories;
+            this.subCategoriesRepository = subCategoriesRepository;
             this.categoriesService = categoriesService;
         }
 
         public async Task<IEnumerable<SubCategoryViewModel>> GetAllAsync()
         {
-            var subCategoriesViewModels = await this.subCategories
+            var subCategoriesViewModels = await this.subCategoriesRepository
                 .AllAsNoTracking()                
                 .Include(subCategory => subCategory.Category)
                 .To<SubCategoryViewModel>()
@@ -39,7 +39,7 @@ namespace GourmeJunk.Services
 
         public async Task<bool> CheckIfCategorySubCategoryPairExistsAsync(string subCategoryName, string categoryId)
         {
-            return await this.subCategories
+            return await this.subCategoriesRepository
                 .AllAsNoTracking()
                 .AnyAsync(subCategory => subCategory.Name == subCategoryName 
                           && subCategory.CategoryId == categoryId);
@@ -59,7 +59,7 @@ namespace GourmeJunk.Services
 
         public async Task CreateSubCategoryAsync(SubCategoryCreateInputModel model)
         {
-            var subCategory = await this.subCategories
+            var subCategory = await this.subCategoriesRepository
                 .AllWithDeleted()
                 .SingleOrDefaultAsync(subCateg => subCateg.Name == model.Name 
                                       && subCateg.CategoryId == model.CategoryId);
@@ -71,14 +71,14 @@ namespace GourmeJunk.Services
                     CategoryId = model.CategoryId
                 };
 
-                await this.subCategories.AddAsync(subCategory);
+                await this.subCategoriesRepository.AddAsync(subCategory);
             }
             else if (subCategory.IsDeleted)
             {
-                this.subCategories.Undelete(subCategory);
+                this.subCategoriesRepository.Undelete(subCategory);
             }
 
-            await this.subCategories.SaveChangesAsync();
+            await this.subCategoriesRepository.SaveChangesAsync();
         }
        
         public async Task<SubCategoryEditViewModel> GetSubCategoryEditViewModelAsync(string subCategoryId)
@@ -87,7 +87,7 @@ namespace GourmeJunk.Services
 
             if (subCategory.IsDeleted)
             {
-                throw new InvalidOperationException(string.Format(ServicesDataConstants.GetDeletedEntity, nameof(SubCategory), subCategory.Name));
+                throw new InvalidOperationException(string.Format(ServicesDataConstants.GET_DELETED_ENTITY, nameof(SubCategory), subCategory.Name));
             }
 
             var subCategoriesList = await this.GetSubCategoriesNamesOfACategoryAsync(subCategory.CategoryId);
@@ -110,19 +110,19 @@ namespace GourmeJunk.Services
 
             if (subCategory.IsDeleted)
             {
-                this.subCategories.Undelete(subCategory);
+                this.subCategoriesRepository.Undelete(subCategory);
             }
             else
             {
                 subCategory.Name = model.Name;
             }
 
-            await this.subCategories.SaveChangesAsync();
+            await this.subCategoriesRepository.SaveChangesAsync();
         }
 
         public async Task<string[]> GetSubCategoriesNamesOfACategoryAsync(string categoryId)
         {
-            var subCategoriesNames = await this.subCategories
+            var subCategoriesNames = await this.subCategoriesRepository
                 .AllAsNoTracking()
                 .Where(subCategory => subCategory.CategoryId == categoryId)
                 .Select(subCategory => subCategory.Name)
@@ -133,7 +133,7 @@ namespace GourmeJunk.Services
 
         public async Task<IEnumerable<SubCategoryBaseViewModel>> GetSubCategoriesOfACategoryAsync(string categoryId)
         {
-            var subCategories = await this.subCategories
+            var subCategories = await this.subCategoriesRepository
                 .AllAsNoTracking()
                 .Where(subCategory => subCategory.CategoryId == categoryId)
                 .To<SubCategoryBaseViewModel>()
@@ -148,7 +148,7 @@ namespace GourmeJunk.Services
 
             if (subCategory.IsDeleted)
             {
-                throw new InvalidOperationException(string.Format(ServicesDataConstants.GetDeletedEntity, nameof(SubCategory), subCategory.Name));
+                throw new InvalidOperationException(string.Format(ServicesDataConstants.GET_DELETED_ENTITY, nameof(SubCategory), subCategory.Name));
             }
 
             var subCategoryViewModel = new SubCategoryViewModel
@@ -170,20 +170,20 @@ namespace GourmeJunk.Services
                 return;
             }
 
-            this.subCategories.Delete(subCategory);
-            await this.subCategories.SaveChangesAsync();
+            this.subCategoriesRepository.Delete(subCategory);
+            await this.subCategoriesRepository.SaveChangesAsync();
         }
 
         private async Task<SubCategory> GetSubCategoryByIdAsync(string subCategoryId)
         {
-            var subCategory = await this.subCategories
+            var subCategory = await this.subCategoriesRepository
                 .AllWithDeleted()
                 .Include(subCateg => subCateg.Category)
                 .SingleOrDefaultAsync(subCateg => subCateg.Id == subCategoryId);
 
             if (subCategory == null)
             {
-                throw new NullReferenceException(string.Format(ServicesDataConstants.NullReferenceId, nameof(SubCategory), subCategoryId));
+                throw new NullReferenceException(string.Format(ServicesDataConstants.NULL_REFERENCE_ID, nameof(SubCategory), subCategoryId));
             }
 
             return subCategory;

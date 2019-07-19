@@ -7,9 +7,9 @@ namespace GourmeJunk.Models.ViewModels.Categories
     public class CategoryNameInputModel
     {
         [Required]
-        [StringLength(ModelConstants.Category.NameMaxLength, MinimumLength = ModelConstants.Category.NameMinLength, ErrorMessage = ModelConstants.NameLengthError)]
-        [RegularExpression(ModelConstants.OnlyCharactersPattern, ErrorMessage = ModelConstants.OnlyCharactersError)]
-        [DisplayName(ModelConstants.Category.NameDisplay)]
+        [StringLength(ModelConstants.Category.NAME_MAX_LENGTH, MinimumLength = ModelConstants.Category.NAME_MIN_LENGTH, ErrorMessage = ModelConstants.NAME_LENGTH_ERROR)]
+        [RegularExpression(ModelConstants.ONLY_CHARACTERS_PATTERN, ErrorMessage = ModelConstants.ONLY_CHARACTERS_ERROR)]
+        [DisplayName(ModelConstants.Category.NAME_DISPLAY)]
         public string Name { get; set; }
     }
 }

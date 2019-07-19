@@ -22,3 +22,5 @@ E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services\bin\Debug\ne
 E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services\bin\Debug\netstandard2.0\GourmeJunk.Models.InputModels.dll
 E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services\bin\Debug\netstandard2.0\GourmeJunk.Models.InputModels.pdb
 E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services\bin\Debug\netstandard2.0\GourmeJunk.Models.Common.pdb
+E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Http.Features.dll
+E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Http.Features.xml

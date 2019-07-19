@@ -49,7 +49,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
                 {
                     var categoryName = await this.categoriesService.GetCategoryNameById(model.CategoryId);
 
-                    subCategoryCreateViewModel.StatusMessage = string.Format(WebConstants.Error.EntityAlreadyExists, $"{model.Name} - {categoryName}");
+                    subCategoryCreateViewModel.StatusMessage = string.Format(WebConstants.Error.ENTITY_ALREADY_EXISTS, $"{model.Name} - {categoryName}");
                 }
 
                 return View(subCategoryCreateViewModel);
@@ -82,7 +82,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
                 {
                     subCategoryEditVieWModel.StatusMessage = 
                         string.Format(WebConstants.Error
-                            .EntityAlreadyExists, $"{model.Name} - {subCategoryEditVieWModel.CategoryName}");
+                            .ENTITY_ALREADY_EXISTS, $"{model.Name} - {subCategoryEditVieWModel.CategoryName}");
                 }
 
                 return View(subCategoryEditVieWModel);

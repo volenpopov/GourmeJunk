@@ -6,7 +6,7 @@ namespace GourmeJunk.Data.Models
     public class MenuItem : BaseDeletableModel<string>
     {        
         [Required]
-        [MaxLength(DataModelConstants.MenuItemNameMaxLength)]
+        [MaxLength(DataModelConstants.MENUITEM_NAME_MAX_LENGTH)]
         public string Name { get; set; }
         public string Description { get; set; }
 
@@ -21,7 +21,7 @@ namespace GourmeJunk.Data.Models
 
         public virtual SubCategory SubCategory { get; set; }
 
-        [Range(typeof(decimal), DataModelConstants.MinPrice, DataModelConstants.MaxPrice)]
+        [Range(typeof(decimal), DataModelConstants.MIN_PRICE, DataModelConstants.MAX_PRICE)]
         public decimal Price { get; set; }
     }
 }

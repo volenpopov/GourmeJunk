@@ -7,7 +7,7 @@ namespace GourmeJunk.Models.ViewModels.SubCategories
 {
     public class SubCategoryViewModel : SubCategoryBaseViewModel, IMapFrom<SubCategory>
     {        
-        [Display(Name = ModelConstants.Category.NameDisplay)]
+        [Display(Name = ModelConstants.Category.NAME_DISPLAY)]
         public string CategoryName { get; set; }
     }
 }

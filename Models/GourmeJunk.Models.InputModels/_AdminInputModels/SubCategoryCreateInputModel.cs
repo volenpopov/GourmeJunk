@@ -5,7 +5,7 @@ namespace GourmeJunk.Models.InputModels._AdminInputModels
 {
     public class SubCategoryCreateInputModel : SubCategoryNameInputModel
     {
-        [Required(ErrorMessage = ModelConstants.SubCategory.MustSelectCategory)]
+        [Required(ErrorMessage = ModelConstants.MUST_SELECT_CATEGORY)]
         public string CategoryId { get; set; }
     }
 }

@@ -73,7 +73,7 @@ namespace GourmeJunk.Services
 
             if (category == null)
             {
-                throw new NullReferenceException(string.Format(ServicesDataConstants.NullReferenceId, nameof(Category), id));
+                throw new NullReferenceException(string.Format(ServicesDataConstants.NULL_REFERENCE_ID, nameof(Category), id));
             }
 
             return category;
@@ -134,7 +134,7 @@ namespace GourmeJunk.Services
 
             if (category == null)
             {
-                throw new NullReferenceException(string.Format(ServicesDataConstants.NullReferenceId, nameof(Category), id));
+                throw new NullReferenceException(string.Format(ServicesDataConstants.NULL_REFERENCE_ID, nameof(Category), id));
             }
 
             return category;

@@ -38,7 +38,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
             if (alreadyExists)
             {               
-                model.StatusMessage = string.Format(WebConstants.Error.EntityAlreadyExists, model.Name);
+                model.StatusMessage = string.Format(WebConstants.Error.ENTITY_ALREADY_EXISTS, model.Name);
 
                 return View(model);
             }
@@ -70,7 +70,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
                 if (alreadyExists)
                 {
-                    categoryEditViewModel.StatusMessage = string.Format(WebConstants.Error.EntityAlreadyExists, model.Name);                    
+                    categoryEditViewModel.StatusMessage = string.Format(WebConstants.Error.ENTITY_ALREADY_EXISTS, model.Name);                    
                 }
 
                 return View(categoryEditViewModel);
