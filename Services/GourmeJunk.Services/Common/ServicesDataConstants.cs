@@ -6,7 +6,7 @@
 
         public const string MENUITEMS_IMGS_PATH = WWWROOT + @"\images\MenuItems";      
 
-        public const string MENUITEM_DEFAULT_IMG_PATH = WWWROOT + @"\images\MenuItems\img_default.jpg";
+        public const string MENUITEM_DEFAULT_IMG_PATH = @"\images\MenuItems\img_default.jpg";
 
         public const string NULL_REFERENCE_ID = "{0} with id {1} not found.";
 
