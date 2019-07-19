@@ -14,7 +14,8 @@ namespace GourmeJunk.Services.Contracts
 
         Task<bool> CheckIfMenuItemExistsAsync(string menuItemName);
 
-        Task CreateMenuItemAsync(MenuItemCreateInputModel model);
         Task CreateMenuItemAsync(MenuItemCreateInputModel model, IFormFile formFile);
+
+        Task<MenuItemEditViewModel> GetMenuItemEditViewModelAsync(string id);
     }
 }

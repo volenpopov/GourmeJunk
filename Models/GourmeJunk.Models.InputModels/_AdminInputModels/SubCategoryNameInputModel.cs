@@ -7,9 +7,9 @@ namespace GourmeJunk.Models.InputModels._AdminInputModels
     public class SubCategoryNameInputModel
     {
         [Required]
-        [StringLength(ModelConstants.SubCategory.NameMaxLength, MinimumLength = ModelConstants.SubCategory.NameMinLength, ErrorMessage = ModelConstants.NAME_LENGTH_ERROR)]
+        [StringLength(ModelConstants.SubCategory.NAME_MAX_LENGTH, MinimumLength = ModelConstants.SubCategory.NAME_MIN_LENGTH, ErrorMessage = ModelConstants.NAME_LENGTH_ERROR)]
         [RegularExpression(ModelConstants.ONLY_CHARACTERS_PATTERN, ErrorMessage = ModelConstants.ONLY_CHARACTERS_ERROR)]
-        [DisplayName(ModelConstants.SubCategory.NameDisplay)]
+        [DisplayName(ModelConstants.SubCategory.NAME_DISPLAY)]
         public string Name { get; set; }
     }
 }

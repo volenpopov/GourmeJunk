@@ -12,7 +12,6 @@ function updateSubCategoryDrpDwn() {
 
     let url = "/Admin/SubCategory/GetSubCategories/" + selectedCategory;
 
-    debugger;
     let defaultOption = document.createElement("option");
     defaultOption.setAttribute("selected", true);  
     defaultOption.value = -1;

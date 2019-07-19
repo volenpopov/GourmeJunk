@@ -4,7 +4,7 @@
     {
         public const string WWWROOT = "wwwroot";
 
-        public const string MENUITEMS_IMGS_PATH = WWWROOT + @"\images\MenuItems";
+        public const string MENUITEMS_IMGS_PATH = WWWROOT + @"\images\MenuItems";      
 
         public const string MENUITEM_DEFAULT_IMG_PATH = WWWROOT + @"\images\MenuItems\img_default.jpg";
 

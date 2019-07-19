@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using GourmeJunk.Data.Common.Repositories;
 using GourmeJunk.Data.Models;
@@ -58,24 +59,6 @@ namespace GourmeJunk.Services
                 .AnyAsync(menuItem => menuItem.Name == menuItemName);
         }
 
-        public async Task CreateMenuItemAsync(MenuItemCreateInputModel model)
-        {
-            var menuItem = await this.menuItemsRepository
-                .AllWithDeleted()
-                .SingleOrDefaultAsync(item => item.Name == model.Name);
-
-            if (menuItem == null)
-            {
-                menuItem = this.InitializeMenuItem(model);
-            }
-            else if (menuItem.IsDeleted)
-            {
-                this.menuItemsRepository.Undelete(menuItem);
-            }
-
-            await this.menuItemsRepository.SaveChangesAsync();
-        }
-
         public async Task CreateMenuItemAsync(MenuItemCreateInputModel model, IFormFile image)
         {
             var menuItem = await this.menuItemsRepository
@@ -105,6 +88,40 @@ namespace GourmeJunk.Services
             await this.menuItemsRepository.SaveChangesAsync();
         }
 
+        public async Task<MenuItemEditViewModel> GetMenuItemEditViewModelAsync(string menuItemId)
+        {
+            var menuItem = await this.GetMenuItemByIdAsync(menuItemId);
+
+            var categories = await this.categoriesService.GetAllAsync();
+
+            var menuItemEditViewModel = new MenuItemEditViewModel
+            {
+                Name = menuItem.Name,
+                Description = menuItem.Description,
+                Price = menuItem.Price,
+                Image = menuItem.Image,
+                Categories = categories,
+                CategoryId = menuItem.CategoryId,
+                SubCategoryId = menuItem.SubCategoryId                
+            };
+
+            return menuItemEditViewModel;
+        }
+
+        private async Task<MenuItem> GetMenuItemByIdAsync(string menuItemId)
+        {
+            var menuItem = await this.menuItemsRepository
+                .AllWithDeleted()
+                .SingleOrDefaultAsync(item => item.Id == menuItemId);
+
+            if (menuItem == null)
+            {
+                throw new NullReferenceException(string.Format(ServicesDataConstants.NULL_REFERENCE_ID, nameof(MenuItem), menuItemId));
+            }
+
+            return menuItem;
+        }
+
         private MenuItem InitializeMenuItem(MenuItemCreateInputModel model)
         {
             return new MenuItem
@@ -129,13 +146,16 @@ namespace GourmeJunk.Services
             }
 
             var fullPath = Path.Combine(ServicesDataConstants.MENUITEMS_IMGS_PATH, $"img_{menuItemId + extension}");
-
+            
             using (var fileStream = new FileStream(fullPath, FileMode.Create))
             {
                 image.CopyTo(fileStream);                        
             }
 
-            return fullPath;
+            //SKIP "wwwroot"
+            var imgPath = string.Join("", fullPath.Skip(7));
+
+            return imgPath;
         }
     }
 }

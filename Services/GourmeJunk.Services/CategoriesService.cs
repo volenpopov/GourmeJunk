@@ -80,7 +80,7 @@ namespace GourmeJunk.Services
         }
 
         public async Task EditCategoryAsync(CategoryEditInputModel model)
-        {
+        { 
             var category = await GetCategoryById(model.Id);
 
             if (category.IsDeleted)

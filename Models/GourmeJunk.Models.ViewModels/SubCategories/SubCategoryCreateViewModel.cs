@@ -7,7 +7,7 @@ namespace GourmeJunk.Models.ViewModels.SubCategories
 {
     public class SubCategoryCreateViewModel
     {
-        [Display(Name = ModelConstants.SubCategory.NameDisplay)]
+        [Display(Name = ModelConstants.SubCategory.NAME_DISPLAY)]
         public string Name { get; set; }
 
         [Display(Name = ModelConstants.Category.NAME_DISPLAY)]

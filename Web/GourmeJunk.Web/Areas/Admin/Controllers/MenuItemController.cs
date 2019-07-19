@@ -63,5 +63,14 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
             
             return RedirectToAction(nameof(Index));
         }
-    }
+
+        public async Task<IActionResult> Edit(string id)
+        {
+            var menuItemEditViewModel = await this.menuItemsService.GetMenuItemEditViewModelAsync(id);
+
+            return View(menuItemEditViewModel);
+        }
+
+        
+    }   
 }
