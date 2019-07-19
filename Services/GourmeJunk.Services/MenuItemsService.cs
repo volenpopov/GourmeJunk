@@ -19,13 +19,16 @@ namespace GourmeJunk.Services
     {
         private readonly IDeletableEntityRepository<MenuItem> menuItemsRepository;
         private readonly ICategoriesService categoriesService;
+        private readonly ISubCategoriesService subCategoriesService;
 
         public MenuItemsService(
             IDeletableEntityRepository<MenuItem> menuItemsRepository,
-            ICategoriesService categoriesService)
+            ICategoriesService categoriesService,
+            ISubCategoriesService subCategoriesService)
         {
             this.menuItemsRepository = menuItemsRepository;
             this.categoriesService = categoriesService;
+            this.subCategoriesService = subCategoriesService;
         }
 
         public async Task<IEnumerable<MenuItemViewModel>> GetAllAsync()
@@ -93,6 +96,7 @@ namespace GourmeJunk.Services
             var menuItem = await this.GetMenuItemByIdAsync(menuItemId);
 
             var categories = await this.categoriesService.GetAllAsync();
+            var subCategories = await this.subCategoriesService.GetSubCategoriesOfACategoryAsync(menuItem.CategoryId);
 
             var menuItemEditViewModel = new MenuItemEditViewModel
             {
@@ -101,6 +105,7 @@ namespace GourmeJunk.Services
                 Price = menuItem.Price,
                 Image = menuItem.Image,
                 Categories = categories,
+                SubCategories = subCategories,
                 CategoryId = menuItem.CategoryId,
                 SubCategoryId = menuItem.SubCategoryId                
             };

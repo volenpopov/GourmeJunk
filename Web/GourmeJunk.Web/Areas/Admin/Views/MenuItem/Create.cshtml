@@ -83,6 +83,7 @@
 
 @section Scripts{
     <script src="~/js/populateSubCategoriesDrpDwn.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", updateSubCategoryDrpDwn);</script>
 
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }    
