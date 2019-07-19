@@ -71,8 +71,14 @@
                     <label asp-for="SubCategoryId" class="col-form-label"></label>
                 </div>
                 <div class="col-8">
-                    <select asp-for="@Model.SubCategoryId" id="SubCategoryId" asp-items="Model.SubCategories.ToSelectListItem(Model.SubCategoryId)" class="form-control">                                                
-                    </select>
+                    @if (Model.SubCategoryId == null)
+                    {
+                        <select class="form-control" id="SubCategoryId"></select>
+                    }
+                    else
+                    {
+                        <select asp-for="@Model.SubCategoryId" id="SubCategoryId" asp-items="Model.SubCategories.ToSelectListItem(Model.SubCategoryId)" class="form-control"></select>
+                    }
                 </div>
             </div>
 
