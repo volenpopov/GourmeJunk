@@ -106,15 +106,21 @@ namespace GourmeJunk.Services
 
         public async Task EditSubCategoryAsync(SubCategoryEditInputModel model)
         {
-            var subCategory = await this.GetSubCategoryByIdAsync(model.Id);
+            var currentSubCategory = await this.GetSubCategoryByIdAsync(model.Id);
 
-            if (subCategory.IsDeleted)
+            var newSubCategoryAsExistingDeletedSubCategory = await this.subCategoriesRepository
+                .AllWithDeleted()
+                .SingleOrDefaultAsync(subCateg => subCateg.Name == model.Name);
+
+            if (newSubCategoryAsExistingDeletedSubCategory != null && newSubCategoryAsExistingDeletedSubCategory.IsDeleted)
             {
-                this.subCategoriesRepository.Undelete(subCategory);
+                this.subCategoriesRepository.Delete(currentSubCategory);
+
+                this.subCategoriesRepository.Undelete(newSubCategoryAsExistingDeletedSubCategory);
             }
             else
             {
-                subCategory.Name = model.Name;
+                currentSubCategory.Name = model.Name;
             }
 
             await this.subCategoriesRepository.SaveChangesAsync();
