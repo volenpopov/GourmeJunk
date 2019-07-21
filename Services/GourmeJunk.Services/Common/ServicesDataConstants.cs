@@ -12,6 +12,8 @@
 
         public const string GET_DELETED_ENTITY = "{0} {1} has been deleted and you cannot access it.";
 
+        public const string NO_SUBCATEGORY_SELECTED_DEFAULT_VALUE = "-1";
+
         public const string INVALID_IMG_TYPE = "Image type {0} is not supported. Valid types are: \".jpg\" and \".png\"";
 
         public const string SQL_MODIFY_DELETABLE_ENTITIES_SUBCATEGORIES = @"UPDATE SubCategories

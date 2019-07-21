@@ -135,7 +135,7 @@ namespace GourmeJunk.Services
                 Description = model.Description,
                 Price = model.Price,
                 CategoryId = model.CategoryId,
-                SubCategoryId = model.SubCategoryId == "-1"
+                SubCategoryId = model.SubCategoryId == ServicesDataConstants.NO_SUBCATEGORY_SELECTED_DEFAULT_VALUE
                         ? null
                         : model.SubCategoryId
             };
