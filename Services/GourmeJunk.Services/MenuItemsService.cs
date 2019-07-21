@@ -145,7 +145,7 @@ namespace GourmeJunk.Services
         {
             var extension = Path.GetExtension(image.FileName);
 
-            if (extension != ".jpg" && extension != ".png")
+            if (extension != ServicesDataConstants.JPG_EXTENSION && extension != ServicesDataConstants.PNG_EXTENSION)
             {
                 throw new ArgumentException(string.Format(ServicesDataConstants.INVALID_IMG_TYPE, extension));
             }

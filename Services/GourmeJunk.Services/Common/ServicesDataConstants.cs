@@ -14,6 +14,10 @@
 
         public const string NO_SUBCATEGORY_SELECTED_DEFAULT_VALUE = "-1";
 
+        public const string JPG_EXTENSION = ".jpg";
+
+        public const string PNG_EXTENSION = ".png";
+
         public const string INVALID_IMG_TYPE = "Image type {0} is not supported. Valid types are: \".jpg\" and \".png\"";
 
         public const string SQL_MODIFY_DELETABLE_ENTITIES_SUBCATEGORIES = @"UPDATE SubCategories
