@@ -19,6 +19,6 @@ namespace GourmeJunk.Services.Contracts
 
         Task DeleteCategoryAsync(string id);
 
-        Task<string> GetCategoryNameById(string id);
+        Task<string> GetCategoryNameByIdAsync(string id);
     }
 }

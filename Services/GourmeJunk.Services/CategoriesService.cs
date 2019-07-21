@@ -81,52 +81,53 @@ namespace GourmeJunk.Services
 
         public async Task EditCategoryAsync(CategoryEditInputModel model)
         { 
-            var category = await GetCategoryById(model.Id);
+            var currentCategory = await GetCategoryByIdAsync(model.Id);
 
-            if (category.IsDeleted)
+            var newCategoryAsExistingDeletedCategory = await this.categoriesRepository
+                .AllWithDeleted()
+                .Include(categ => categ.SubCategories)
+                .SingleOrDefaultAsync(categ => categ.Name == model.Name);
+
+            if (newCategoryAsExistingDeletedCategory != null && newCategoryAsExistingDeletedCategory.IsDeleted)
             {
-                this.categoriesRepository.Undelete(category);
+                await this.DeleteCategoryAsync(currentCategory.Id);
+                this.categoriesRepository.Undelete(newCategoryAsExistingDeletedCategory);
             }
             else
             {
-                category.Name = model.Name;
+                currentCategory.Name = model.Name;
             }            
-
+                       
             await this.categoriesRepository.SaveChangesAsync();
         }
 
         public async Task DeleteCategoryAsync(string id)
         {
-            var category = await GetCategoryById(id);
+            var category = await GetCategoryByIdAsync(id);
 
             if (category.IsDeleted)
             {
                 return;
             }
 
-            //Set each child SubCategory of Category to IsDeleted = True
-            var subCategories = await this.subCategoriesRepository
-                .All()
-                .Where(subCategory => subCategory.CategoryId == id)
-                .ToArrayAsync();
+            await this.categoriesRepository
+                 .ExecuteSqlCommandAsync(ServicesDataConstants.SQL_MODIFY_DELETABLE_ENTITIES_SUBCATEGORIES, category.Id);
 
-            foreach (var subCategory in subCategories)
-            {
-                this.subCategoriesRepository.Delete(subCategory);
-            }
+            await this.categoriesRepository
+                .ExecuteSqlCommandAsync(ServicesDataConstants.SQL_MODIFY_DELETABLE_ENTITIES_MENUITEMS, category.Id);
 
             this.categoriesRepository.Delete(category);
             await this.categoriesRepository.SaveChangesAsync();
         }
 
-        public async Task<string> GetCategoryNameById(string id)
+        public async Task<string> GetCategoryNameByIdAsync(string id)
         {
-            var category = await this.GetCategoryById(id);
+            var category = await this.GetCategoryByIdAsync(id);
 
             return category.Name;
         }
 
-        private async Task<Category> GetCategoryById(string id)
+        private async Task<Category> GetCategoryByIdAsync(string id)
         {
             var category = await this.categoriesRepository
                 .AllWithDeleted()

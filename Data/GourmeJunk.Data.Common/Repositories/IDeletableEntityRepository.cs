@@ -16,5 +16,7 @@ namespace GourmeJunk.Data.Common.Repositories
         void HardDelete(TEntity entity);
 
         void Undelete(TEntity entity);
+
+        Task<int> ExecuteSqlCommandAsync(string command, params object[] parameters);
     }
 }

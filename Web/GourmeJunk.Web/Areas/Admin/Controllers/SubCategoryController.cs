@@ -47,7 +47,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
                 if (pairAlreadyExists)
                 {
-                    var categoryName = await this.categoriesService.GetCategoryNameById(model.CategoryId);
+                    var categoryName = await this.categoriesService.GetCategoryNameByIdAsync(model.CategoryId);
 
                     subCategoryCreateViewModel.StatusMessage = string.Format(WebConstants.Error.ENTITY_ALREADY_EXISTS, $"{model.Name} - {categoryName}");
                 }

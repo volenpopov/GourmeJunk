@@ -2,6 +2,7 @@
 using GourmeJunk.Data.Common.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -45,6 +46,11 @@ namespace GourmeJunk.Data.Repositories
             entity.DeletedOn = DateTime.UtcNow;
 
             this.Update(entity);
+        }
+
+        public async Task<int> ExecuteSqlCommandAsync(string command, params object[] parameters)
+        {            
+            return await base.Context.Database.ExecuteSqlCommandAsync(command, parameters);
         }
     }
 }
