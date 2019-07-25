@@ -1,5 +1,5 @@
 ﻿let categoryDropdown = document.getElementById("CategoryId");
-debugger;
+
 categoryDropdown.addEventListener("change", updateSubCategoryDrpDwn);
 
 function updateSubCategoryDrpDwn() {    

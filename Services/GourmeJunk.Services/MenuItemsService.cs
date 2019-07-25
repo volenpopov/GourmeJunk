@@ -43,7 +43,7 @@ namespace GourmeJunk.Services
             return menuItemViewModels;
         }
 
-        public async Task<MenuItemCreateViewModel> GetMenuItemCreateViewModel()
+        public async Task<MenuItemCreateViewModel> GetMenuItemCreateViewModelAsync()
         {
             var categories = await this.categoriesService.GetAllAsync();
 
@@ -60,6 +60,13 @@ namespace GourmeJunk.Services
             return await this.menuItemsRepository
                 .AllAsNoTracking()
                 .AnyAsync(menuItem => menuItem.Name == menuItemName);
+        }
+
+        public async Task<bool> CheckIfMenuItemExistsAsync(string menuItemId, string menuItemName)
+        {
+            return await this.menuItemsRepository
+                .AllAsNoTracking()
+                .AnyAsync(menuItem => menuItem.Name == menuItemName && menuItem.Id != menuItemId);
         }
 
         public async Task CreateMenuItemAsync(MenuItemCreateInputModel model, IFormFile image)
@@ -81,12 +88,14 @@ namespace GourmeJunk.Services
                 else
                 {
                     menuItem.Image = ServicesDataConstants.MENUITEM_DEFAULT_IMG_PATH;
-                }                                   
+                }
             }
             else if (menuItem.IsDeleted)
             {
                 this.menuItemsRepository.Undelete(menuItem);
-            }
+
+                await OverrideMenuItemProps(menuItem, model, image);
+            }            
 
             await this.menuItemsRepository.SaveChangesAsync();
         }
@@ -112,11 +121,36 @@ namespace GourmeJunk.Services
 
             return menuItemEditViewModel;
         }
+        
+        public async Task EditMenuItemAsync(MenuItemEditInputModel model, IFormFile image)
+        {
+            var currentMenuItem = await this.GetMenuItemByIdAsync(model.Id);
 
+            var newMenuItemAsExistingDeletedItem = await this.menuItemsRepository
+                .AllWithDeleted()
+                .SingleOrDefaultAsync(menuItem => menuItem.Name == model.Name);
+
+            if (newMenuItemAsExistingDeletedItem != null && newMenuItemAsExistingDeletedItem.IsDeleted)
+            {
+                this.menuItemsRepository.Delete(currentMenuItem);
+
+                this.menuItemsRepository.Undelete(newMenuItemAsExistingDeletedItem);
+
+                await OverrideMenuItemProps(newMenuItemAsExistingDeletedItem, model, image);
+            }
+            else
+            {
+                await OverrideMenuItemProps(currentMenuItem, model, image);
+            }
+            
+            await this.menuItemsRepository.SaveChangesAsync();
+        }
+
+        //TODO: refactor
         private async Task<MenuItem> GetMenuItemByIdAsync(string menuItemId)
         {
             var menuItem = await this.menuItemsRepository
-                .AllWithDeleted()
+                .All()
                 .SingleOrDefaultAsync(item => item.Id == menuItemId);
 
             if (menuItem == null)
@@ -161,6 +195,34 @@ namespace GourmeJunk.Services
             var imgPath = string.Join("", fullPath.Skip(7));
 
             return imgPath;
+        }
+
+        private async Task OverrideMenuItemProps(MenuItem menuItem, MenuItemCreateInputModel model, IFormFile image)
+        {
+            menuItem.Name = model.Name;
+            menuItem.Description = model.Description;
+            menuItem.Price = model.Price;
+            menuItem.CategoryId = model.CategoryId;
+
+            var subCategoryIsWithinCategory = await this.categoriesService.CheckContainsSubCategoryAsync(menuItem.CategoryId, model.SubCategoryId);
+
+            if (model.SubCategoryId != null && model.SubCategoryId != "-1" && subCategoryIsWithinCategory)
+            {
+                menuItem.SubCategoryId = model.SubCategoryId;
+            }
+            else
+            {
+                menuItem.SubCategoryId = null;
+            }
+
+            if (image != null)
+            {
+                menuItem.Image = this.UploadImage(image, menuItem.Id);
+            }
+            else if (menuItem.Image == null)
+            {
+                menuItem.Image = ServicesDataConstants.MENUITEM_DEFAULT_IMG_PATH;
+            }
         }
     }
 }

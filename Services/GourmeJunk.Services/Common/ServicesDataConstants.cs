@@ -10,8 +10,6 @@
 
         public const string NULL_REFERENCE_ID = "{0} with id {1} not found.";
 
-        public const string GET_DELETED_ENTITY = "{0} {1} has been deleted and you cannot access it.";
-
         public const string NO_SUBCATEGORY_SELECTED_DEFAULT_VALUE = "-1";
 
         public const string JPG_EXTENSION = ".jpg";

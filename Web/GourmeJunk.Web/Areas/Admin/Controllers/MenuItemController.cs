@@ -27,7 +27,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Create()
         {
-            var menuItemCreateViewModel = await this.menuItemsService.GetMenuItemCreateViewModel();
+            var menuItemCreateViewModel = await this.menuItemsService.GetMenuItemCreateViewModelAsync();
 
             return View(menuItemCreateViewModel);
         }
@@ -39,7 +39,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
             if (alreadyExists || !ModelState.IsValid)
             {
-                var menuItemCreateViewModel = await this.menuItemsService.GetMenuItemCreateViewModel();
+                var menuItemCreateViewModel = await this.menuItemsService.GetMenuItemCreateViewModelAsync();
 
                 if (alreadyExists)
                 {
@@ -71,6 +71,31 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
             return View(menuItemEditViewModel);
         }
 
-        
+        [HttpPost]
+        public async Task<IActionResult> Edit(MenuItemEditInputModel model)
+        {
+            var alreadyExists = await this.menuItemsService.CheckIfMenuItemExistsAsync(model.Id, model.Name);
+
+            if (alreadyExists || !ModelState.IsValid)
+            {
+                var menuItemEditViewModel = await this.menuItemsService.GetMenuItemEditViewModelAsync(model.Id);
+
+                if (alreadyExists)
+                {
+                    menuItemEditViewModel.StatusMessage = 
+                        string.Format(WebConstants.Error.ENTITY_ALREADY_EXISTS, $"{model.Name}");
+                }
+
+                return View(menuItemEditViewModel);
+            }
+
+            var image = HttpContext.Request.Form.Files.Count > 0
+                ? HttpContext.Request.Form.Files[0]
+                : null;
+
+            await this.menuItemsService.EditMenuItemAsync(model, image);
+
+            return RedirectToAction(nameof(Index));
+        }
     }   
 }

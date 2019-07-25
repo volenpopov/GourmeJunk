@@ -20,5 +20,7 @@ namespace GourmeJunk.Services.Contracts
         Task DeleteCategoryAsync(string id);
 
         Task<string> GetCategoryNameByIdAsync(string id);
+
+        Task<bool> CheckContainsSubCategoryAsync(string categoryId, string subCategoryId);
     }
 }

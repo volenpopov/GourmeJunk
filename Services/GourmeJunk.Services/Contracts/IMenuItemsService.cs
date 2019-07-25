@@ -10,12 +10,16 @@ namespace GourmeJunk.Services.Contracts
     {
         Task<IEnumerable<MenuItemViewModel>> GetAllAsync();
 
-        Task<MenuItemCreateViewModel> GetMenuItemCreateViewModel();
+        Task<MenuItemCreateViewModel> GetMenuItemCreateViewModelAsync();
 
         Task<bool> CheckIfMenuItemExistsAsync(string menuItemName);
+
+        Task<bool> CheckIfMenuItemExistsAsync(string menuItemId, string menuItemName);
 
         Task CreateMenuItemAsync(MenuItemCreateInputModel model, IFormFile formFile);
 
         Task<MenuItemEditViewModel> GetMenuItemEditViewModelAsync(string id);
+
+        Task EditMenuItemAsync(MenuItemEditInputModel model, IFormFile image);
     }
 }

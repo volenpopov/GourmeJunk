@@ -73,7 +73,7 @@
                 <div class="col-8">
                     @if (Model.SubCategoryId == null)
                     {
-                        <select class="form-control" id="SubCategoryId"></select>
+                        <select class="form-control" id="SubCategoryId" asp-for="@Model.SubCategoryId"></select>
                     }
                     else
                     {

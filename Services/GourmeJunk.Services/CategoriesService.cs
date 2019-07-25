@@ -103,12 +103,7 @@ namespace GourmeJunk.Services
 
         public async Task DeleteCategoryAsync(string id)
         {
-            var category = await GetCategoryByIdAsync(id);
-
-            if (category.IsDeleted)
-            {
-                return;
-            }
+            var category = await this.GetCategoryByIdAsync(id);
 
             await this.categoriesRepository
                  .ExecuteSqlCommandAsync(ServicesDataConstants.SQL_MODIFY_DELETABLE_ENTITIES_SUBCATEGORIES, category.Id);
@@ -117,6 +112,7 @@ namespace GourmeJunk.Services
                 .ExecuteSqlCommandAsync(ServicesDataConstants.SQL_MODIFY_DELETABLE_ENTITIES_MENUITEMS, category.Id);
 
             this.categoriesRepository.Delete(category);
+
             await this.categoriesRepository.SaveChangesAsync();
         }
 
@@ -127,10 +123,26 @@ namespace GourmeJunk.Services
             return category.Name;
         }
 
+        public async Task<bool> CheckContainsSubCategoryAsync(string categoryId, string subCategoryId)
+        {
+            var category = await this.categoriesRepository
+                .AllAsNoTracking()
+                .Include(categ => categ.SubCategories)
+                .SingleOrDefaultAsync(categ => categ.Id == categoryId);
+
+            if (category == null)
+            {
+                throw new NullReferenceException(string.Format(ServicesDataConstants.NULL_REFERENCE_ID, nameof(Category), categoryId));
+            }
+
+            return category.SubCategories
+                .Any(subCategory => subCategory.Id == subCategoryId);
+        }
+
         private async Task<Category> GetCategoryByIdAsync(string id)
         {
             var category = await this.categoriesRepository
-                .AllWithDeleted()
+                .All()
                 .SingleOrDefaultAsync(categ => categ.Id == id);
 
             if (category == null)
