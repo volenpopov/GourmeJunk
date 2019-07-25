@@ -21,5 +21,7 @@ namespace GourmeJunk.Services.Contracts
         Task<MenuItemEditViewModel> GetMenuItemEditViewModelAsync(string id);
 
         Task EditMenuItemAsync(MenuItemEditInputModel model, IFormFile image);
+
+        Task<MenuItemDetailsViewModel> GetMenuItemDetailsViewModelAsync(string menuItemId);
     }
 }

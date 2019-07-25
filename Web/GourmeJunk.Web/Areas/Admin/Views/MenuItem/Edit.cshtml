@@ -8,7 +8,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<br />
 <h2 class="text-info">Edit MenuItem</h2>
 <br />
 
@@ -23,7 +22,7 @@
         <div class="col-8">
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Name" class="col-form-label"></label>
+                    <label asp-for="Name" class="col-form-label text-secondary font-weight-bold"></label>
                 </div>
                 <div class="col-8">
                     <input asp-for="Name" class="form-control" />
@@ -32,7 +31,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Description" class="col-form-label"></label>
+                    <label asp-for="Description" class="col-form-label text-secondary font-weight-bold"></label>
                 </div>
                 <div class="col-8">
                     <textarea class="form-control" rows="3" asp-for="Description"></textarea>
@@ -41,7 +40,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Price" class="col-form-label"></label>
+                    <label asp-for="Price" class="col-form-label text-secondary font-weight-bold"></label>
                 </div>
                 <div class="col-8">
                     <input asp-for="Price" class="form-control" />
@@ -50,7 +49,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Image" class="col-form-label"></label>
+                    <label asp-for="Image" class="col-form-label text-secondary font-weight-bold"></label>
                 </div>
                 <div class="col-8">
                     <input type="file" name="files" class="btn btn-outline-secondary" />
@@ -59,7 +58,7 @@
 
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="CategoryId" class="col-form-label"></label>
+                    <label asp-for="CategoryId" class="col-form-label text-secondary font-weight-bold"></label>
                 </div>
                 <div class="col-8">
                     <select asp-for="@Model.CategoryId" id="CategoryId" asp-items="Model.Categories.ToSelectListItem(Model.CategoryId)" class="form-control">                        
@@ -68,7 +67,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="SubCategoryId" class="col-form-label"></label>
+                    <label asp-for="SubCategoryId" class="col-form-label text-secondary font-weight-bold"></label>
                 </div>
                 <div class="col-8">
                     @if (Model.SubCategoryId == null)

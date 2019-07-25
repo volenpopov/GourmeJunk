@@ -49,7 +49,7 @@ namespace GourmeJunk.Services
 
             var menuItemCreateViewModel = new MenuItemCreateViewModel
             {
-                Categories = categories,                
+                Categories = categories,
             };
 
             return menuItemCreateViewModel;
@@ -95,7 +95,7 @@ namespace GourmeJunk.Services
                 this.menuItemsRepository.Undelete(menuItem);
 
                 await OverrideMenuItemProps(menuItem, model, image);
-            }            
+            }
 
             await this.menuItemsRepository.SaveChangesAsync();
         }
@@ -116,12 +116,12 @@ namespace GourmeJunk.Services
                 Categories = categories,
                 SubCategories = subCategories,
                 CategoryId = menuItem.CategoryId,
-                SubCategoryId = menuItem.SubCategoryId                
+                SubCategoryId = menuItem.SubCategoryId
             };
 
             return menuItemEditViewModel;
         }
-        
+
         public async Task EditMenuItemAsync(MenuItemEditInputModel model, IFormFile image)
         {
             var currentMenuItem = await this.GetMenuItemByIdAsync(model.Id);
@@ -142,8 +142,44 @@ namespace GourmeJunk.Services
             {
                 await OverrideMenuItemProps(currentMenuItem, model, image);
             }
-            
+
             await this.menuItemsRepository.SaveChangesAsync();
+        }
+
+        //TODO: try with mapper
+        public async Task<MenuItemDetailsViewModel> GetMenuItemDetailsViewModelAsync(string menuItemId)
+        {
+            var menuItem = await this.menuItemsRepository
+                .AllAsNoTracking()
+                .Include(item => item.Category)
+                .Include(item => item.SubCategory)
+                .SingleOrDefaultAsync(item => item.Id == menuItemId);
+
+            if (menuItem == null)
+            {
+                throw new NullReferenceException(string.Format(ServicesDataConstants.NULL_REFERENCE_ID, nameof(MenuItem), menuItemId));
+            }
+
+            var subCategoryName = menuItem.SubCategory != null
+                ? menuItem.SubCategory.Name
+                : null;
+
+            var menuItemDetailsViewModel = new MenuItemDetailsViewModel
+            {
+                Id = menuItemId,
+                Name = menuItem.Name,
+                Description = menuItem.Description,
+                Price = menuItem.Price,
+                Image = menuItem.Image,
+                CategoryId = menuItem.CategoryId,
+                CategoryName = menuItem.Category.Name,
+                SubCategoryId = menuItem.SubCategoryId,
+                SubCategoryName = menuItem.SubCategory != null
+                    ? menuItem.SubCategory.Name
+                    : null
+            };
+
+            return menuItemDetailsViewModel;
         }
 
         //TODO: refactor
