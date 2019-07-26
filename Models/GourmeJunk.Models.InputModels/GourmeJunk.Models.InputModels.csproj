@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\GourmeJunk.Data.Models\GourmeJunk.Data.Models.csproj" />
     <ProjectReference Include="..\GourmeJunk.Models.Common\GourmeJunk.Models.Common.csproj" />
   </ItemGroup>
 

@@ -13,7 +13,7 @@ namespace GourmeJunk.Models.InputModels._AdminInputModels
         [MaxLength(ModelConstants.MenuItem.DESCRIPTION_MAX_LENGTH)]
         public string Description { get; set; }
 
-        [Range(typeof(decimal), ModelConstants.MenuItem.MIN_PRICE, ModelConstants.MenuItem.MAX_PRICE, ErrorMessage = ModelConstants.MenuItem.PRICE_ERROR)]
+        [Range(typeof(decimal), ModelConstants.MIN_PRICE, ModelConstants.MAX_PRICE, ErrorMessage = ModelConstants.PRICE_ERROR)]
         public decimal Price { get; set; }
 
         public string Image { get; set; }

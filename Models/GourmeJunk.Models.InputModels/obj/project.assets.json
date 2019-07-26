@@ -26,6 +26,29 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
+      "GourmeJunk.Data.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/GourmeJunk.Data.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GourmeJunk.Data.Common.dll": {}
+        }
+      },
+      "GourmeJunk.Data.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "GourmeJunk.Data.Common": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GourmeJunk.Data.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GourmeJunk.Data.Models.dll": {}
+        }
+      },
       "GourmeJunk.Models.Common/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -182,6 +205,16 @@
         "netstandard.library.nuspec"
       ]
     },
+    "GourmeJunk.Data.Common/1.0.0": {
+      "type": "project",
+      "path": "../../Data/GourmeJunk.Data.Common/GourmeJunk.Data.Common.csproj",
+      "msbuildProject": "../../Data/GourmeJunk.Data.Common/GourmeJunk.Data.Common.csproj"
+    },
+    "GourmeJunk.Data.Models/1.0.0": {
+      "type": "project",
+      "path": "../../Data/GourmeJunk.Data.Models/GourmeJunk.Data.Models.csproj",
+      "msbuildProject": "../../Data/GourmeJunk.Data.Models/GourmeJunk.Data.Models.csproj"
+    },
     "GourmeJunk.Models.Common/1.0.0": {
       "type": "project",
       "path": "../GourmeJunk.Models.Common/GourmeJunk.Models.Common.csproj",
@@ -190,6 +223,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
+      "GourmeJunk.Data.Models >= 1.0.0",
       "GourmeJunk.Models.Common >= 1.0.0",
       "NETStandard.Library >= 2.0.3"
     ]
@@ -224,6 +258,9 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
+            "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Models\\GourmeJunk.Data.Models.csproj": {
+              "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Models\\GourmeJunk.Data.Models.csproj"
+            },
             "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.Common\\GourmeJunk.Models.Common.csproj": {
               "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.Common\\GourmeJunk.Models.Common.csproj"
             }

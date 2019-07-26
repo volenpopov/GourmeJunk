@@ -20,5 +20,10 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
             return View(couponsViewModels);
         }
+
+        public async Task<IActionResult> Create()
+        {
+            return View();
+        }
     }
 }

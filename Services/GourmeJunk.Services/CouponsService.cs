@@ -26,6 +26,6 @@ namespace GourmeJunk.Services
                 .ToArrayAsync();
 
             return couponsModels;
-        }
+        }        
     }
 }

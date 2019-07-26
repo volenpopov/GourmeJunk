@@ -542,6 +542,7 @@
       },
       "GourmeJunk.Models.InputModels/1.0.0": {
         "dependencies": {
+          "GourmeJunk.Data.Models": "1.0.0",
           "GourmeJunk.Models.Common": "1.0.0"
         },
         "runtime": {

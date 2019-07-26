@@ -6,6 +6,6 @@ namespace GourmeJunk.Services.Contracts
 {
     public interface ICouponsService
     {
-        Task<IEnumerable<CouponViewModel>> GetAllAsync();
+        Task<IEnumerable<CouponViewModel>> GetAllAsync();        
     }
 }
