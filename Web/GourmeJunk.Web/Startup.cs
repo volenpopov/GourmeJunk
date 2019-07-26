@@ -61,6 +61,7 @@ namespace GourmeJunk.Web
             services.AddScoped<ICategoriesService, CategoriesService>();
             services.AddScoped<ISubCategoriesService, SubCategoriesService>();
             services.AddScoped<IMenuItemsService, MenuItemsService>();
+            services.AddScoped<ICouponsService, CouponsService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

@@ -37,6 +37,13 @@
             public const string MIN_PRICE = "0.01";
             public const string MAX_PRICE = "79228162514264337593543950335";
             public const string PRICE_ERROR = "Invalid Price.";            
-        }       
+        } 
+        
+        public class Coupon
+        {
+            public const string NAME_DISPLAY = "Coupon Name";
+            public const string MIN_ORDER_AMOUNT_DISPLAY = "Minimum Order Amount";
+            public const string IS_ACTIVE_DISPLAY = "Active";
+        }
     }
 }
