@@ -100,9 +100,16 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Details(string id)
         {
-            var menuItemDetailsViewModel = await this.menuItemsService.GetMenuItemDetailsViewModelAsync(id);
+            var menuItemViewModelExtended = await this.menuItemsService.GetMenuItemViewModelExtendedAsync(id);
 
-            return View(menuItemDetailsViewModel);
+            return View(menuItemViewModelExtended);
+        }
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            var menuItemViewModelExtended = await this.menuItemsService.GetMenuItemViewModelExtendedAsync(id);
+
+            return View(menuItemViewModelExtended);
         }
     }   
 }

@@ -1,6 +1,6 @@
 ﻿namespace GourmeJunk.Models.ViewModels.MenuItems
 {
-    public class MenuItemDetailsViewModel : MenuItemViewModel
+    public class MenuItemViewModelExtended : MenuItemViewModel
     {
         public string Description { get; set; }
 

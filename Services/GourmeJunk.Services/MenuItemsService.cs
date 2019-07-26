@@ -146,8 +146,7 @@ namespace GourmeJunk.Services
             await this.menuItemsRepository.SaveChangesAsync();
         }
 
-        //TODO: try with mapper
-        public async Task<MenuItemDetailsViewModel> GetMenuItemDetailsViewModelAsync(string menuItemId)
+        public async Task<MenuItemViewModelExtended> GetMenuItemViewModelExtendedAsync(string menuItemId)
         {
             var menuItem = await this.menuItemsRepository
                 .AllAsNoTracking()
@@ -164,7 +163,7 @@ namespace GourmeJunk.Services
                 ? menuItem.SubCategory.Name
                 : null;
 
-            var menuItemDetailsViewModel = new MenuItemDetailsViewModel
+            var menuItemDetailsViewModel = new MenuItemViewModelExtended
             {
                 Id = menuItemId,
                 Name = menuItem.Name,
@@ -182,7 +181,6 @@ namespace GourmeJunk.Services
             return menuItemDetailsViewModel;
         }
 
-        //TODO: refactor
         private async Task<MenuItem> GetMenuItemByIdAsync(string menuItemId)
         {
             var menuItem = await this.menuItemsRepository
