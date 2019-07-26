@@ -111,5 +111,14 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
             return View(menuItemViewModelExtended);
         }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public async Task<IActionResult> DeletePost(string id)
+        {
+            await this.menuItemsService.DeleteMenuItemAsync(id);
+
+            return RedirectToAction(nameof(Index));
+        }
     }   
 }

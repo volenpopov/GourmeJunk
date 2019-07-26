@@ -181,6 +181,17 @@ namespace GourmeJunk.Services
             return menuItemDetailsViewModel;
         }
 
+        public async Task DeleteMenuItemAsync(string menuItemId)
+        {
+            var menuItem = await this.GetMenuItemByIdAsync(menuItemId);
+
+            menuItem.Image = null;
+
+            this.menuItemsRepository.Delete(menuItem);
+
+            await this.menuItemsRepository.SaveChangesAsync();
+        }
+
         private async Task<MenuItem> GetMenuItemByIdAsync(string menuItemId)
         {
             var menuItem = await this.menuItemsRepository
@@ -257,6 +268,6 @@ namespace GourmeJunk.Services
             {
                 menuItem.Image = ServicesDataConstants.MENUITEM_DEFAULT_IMG_PATH;
             }
-        }
+        }        
     }
 }

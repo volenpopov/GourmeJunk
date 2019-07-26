@@ -162,6 +162,7 @@ namespace GourmeJunk.Services
             var subCategory = await this.GetSubCategoryByIdAsync(subCategoryId);
             
             this.subCategoriesRepository.Delete(subCategory);
+
             await this.subCategoriesRepository.SaveChangesAsync();
         }
 
