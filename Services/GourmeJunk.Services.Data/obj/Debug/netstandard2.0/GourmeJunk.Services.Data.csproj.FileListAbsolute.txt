@@ -14,3 +14,5 @@ E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services.Data\obj\Deb
 E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services.Data\obj\Debug\netstandard2.0\GourmeJunk.Services.Data.csproj.CopyComplete
 E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services.Data\obj\Debug\netstandard2.0\GourmeJunk.Services.Data.dll
 E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services.Data\obj\Debug\netstandard2.0\GourmeJunk.Services.Data.pdb
+E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services.Data\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.dll
+E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services.Data\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.xml

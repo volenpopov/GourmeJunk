@@ -37,6 +37,6 @@
             public const string MIN_PRICE = "0.01";
             public const string MAX_PRICE = "79228162514264337593543950335";
             public const string PRICE_ERROR = "Invalid Price.";            
-        }
+        }       
     }
 }

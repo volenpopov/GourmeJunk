@@ -18,13 +18,13 @@ namespace GourmeJunk.Data
         public GourmeJunkDbContext(DbContextOptions options) : base(options)
         { }
 
-        //TODO: Pending DbSets
-
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<SubCategory> SubCategories { get; set; }
 
         public DbSet<MenuItem> MenuItems { get; set; }
+
+        public DbSet<Coupon> Coupons { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
@@ -53,6 +53,10 @@ namespace GourmeJunk.Data
 
             builder.Entity<MenuItem>()
                 .HasIndex(menuItem => menuItem.Name)
+                .IsUnique();
+
+            builder.Entity<Coupon>()
+                .HasIndex(coupon => coupon.Name)
                 .IsUnique();
 
             // Needed for Identity models configuration
