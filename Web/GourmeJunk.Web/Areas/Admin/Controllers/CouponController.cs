@@ -1,4 +1,7 @@
-﻿using GourmeJunk.Services.Contracts;
+﻿using GourmeJunk.Models.InputModels._AdminInputModels;
+using GourmeJunk.Models.ViewModels.Coupons;
+using GourmeJunk.Services.Contracts;
+using GourmeJunk.Web.Common;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -21,9 +24,41 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
             return View(couponsViewModels);
         }
 
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
-            return View();
+            return View(new CouponCreateViewModel());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CouponCreateInputModel model)
+        {
+            var alreadyExists = await this.couponsService.CheckIfCouponExistsAsync(model.Name);
+
+            if (alreadyExists || !ModelState.IsValid)
+            {
+                var couponCreateViewModel = new CouponCreateViewModel();
+
+                if (alreadyExists)
+                {
+                    couponCreateViewModel.StatusMessage = string.Format(WebConstants.Error.ENTITY_ALREADY_EXISTS, model.Name);
+                }
+
+                couponCreateViewModel.Name = model.Name;
+                couponCreateViewModel.CouponType = model.CouponType.ToString();
+                couponCreateViewModel.Discount = model.Discount;
+                couponCreateViewModel.MinimumOrderAmount = model.MinimumOrderAmount;
+                couponCreateViewModel.IsActive = model.IsActive;
+
+                return View(couponCreateViewModel);
+            }
+
+            var image = HttpContext.Request.Form.Files.Count > 0
+                 ? HttpContext.Request.Form.Files[0]
+                 : null;
+
+            await this.couponsService.CreateCouponAsync(model, image);
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

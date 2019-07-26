@@ -48,7 +48,7 @@
             public const int NAME_MIN_LENGTH = 3;
             public const int NAME_MAX_LENGTH = 25;
 
-            public const string NAME_PATTERN = @"^[a-zA-Z0-9][a-zA-Z0-9-\s]+[a-zA-Z0-9]$";
+            public const string NAME_PATTERN = @"^[a-zA-Z0-9][a-zA-Z0-9-\%\$\s]+[a-zA-Z0-9]$";
             public const string NAME_PATTERN_ERROR = "Name can contain only characters.";
         }
     }

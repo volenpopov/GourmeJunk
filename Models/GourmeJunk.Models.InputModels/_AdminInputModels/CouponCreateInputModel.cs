@@ -16,13 +16,9 @@ namespace GourmeJunk.Models.InputModels._AdminInputModels
         [Range(typeof(decimal), ModelConstants.MIN_PRICE, ModelConstants.MAX_PRICE)]
         public decimal Discount { get; set; }
 
-        [Range(typeof(decimal), ModelConstants.MIN_PRICE, ModelConstants.MAX_PRICE, ErrorMessage = ModelConstants.PRICE_ERROR)]
-        [Display(Name = ModelConstants.Coupon.MIN_ORDER_AMOUNT_DISPLAY)]
+        [Range(typeof(decimal), ModelConstants.MIN_PRICE, ModelConstants.MAX_PRICE, ErrorMessage = ModelConstants.PRICE_ERROR)]       
         public decimal? MinimumOrderAmount { get; set; }
 
-        [Display(Name = ModelConstants.Coupon.IS_ACTIVE_DISPLAY)]
         public bool IsActive { get; set; }
-
-        public string StatusMessage { get; set; }
     }
 }
