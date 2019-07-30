@@ -1,0 +1,99 @@
+﻿@using GourmeJunk.Models.ViewModels.Coupons
+@using GourmeJunk.Data.Models
+
+@model CouponEditViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2 class="text-info">Edit Coupon</h2>
+<br />  
+
+<partial name="_StatusMessage" model="@Model.StatusMessage" />
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <div class=" border backgroundWhite row">
+
+        <div class="col-8">
+            <input hidden asp-for="Id" />
+            
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Name" class="custom-label text-secondary font-weight-bold"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Image" class="custom-label text-secondary font-weight-bold"></label>
+                </div>
+                <div class="col-8">
+                    <input type="file" id="projectImage" name="files" multiple class="btn btn-outline-secondary" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="CouponType" class="custom-label text-secondary font-weight-bold"></label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="CouponType" asp-items="Html.GetEnumSelectList<CouponType>()" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Discount" class="custom-label text-secondary font-weight-bold"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Discount" class="form-control" />
+                </div>
+                <span asp-validation-for="Discount" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="MinimumOrderAmount" class="custom-label text-secondary font-weight-bold"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="MinimumOrderAmount" class="form-control" />
+                </div>
+                <span asp-validation-for="MinimumOrderAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="IsActive" class="custom-label text-secondary font-weight-bold"></label>
+                </div>
+                <div class="col-8">
+                    <input type="checkbox" asp-for="IsActive" class="form-control" style="transform: scale(2)" />
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3 offset-1">
+            @{
+                string imgSrc = null;
+
+                if (Model.Image != null)
+                {
+                    imgSrc = string.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(Model.Image));
+
+                    <img src="@imgSrc" class="w-100" style="padding: 3px; border-radius:5px; border: 2px solid #bbb9b9;"/>
+                }
+                else
+                {
+                    <p class="lead font-italic text-center text-secondary font-weight-bold" >No image has been provided for this coupon!</p>
+                }
+            }
+        </div>
+
+        <div class="col-8">
+            <div class="col-8 offset-4">
+                <partial name="_EditAndBackToListButton" model="Model.Id" />
+            </div>
+        </div>
+
+    </div>
+</form>

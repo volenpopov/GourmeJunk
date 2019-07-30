@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using GourmeJunk.Data.Common.Repositories;
 using GourmeJunk.Data.Models;
@@ -62,6 +63,22 @@ namespace GourmeJunk.Services
             }
 
             await this.couponsRepository.SaveChangesAsync();
+        }
+
+        public async Task<TViewModel> GetCouponModelByIdAsync<TViewModel>(string couponId)
+        {
+            var coupon = await this.couponsRepository
+                .AllAsNoTracking()
+                .Where(cpn => cpn.Id == couponId)
+                .To<TViewModel>()
+                .FirstOrDefaultAsync();
+
+            if (coupon == null)
+            {
+                throw new NullReferenceException(string.Format(ServicesDataConstants.NULL_REFERENCE_ID, nameof(Coupon), couponId));
+            }
+
+            return coupon;
         }
 
         private async Task OverrideCouponProps(Coupon coupon, CouponCreateInputModel model, IFormFile image)
