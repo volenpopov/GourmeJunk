@@ -94,5 +94,12 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public async Task<IActionResult> Details(string id)
+        {
+            var couponDetailsModel = await this.couponsService.GetCouponModelByIdAsync<CouponDetailsViewModel>(id);
+
+            return View(couponDetailsModel);
+        }
     }
 }
