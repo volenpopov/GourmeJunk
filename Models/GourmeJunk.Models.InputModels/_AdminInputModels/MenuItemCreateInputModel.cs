@@ -10,7 +10,7 @@ namespace GourmeJunk.Models.InputModels._AdminInputModels
         [StringLength(ModelConstants.MenuItem.NAME_MAX_LENGTH, MinimumLength = ModelConstants.MenuItem.NAME_MIN_LENGTH, ErrorMessage = ModelConstants.NAME_LENGTH_ERROR)]
         public string Name { get; set; }
 
-        [MaxLength(ModelConstants.MenuItem.DESCRIPTION_MAX_LENGTH)]
+        [MaxLength(ModelConstants.MenuItem.DESCRIPTION_MAX_LENGTH, ErrorMessage = ModelConstants.MenuItem.DESCRIPTION_LENGTH_ERROR)]
         public string Description { get; set; }
 
         [Range(typeof(decimal), ModelConstants.MIN_PRICE, ModelConstants.MAX_PRICE, ErrorMessage = ModelConstants.PRICE_ERROR)]

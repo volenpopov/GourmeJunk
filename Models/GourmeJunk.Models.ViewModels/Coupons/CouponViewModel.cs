@@ -17,7 +17,7 @@ namespace GourmeJunk.Models.ViewModels.Coupons
         public decimal Discount { get; set; }
 
         [Display(Name = ModelConstants.Coupon.MIN_ORDER_AMOUNT_DISPLAY)]
-        public decimal MinimumOrderAmount { get; set; }
+        public decimal? MinimumOrderAmount { get; set; }
 
         [Display(Name = ModelConstants.Coupon.IS_ACTIVE_DISPLAY)]
         public bool IsActive { get; set; }

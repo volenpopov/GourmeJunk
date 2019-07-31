@@ -38,7 +38,14 @@ namespace GourmeJunk.Services
         {
             return await this.couponsRepository
                 .AllAsNoTracking()
-                .AnyAsync(coupon => coupon.Id == couponName);
+                .AnyAsync(coupon => coupon.Name == couponName);
+        }
+
+        public async Task<bool> CheckIfCouponExistsAsync(string couponId, string couponName)
+        {
+            return await this.couponsRepository
+                .AllAsNoTracking()
+                .AnyAsync(menuItem => menuItem.Name == couponName && menuItem.Id != couponId);
         }
 
         public async Task CreateCouponAsync(CouponCreateInputModel model, IFormFile image)
@@ -77,6 +84,44 @@ namespace GourmeJunk.Services
             {
                 throw new NullReferenceException(string.Format(ServicesDataConstants.NULL_REFERENCE_ID, nameof(Coupon), couponId));
             }
+           
+            return coupon;
+        }
+
+        public async Task EditCouponAsync(CouponEditInputModel model, IFormFile image)
+        {
+            var currentCoupon = await this.GetCouponByIdAsync(model.Id);
+
+            var newCouponAsExistingDeletedCoupon = await this.couponsRepository
+                .AllWithDeleted()
+                .SingleOrDefaultAsync(cpn => cpn.Name == model.Name);
+
+            if (newCouponAsExistingDeletedCoupon != null && newCouponAsExistingDeletedCoupon.IsDeleted)
+            {
+                this.couponsRepository.Delete(currentCoupon);
+
+                this.couponsRepository.Undelete(newCouponAsExistingDeletedCoupon);
+
+                await this.OverrideCouponProps(newCouponAsExistingDeletedCoupon, model, image);
+            }
+            else
+            {
+                await this.OverrideCouponProps(currentCoupon, model, image);
+            }
+
+            await this.couponsRepository.SaveChangesAsync();
+        }
+
+        private async Task<Coupon> GetCouponByIdAsync(string couponId)
+        {
+            var coupon = await this.couponsRepository
+                .All()
+                .SingleOrDefaultAsync(cpn => cpn.Id == couponId);
+
+            if (coupon == null)
+            {
+                throw new NullReferenceException(string.Format(ServicesDataConstants.NULL_REFERENCE_ID, nameof(Coupon), couponId));
+            }
 
             return coupon;
         }
@@ -91,7 +136,7 @@ namespace GourmeJunk.Services
 
             if (image != null)
             {
-                var extension = Path.GetExtension(image.FileName);
+                var extension = Path.GetExtension(image.FileName).ToLower();
 
                 if (extension != ServicesDataConstants.JPG_EXTENSION && extension != ServicesDataConstants.PNG_EXTENSION)
                 {

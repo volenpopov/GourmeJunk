@@ -63,11 +63,36 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(string id)
         {
-            var couponEditViewModel = await this.couponsService.GetCouponModelByIdAsync<CouponEditViewModel>(id);                
+            var couponEditViewModel = await this.couponsService.GetCouponModelByIdAsync<CouponEditViewModel>(id);                            
 
             return View(couponEditViewModel);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Edit(CouponEditInputModel model)
+        {            
+            var alreadyExists = await this.couponsService.CheckIfCouponExistsAsync(model.Id, model.Name);
 
+            if (alreadyExists || !ModelState.IsValid)
+            {
+                var couponEditViewModel = await this.couponsService.GetCouponModelByIdAsync<CouponEditViewModel>(model.Id);
+
+                if (alreadyExists)
+                {
+                    couponEditViewModel.StatusMessage =
+                        string.Format(WebConstants.Error.ENTITY_ALREADY_EXISTS, $"{model.Name}");
+                }
+
+                return View(couponEditViewModel);
+            }
+
+            var image = HttpContext.Request.Form.Files.Count > 0
+                ? HttpContext.Request.Form.Files[0]
+                : null;
+
+            await this.couponsService.EditCouponAsync(model, image);
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

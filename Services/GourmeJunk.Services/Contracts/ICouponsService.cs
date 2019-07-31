@@ -12,8 +12,12 @@ namespace GourmeJunk.Services.Contracts
 
         Task<bool> CheckIfCouponExistsAsync(string couponId);
 
+        Task<bool> CheckIfCouponExistsAsync(string couponId, string couponName);
+
         Task CreateCouponAsync(CouponCreateInputModel model, IFormFile image);
 
         Task<TViewModel> GetCouponModelByIdAsync<TViewModel>(string couponId);
+
+        Task EditCouponAsync(CouponEditInputModel model, IFormFile image);
     }
 }
