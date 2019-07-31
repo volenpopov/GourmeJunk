@@ -63,7 +63,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(string id)
         {
-            var couponEditViewModel = await this.couponsService.GetCouponModelByIdAsync<CouponEditViewModel>(id);                            
+            var couponEditViewModel = await this.couponsService.GetCouponModelByIdAsync<CouponViewModelExtended>(id);                            
 
             return View(couponEditViewModel);
         }
@@ -75,7 +75,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
             if (alreadyExists || !ModelState.IsValid)
             {
-                var couponEditViewModel = await this.couponsService.GetCouponModelByIdAsync<CouponEditViewModel>(model.Id);
+                var couponEditViewModel = await this.couponsService.GetCouponModelByIdAsync<CouponViewModelExtended>(model.Id);
 
                 if (alreadyExists)
                 {
@@ -97,9 +97,25 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Details(string id)
         {
-            var couponDetailsModel = await this.couponsService.GetCouponModelByIdAsync<CouponDetailsViewModel>(id);
+            var couponDetailsModel = await this.couponsService.GetCouponModelByIdAsync<CouponViewModelExtended>(id);
 
             return View(couponDetailsModel);
+        }
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            var couponDeleteModel = await this.couponsService.GetCouponModelByIdAsync<CouponViewModelExtended>(id);
+
+            return View(couponDeleteModel);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public async Task<IActionResult> DeletePost(string id)
+        {
+            await this.couponsService.DeleteCouponAsync(id);
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

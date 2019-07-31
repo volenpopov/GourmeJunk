@@ -19,5 +19,7 @@ namespace GourmeJunk.Services.Contracts
         Task<TViewModel> GetCouponModelByIdAsync<TViewModel>(string couponId);
 
         Task EditCouponAsync(CouponEditInputModel model, IFormFile image);
+
+        Task DeleteCouponAsync(string id);
     }
 }

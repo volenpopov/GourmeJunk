@@ -112,6 +112,16 @@ namespace GourmeJunk.Services
             await this.couponsRepository.SaveChangesAsync();
         }
 
+        public async Task DeleteCouponAsync(string id)
+        {
+            var coupon = await this.GetCouponByIdAsync(id);
+
+            coupon.Image = null;
+
+            this.couponsRepository.Delete(coupon);
+
+            await this.couponsRepository.SaveChangesAsync();
+        }
         private async Task<Coupon> GetCouponByIdAsync(string couponId)
         {
             var coupon = await this.couponsRepository
@@ -162,6 +172,6 @@ namespace GourmeJunk.Services
             }
 
             return imageBytes;
-        }
+        }      
     }
 }
