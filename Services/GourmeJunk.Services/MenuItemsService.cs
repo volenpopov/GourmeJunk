@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GourmeJunk.Data.Common.Repositories;
 using GourmeJunk.Data.Models;
 using GourmeJunk.Models.InputModels._AdminInputModels;
+using GourmeJunk.Models.ViewModels.Home;
 using GourmeJunk.Models.ViewModels.MenuItems;
 using GourmeJunk.Services.Common;
 using GourmeJunk.Services.Contracts;
@@ -192,6 +193,14 @@ namespace GourmeJunk.Services
             await this.menuItemsRepository.SaveChangesAsync();
         }
 
+        public async Task<IEnumerable<IndexMenuItemViewModel>> GetAllIndexMenuItemsModelsAsync()
+        {
+            return await this.menuItemsRepository
+                .AllAsNoTracking()
+                .To<IndexMenuItemViewModel>()
+                .ToArrayAsync();
+        }
+
         private async Task<MenuItem> GetMenuItemByIdAsync(string menuItemId)
         {
             var menuItem = await this.menuItemsRepository
@@ -268,6 +277,6 @@ namespace GourmeJunk.Services
             {
                 menuItem.Image = ServicesDataConstants.MENUITEM_DEFAULT_IMG_PATH;
             }
-        }        
+        }
     }
 }

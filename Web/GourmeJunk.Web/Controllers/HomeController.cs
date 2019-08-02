@@ -1,18 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using GourmeJunk.Models.ViewModels.Home;
+using GourmeJunk.Services.Contracts;
 using GourmeJunk.Web.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace GourmeJunk.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly ICouponsService couponsService;
+        private readonly ICategoriesService categoriesService;
+        private readonly IMenuItemsService menuItemsService;
+
+        public HomeController(
+            ICouponsService couponsService,
+            ICategoriesService categoriesService,
+            IMenuItemsService menuItemsService
+            )
         {
-            return View();
+            this.couponsService = couponsService;
+            this.categoriesService = categoriesService;
+            this.menuItemsService = menuItemsService;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var indexViewModel = new IndexViewModel()
+            {
+                Coupons = await this.couponsService.GetAllIndexCouponsModelsAsync(),
+                Categories = await this.categoriesService.GetAllAsync(),
+                MenuItems = await this.menuItemsService.GetAllIndexMenuItemsModelsAsync()
+            };
+
+            return View(indexViewModel);
         }
 
         public IActionResult Privacy()

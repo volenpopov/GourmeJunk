@@ -1,4 +1,5 @@
 ﻿using GourmeJunk.Models.InputModels._AdminInputModels;
+using GourmeJunk.Models.ViewModels.Home;
 using GourmeJunk.Models.ViewModels.MenuItems;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
@@ -25,5 +26,7 @@ namespace GourmeJunk.Services.Contracts
         Task<MenuItemViewModelExtended> GetMenuItemViewModelExtendedAsync(string menuItemId);
 
         Task DeleteMenuItemAsync(string menuItemId);
+
+        Task<IEnumerable<IndexMenuItemViewModel>> GetAllIndexMenuItemsModelsAsync();
     }
 }

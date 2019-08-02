@@ -7,6 +7,7 @@ using GourmeJunk.Data.Common.Repositories;
 using GourmeJunk.Data.Models;
 using GourmeJunk.Models.InputModels._AdminInputModels;
 using GourmeJunk.Models.ViewModels.Coupons;
+using GourmeJunk.Models.ViewModels.Home;
 using GourmeJunk.Services.Common;
 using GourmeJunk.Services.Contracts;
 using GourmeJunk.Services.Mapping;
@@ -122,6 +123,16 @@ namespace GourmeJunk.Services
 
             await this.couponsRepository.SaveChangesAsync();
         }
+
+        public async Task<IEnumerable<IndexCouponViewModel>> GetAllIndexCouponsModelsAsync()
+        {
+            return await this.couponsRepository
+                .AllAsNoTracking()
+                .Where(cpn => cpn.IsActive && cpn.Image.Length > 0)
+                .To<IndexCouponViewModel>()
+                .ToArrayAsync();
+        }
+
         private async Task<Coupon> GetCouponByIdAsync(string couponId)
         {
             var coupon = await this.couponsRepository
@@ -172,6 +183,6 @@ namespace GourmeJunk.Services
             }
 
             return imageBytes;
-        }      
+        }
     }
 }

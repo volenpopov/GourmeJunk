@@ -1,5 +1,6 @@
 ﻿using GourmeJunk.Models.InputModels._AdminInputModels;
 using GourmeJunk.Models.ViewModels.Coupons;
+using GourmeJunk.Models.ViewModels.Home;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -21,5 +22,7 @@ namespace GourmeJunk.Services.Contracts
         Task EditCouponAsync(CouponEditInputModel model, IFormFile image);
 
         Task DeleteCouponAsync(string id);
+
+        Task<IEnumerable<IndexCouponViewModel>>  GetAllIndexCouponsModelsAsync();
     }
 }
