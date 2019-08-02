@@ -6,23 +6,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GourmeJunk.Models.ViewModels.MenuItems
 {
-    public class MenuItemCreateViewModel
-    {
-        public string Name { get; set; }
-
-        public string Description { get; set; }
-
-        public decimal Price { get; set; }
+    public class MenuItemCreateViewModel : BaseMenuItemViewModel
+    {        
+        public string Description { get; set; }       
 
         public string Image { get; set; }
 
-        [Display(Name = nameof(ModelConstants.Category))]
-        public string CategoryId { get; set; }
-
-        public IEnumerable<CategoryViewModel> Categories { get; set; }
-
-        [Display(Name = nameof(ModelConstants.SubCategory))]
-        public string SubCategoryId { get; set; }       
+        public IEnumerable<CategoryViewModel> Categories { get; set; }   
 
         public string StatusMessage { get; set; }
     }
