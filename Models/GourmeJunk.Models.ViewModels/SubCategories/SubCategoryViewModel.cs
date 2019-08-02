@@ -1,11 +1,9 @@
-﻿using GourmeJunk.Data.Models;
-using GourmeJunk.Models.Common;
-using GourmeJunk.Services.Mapping;
+﻿using GourmeJunk.Models.Common;
 using System.ComponentModel.DataAnnotations;
 
 namespace GourmeJunk.Models.ViewModels.SubCategories
 {
-    public class SubCategoryViewModel : SubCategoryBaseViewModel, IMapFrom<SubCategory>
+    public class SubCategoryViewModel : SubCategoryBaseViewModel
     {        
         [Display(Name = ModelConstants.Category.NAME_DISPLAY)]
         public string CategoryName { get; set; }

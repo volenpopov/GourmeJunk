@@ -1,6 +1,4 @@
 ﻿using GourmeJunk.Models.ViewModels.Categories;
-using GourmeJunk.Models.ViewModels.Coupons;
-using GourmeJunk.Models.ViewModels.MenuItems;
 using System.Collections.Generic;
 
 namespace GourmeJunk.Models.ViewModels.Home
