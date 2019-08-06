@@ -7,11 +7,10 @@ using GourmeJunk.Models.ViewModels.Categories;
 using GourmeJunk.Services;
 using GourmeJunk.Services.Contracts;
 using GourmeJunk.Services.Mapping;
-using GourmeJunk.Web.Filters;
-using GourmeJunk.Web.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -33,6 +32,20 @@ namespace GourmeJunk.Web
         {
             services.AddDbContext<GourmeJunkDbContext>(options =>
                     options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<GourmeJunkUser, GourmeJunkRole>(options =>
+                {
+                    options.Password.RequireDigit = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequiredLength = 6;
+                })
+                .AddEntityFrameworkStores<GourmeJunkDbContext>()
+                .AddUserStore<GourmeJunkUserStore>()
+                .AddRoleStore<GourmeJunkRoleStore>()
+                .AddDefaultTokenProviders()
+                .AddDefaultUI(UIFramework.Bootstrap4);
 
             services.AddMvc(options =>
                 {
@@ -93,7 +106,9 @@ namespace GourmeJunk.Web
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            //app.UseCookiePolicy();
+            app.UseCookiePolicy();
+            app.UseAuthentication();
+
 
             app.UseMvc(routes =>
             {

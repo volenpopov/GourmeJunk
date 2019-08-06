@@ -17,7 +17,11 @@ namespace GourmeJunk.Data.Models
 
         [Required]
         [MaxLength(25)]
-        public string FullName { get; set; }
+        public string FirstName { get; set; }
+
+        [Required]
+        [MaxLength(25)]
+        public string LastName { get; set; }
 
         [Required]
         [MaxLength(100)]

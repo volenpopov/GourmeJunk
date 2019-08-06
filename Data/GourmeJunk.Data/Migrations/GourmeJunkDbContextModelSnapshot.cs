@@ -140,13 +140,17 @@ namespace GourmeJunk.Data.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
-                    b.Property<string>("FullName")
+                    b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(25);
 
                     b.Property<bool>("IsDeleted");
 
                     b.Property<DateTime?>("LastModifiedOn");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(25);
 
                     b.Property<bool>("LockoutEnabled");
 
