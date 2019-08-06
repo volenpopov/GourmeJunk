@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Seeding\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
@@ -28,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\GourmeJunk.Common\GourmeJunk.Common.csproj" />
     <ProjectReference Include="..\GourmeJunk.Data.Common\GourmeJunk.Data.Common.csproj" />
     <ProjectReference Include="..\GourmeJunk.Data.Models\GourmeJunk.Data.Models.csproj" />
   </ItemGroup>

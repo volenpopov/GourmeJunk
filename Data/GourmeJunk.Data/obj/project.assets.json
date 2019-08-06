@@ -1207,6 +1207,16 @@
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
         }
       },
+      "GourmeJunk.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/GourmeJunk.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GourmeJunk.Common.dll": {}
+        }
+      },
       "GourmeJunk.Data.Common/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -4078,6 +4088,11 @@
         "system.threading.tasks.nuspec"
       ]
     },
+    "GourmeJunk.Common/1.0.0": {
+      "type": "project",
+      "path": "../../GourmeJunk.Common/GourmeJunk.Common.csproj",
+      "msbuildProject": "../../GourmeJunk.Common/GourmeJunk.Common.csproj"
+    },
     "GourmeJunk.Data.Common/1.0.0": {
       "type": "project",
       "path": "../GourmeJunk.Data.Common/GourmeJunk.Data.Common.csproj",
@@ -4091,6 +4106,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
+      "GourmeJunk.Common >= 1.0.0",
       "GourmeJunk.Data.Common >= 1.0.0",
       "GourmeJunk.Data.Models >= 1.0.0",
       "Microsoft.AspNetCore.Identity >= 2.2.0",
@@ -4136,6 +4152,9 @@
             },
             "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Models\\GourmeJunk.Data.Models.csproj": {
               "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Models\\GourmeJunk.Data.Models.csproj"
+            },
+            "E:\\Volen\\Programming\\Github\\GourmeJunk\\GourmeJunk.Common\\GourmeJunk.Common.csproj": {
+              "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\GourmeJunk.Common\\GourmeJunk.Common.csproj"
             }
           }
         }

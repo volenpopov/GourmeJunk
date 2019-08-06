@@ -3,6 +3,7 @@ using GourmeJunk.Data.Common;
 using GourmeJunk.Data.Common.Repositories;
 using GourmeJunk.Data.Models;
 using GourmeJunk.Data.Repositories;
+using GourmeJunk.Data.Seeding;
 using GourmeJunk.Models.ViewModels.Categories;
 using GourmeJunk.Services;
 using GourmeJunk.Services.Contracts;
@@ -39,7 +40,7 @@ namespace GourmeJunk.Web
                     options.Password.RequireLowercase = false;
                     options.Password.RequireUppercase = false;
                     options.Password.RequireNonAlphanumeric = false;
-                    options.Password.RequiredLength = 6;
+                    options.Password.RequiredLength = 5;
                 })
                 .AddEntityFrameworkStores<GourmeJunkDbContext>()
                 .AddUserStore<GourmeJunkUserStore>()
@@ -90,7 +91,9 @@ namespace GourmeJunk.Web
                     dbContext.Database.Migrate();
                 }
 
-                //TODO: Seed data
+                ApplicationDbContextSeeder.Seed(dbContext, serviceScope.ServiceProvider);
+
+                //TODO: Seed sample data
             }
 
             if (env.IsDevelopment())

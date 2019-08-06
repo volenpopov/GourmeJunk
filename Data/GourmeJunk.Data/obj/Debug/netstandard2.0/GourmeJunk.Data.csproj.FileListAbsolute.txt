@@ -14,3 +14,5 @@ E:\Volen\Programming\Github\GourmeJunk\Data\GourmeJunk.Data\obj\Debug\netstandar
 E:\Volen\Programming\Github\GourmeJunk\Data\GourmeJunk.Data\bin\Debug\netstandard2.0\GourmeJunk.Data.pdb
 E:\Volen\Programming\Github\GourmeJunk\Data\GourmeJunk.Data\obj\Debug\netstandard2.0\GourmeJunk.Data.dll
 E:\Volen\Programming\Github\GourmeJunk\Data\GourmeJunk.Data\obj\Debug\netstandard2.0\GourmeJunk.Data.pdb
+E:\Volen\Programming\Github\GourmeJunk\Data\GourmeJunk.Data\bin\Debug\netstandard2.0\GourmeJunk.Common.dll
+E:\Volen\Programming\Github\GourmeJunk\Data\GourmeJunk.Data\bin\Debug\netstandard2.0\GourmeJunk.Common.pdb

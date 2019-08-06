@@ -19,17 +19,20 @@ namespace GourmeJunk.Web.Areas.Identity.Pages.Account
         private readonly UserManager<GourmeJunkUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly RoleManager<GourmeJunkRole> _roleManager;
 
         public RegisterModel(
             UserManager<GourmeJunkUser> userManager,
-            SignInManager<GourmeJunkUser> signInManager,
+            SignInManager<GourmeJunkUser> signInManager,            
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            RoleManager<GourmeJunkRole> roleManager)
         {
             _userManager = userManager;
-            _signInManager = signInManager;
+            _signInManager = signInManager;           
             _logger = logger;
             _emailSender = emailSender;
+            _roleManager = roleManager;
         }
 
         [BindProperty]
@@ -89,7 +92,7 @@ namespace GourmeJunk.Web.Areas.Identity.Pages.Account
                     UserName = Input.Email,
                     Email = Input.Email,
                     FirstName = Input.FirstName,
-                    LastName = Input.LastName,
+                    LastName = Input.LastName,  
                     Address = Input.Address                  
                 };
 
@@ -98,15 +101,15 @@ namespace GourmeJunk.Web.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var callbackUrl = Url.Page(
-                        "/Account/ConfirmEmail",
-                        pageHandler: null,
-                        values: new { userId = user.Id, code = code },
-                        protocol: Request.Scheme);
+                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    //var callbackUrl = Url.Page(
+                    //    "/Account/ConfirmEmail",
+                    //    pageHandler: null,
+                    //    values: new { userId = user.Id, code = code },
+                    //    protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    //await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
+                    //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);
