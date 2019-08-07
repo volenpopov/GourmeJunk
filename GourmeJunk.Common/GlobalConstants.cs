@@ -4,7 +4,7 @@
     {
         public const string ADMINISTRATOR__NAME = "admin";
 
-        public const string ADMINISTRATOR_PASSWORD = "54321";
+        public const string ADMINISTRATOR_PASSWORD = "654321";
 
         public const string ADMINISTRATOR__EMAIL = "admin@gourmejunk.com";
 

@@ -73,19 +73,18 @@ namespace GourmeJunk.Data.Seeding
 
         private static void SeedAdmin(GourmeJunkDbContext dbContext, UserManager<GourmeJunkUser> userManager)
         {
-            userManager.CreateAsync(new GourmeJunkUser
+            //Username and Email have to be the same, otherwise you cannot login with the seeded user
+            var user = new GourmeJunkUser
             {
-                UserName = GlobalConstants.ADMINISTRATOR__NAME,
+                UserName = GlobalConstants.ADMINISTRATOR__EMAIL,
                 Email = GlobalConstants.ADMINISTRATOR__EMAIL,
                 FirstName = GlobalConstants.ADMINISTRATOR__NAME,
                 LastName = GlobalConstants.ADMINISTRATOR__NAME,
                 Address = GlobalConstants.ADMINISTRATOR__NAME,
-            }, GlobalConstants.ADMINISTRATOR_PASSWORD)
-            .GetAwaiter()
-            .GetResult();
+            };
 
-            var user = dbContext.Users.SingleOrDefault(usr => usr.Email == GlobalConstants.ADMINISTRATOR__EMAIL);
-
+            userManager.CreateAsync(user, GlobalConstants.ADMINISTRATOR_PASSWORD);
+          
             userManager.AddToRoleAsync(user, GlobalConstants.ADMINISTRATOR_ROLE_NAME).GetAwaiter().GetResult();
         }
 

@@ -2,6 +2,8 @@
 {
     public class WebConstants
     {
+        public const string REGISTER_INPUT_ROLE_FIELD = "inputUserRole";
+
         public class IdentityModels
         {
             public const string USERS_NAME_PATTERN = @"^[a-zA-Z]+$";

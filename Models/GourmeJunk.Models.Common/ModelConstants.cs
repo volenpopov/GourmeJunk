@@ -54,5 +54,11 @@
 
             public const string DISCOUNT_ERROR = "Invalid Discount.";
         }
+
+        public class User
+        {
+            public const string FIRST_NAME_DISPLAY = "First Name";
+            public const string LAST_NAME_DISPLAY = "Last Name";
+        }
     }
 }

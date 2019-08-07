@@ -1,4 +1,5 @@
-﻿using GourmeJunk.Data.Models;
+﻿using GourmeJunk.Common;
+using GourmeJunk.Data.Models;
 using GourmeJunk.Web.Common;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -7,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
 namespace GourmeJunk.Web.Areas.Identity.Pages.Account
@@ -83,6 +83,8 @@ namespace GourmeJunk.Web.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
+            var role = Request.Form[WebConstants.REGISTER_INPUT_ROLE_FIELD].ToString();
+
             returnUrl = returnUrl ?? Url.Content("~/");
 
             if (ModelState.IsValid)
@@ -99,6 +101,18 @@ namespace GourmeJunk.Web.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
+                    if (role == GlobalConstants.KITCHEN_ROLE_NAME || role == GlobalConstants.DELIVERY_ROLE_NAME)
+                    {
+                        await _userManager.AddToRoleAsync(user, role);
+                    }
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user, GlobalConstants.CUSTOMER_ROLE_NAME);
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+
+                        return LocalRedirect(returnUrl);
+                    }
+
                     _logger.LogInformation("User created a new account with password.");
 
                     //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -109,10 +123,9 @@ namespace GourmeJunk.Web.Areas.Identity.Pages.Account
                     //    protocol: Request.Scheme);
 
                     //await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                    //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");                                       
 
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    return LocalRedirect(returnUrl);
+                    return RedirectToAction("Index", "User", new { Area = "Admin"});
                 }
                 foreach (var error in result.Errors)
                 {

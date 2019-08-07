@@ -40,7 +40,7 @@ namespace GourmeJunk.Web
                     options.Password.RequireLowercase = false;
                     options.Password.RequireUppercase = false;
                     options.Password.RequireNonAlphanumeric = false;
-                    options.Password.RequiredLength = 5;
+                    options.Password.RequiredLength = 6;
                 })
                 .AddEntityFrameworkStores<GourmeJunkDbContext>()
                 .AddUserStore<GourmeJunkUserStore>()
@@ -76,6 +76,7 @@ namespace GourmeJunk.Web
             services.AddScoped<ISubCategoriesService, SubCategoriesService>();
             services.AddScoped<IMenuItemsService, MenuItemsService>();
             services.AddScoped<ICouponsService, CouponsService>();
+            services.AddScoped<IUsersService, UsersService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

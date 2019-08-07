@@ -639,6 +639,7 @@
       },
       "GourmeJunk.Services/1.0.0": {
         "dependencies": {
+          "GourmeJunk.Data": "1.0.0",
           "GourmeJunk.Data.Common": "1.0.0",
           "GourmeJunk.Data.Models": "1.0.0",
           "GourmeJunk.Models.InputModels": "1.0.0",
