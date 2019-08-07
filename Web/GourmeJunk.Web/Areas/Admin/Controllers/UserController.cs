@@ -20,5 +20,20 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
             return View(usersViewModels);
         }
+
+        public async Task<IActionResult> Lock(string id)
+        {
+            await this.usersService.LockUserAsync(id);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> UnLock(string id)
+        {
+            await this.usersService.UnLockUserAsync(id);
+
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

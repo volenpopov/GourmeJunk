@@ -7,5 +7,9 @@ namespace GourmeJunk.Services.Contracts
     public interface IUsersService
     {
         Task<IEnumerable<UserViewModel>> GetAllAsync();
+
+        Task LockUserAsync(string userId);
+
+        Task UnLockUserAsync(string userId);
     }
 }

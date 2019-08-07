@@ -29,5 +29,9 @@
                                                                IsDeleted = 1, 
                                                                DeletedOn = GETUTCDATE()
                                                               WHERE CategoryId = {0}";
+
+        public const string USER = "User";
+
+        public const int LOCKOUT_YEARS = 1000;
     }
 }
