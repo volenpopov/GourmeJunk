@@ -1,6 +1,8 @@
-﻿using GourmeJunk.Models.InputModels._AdminInputModels;
+﻿using GourmeJunk.Common;
+using GourmeJunk.Models.InputModels._AdminInputModels;
 using GourmeJunk.Services.Contracts;
 using GourmeJunk.Web.Common;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Threading.Tasks;
@@ -8,6 +10,7 @@ using System.Threading.Tasks;
 namespace GourmeJunk.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = GlobalConstants.ADMINISTRATOR_ROLE_NAME)]
     public class SubCategoryController : Controller
     {
         private readonly ISubCategoriesService subCategoriesService;

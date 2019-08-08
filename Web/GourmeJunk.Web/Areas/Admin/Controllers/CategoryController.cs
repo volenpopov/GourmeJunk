@@ -1,14 +1,17 @@
-﻿using GourmeJunk.Models.InputModels._AdminInputModels;
+﻿using GourmeJunk.Common;
+using GourmeJunk.Models.InputModels._AdminInputModels;
 using GourmeJunk.Models.ViewModels.Categories;
 using GourmeJunk.Services.Contracts;
 using GourmeJunk.Web.Common;
 using GourmeJunk.Web.Filters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace GourmeJunk.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = GlobalConstants.ADMINISTRATOR_ROLE_NAME)]
     public class CategoryController : Controller
     {
         private readonly ICategoriesService categoriesService;

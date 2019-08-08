@@ -1,10 +1,13 @@
-﻿using GourmeJunk.Services.Contracts;
+﻿using GourmeJunk.Common;
+using GourmeJunk.Services.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace GourmeJunk.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = GlobalConstants.ADMINISTRATOR_ROLE_NAME)]
     public class UserController : Controller
     {
         private readonly IUsersService usersService;
