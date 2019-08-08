@@ -111,3 +111,4 @@ E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewStart.g.cshtml.cs
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\User\Index.g.cshtml.cs
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\Home\Details.g.cshtml.cs

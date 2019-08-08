@@ -1,6 +1,7 @@
 ﻿using GourmeJunk.Models.ViewModels.Home;
 using GourmeJunk.Services.Contracts;
 using GourmeJunk.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -12,16 +13,19 @@ namespace GourmeJunk.Web.Controllers
         private readonly ICouponsService couponsService;
         private readonly ICategoriesService categoriesService;
         private readonly IMenuItemsService menuItemsService;
+        private readonly IShoppingCartService shoppingCartService;
 
         public HomeController(
             ICouponsService couponsService,
             ICategoriesService categoriesService,
-            IMenuItemsService menuItemsService
+            IMenuItemsService menuItemsService,
+            IShoppingCartService shoppingCartService
             )
         {
             this.couponsService = couponsService;
             this.categoriesService = categoriesService;
             this.menuItemsService = menuItemsService;
+            this.shoppingCartService = shoppingCartService;
         }
 
         public async Task<IActionResult> Index()
@@ -34,6 +38,14 @@ namespace GourmeJunk.Web.Controllers
             };
 
             return View(indexViewModel);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Details(string id)
+        {
+            var shoppingCartViewModel = await this.shoppingCartService.GetShoppingCartViewModelAsync(id);
+
+            return View(shoppingCartViewModel);
         }
 
         public IActionResult Privacy()
