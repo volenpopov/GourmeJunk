@@ -7,7 +7,6 @@ using GourmeJunk.Services.Contracts;
 using GourmeJunk.Services.Mapping;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -16,13 +15,16 @@ namespace GourmeJunk.Services
     public class ShoppingCartService : IShoppingCartService
     {
         private readonly IRepository<ShoppingCart> shopingCartsRepository;
+        //private readonly IDeletableEntityRepository<ShoppingCartMenuItems> shoppingCartMenuItemsRepository;
         private readonly IDeletableEntityRepository<MenuItem> menuItemsRepository;
 
         public ShoppingCartService(
             IRepository<ShoppingCart> shopingCartsRepository,
+            //IDeletableEntityRepository<ShoppingCartMenuItems> shoppingCartMenuItemsRepository,
             IDeletableEntityRepository<MenuItem> menuItemsRepository)
         {
             this.shopingCartsRepository = shopingCartsRepository;
+            //this.shoppingCartMenuItemsRepository = shoppingCartMenuItemsRepository;
             this.menuItemsRepository = menuItemsRepository;
         }
 
@@ -48,7 +50,27 @@ namespace GourmeJunk.Services
 
         public async Task UpdateShoppingCartAsync(string menuItemId, int itemCount, ClaimsIdentity user)
         {
-            
+            //var userId = user.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            //var shoppingCart = await this.shopingCartsRepository
+            //    .All()
+            //    .SingleOrDefaultAsync(cart => cart.UserId == userId);
+
+            //if (shoppingCart == null)
+            //{
+            //    shoppingCart = new ShoppingCart
+            //    {
+            //        UserId = userId                  
+            //    };
+
+            //    await this.shopingCartsRepository.AddAsync(shoppingCart);
+            //}
+            //else
+            //{
+            //    shoppingCart.Count += itemCount;
+            //}
+
+            //await this.shopingCartsRepository.SaveChangesAsync();
         }
     }
 }

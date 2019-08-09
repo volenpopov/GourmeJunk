@@ -232,40 +232,6 @@ namespace GourmeJunk.Data.Migrations
                     b.ToTable("MenuItems");
                 });
 
-            modelBuilder.Entity("GourmeJunk.Data.Models.ShoppingCart", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("CreatedOn");
-
-                    b.Property<DateTime?>("LastModifiedOn");
-
-                    b.Property<string>("UserId")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("ShoppingCarts");
-                });
-
-            modelBuilder.Entity("GourmeJunk.Data.Models.ShoppingCartMenuItems", b =>
-                {
-                    b.Property<string>("ShoppingCartId");
-
-                    b.Property<string>("MenuItemId");
-
-                    b.Property<int>("Count");
-
-                    b.HasKey("ShoppingCartId", "MenuItemId");
-
-                    b.HasIndex("MenuItemId");
-
-                    b.ToTable("ShoppingCartMenuItems");
-                });
-
             modelBuilder.Entity("GourmeJunk.Data.Models.SubCategory", b =>
                 {
                     b.Property<string>("Id")
@@ -391,27 +357,6 @@ namespace GourmeJunk.Data.Migrations
                     b.HasOne("GourmeJunk.Data.Models.SubCategory", "SubCategory")
                         .WithMany()
                         .HasForeignKey("SubCategoryId");
-                });
-
-            modelBuilder.Entity("GourmeJunk.Data.Models.ShoppingCart", b =>
-                {
-                    b.HasOne("GourmeJunk.Data.Models.GourmeJunkUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("GourmeJunk.Data.Models.ShoppingCartMenuItems", b =>
-                {
-                    b.HasOne("GourmeJunk.Data.Models.MenuItem", "MenuItem")
-                        .WithMany()
-                        .HasForeignKey("MenuItemId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("GourmeJunk.Data.Models.ShoppingCart", "ShoppingCart")
-                        .WithMany("ShoppingCartMenuItems")
-                        .HasForeignKey("ShoppingCartId")
-                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("GourmeJunk.Data.Models.SubCategory", b =>

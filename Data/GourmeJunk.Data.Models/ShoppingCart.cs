@@ -8,14 +8,14 @@ namespace GourmeJunk.Data.Models
     {
         public ShoppingCart()
         {
-            this.ShoppingCartMenuItems = new HashSet<ShoppingCartMenuItems>();
+            //this.ShoppingCartMenuItems = new HashSet<ShoppingCartMenuItems>();
         }
 
-        [Required]
+        [Required]        
         public string UserId { get; set; }
-
+        
         public virtual GourmeJunkUser User { get; set; }
 
-        public ICollection<ShoppingCartMenuItems> ShoppingCartMenuItems { get; set; }
+        //public ICollection<ShoppingCartMenuItems> ShoppingCartMenuItems { get; set; }
     }
 }

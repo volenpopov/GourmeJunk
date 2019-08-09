@@ -13,6 +13,12 @@
     <Compile Remove="Migrations\20190716092441_EditCategorySubCategoryDeleteToCascde.Designer.cs" />
     <Compile Remove="Migrations\20190717064731_AddMenuItemModel.cs" />
     <Compile Remove="Migrations\20190717064731_AddMenuItemModel.Designer.cs" />
+    <Compile Remove="Migrations\20190809115322_AddShoppingCartMenuItemsModel.cs" />
+    <Compile Remove="Migrations\20190809115322_AddShoppingCartMenuItemsModel.Designer.cs" />
+    <Compile Remove="Migrations\20190809122112_AddShoppingCartNavigationPropToUser.cs" />
+    <Compile Remove="Migrations\20190809122112_AddShoppingCartNavigationPropToUser.Designer.cs" />
+    <Compile Remove="Migrations\20190809123454_AddShoppingCartNavigationPropToUser.cs" />
+    <Compile Remove="Migrations\20190809123454_AddShoppingCartNavigationPropToUser.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
