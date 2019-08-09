@@ -15,16 +15,16 @@ namespace GourmeJunk.Services
     public class ShoppingCartService : IShoppingCartService
     {
         private readonly IRepository<ShoppingCart> shopingCartsRepository;
-        //private readonly IDeletableEntityRepository<ShoppingCartMenuItems> shoppingCartMenuItemsRepository;
+        private readonly IDeletableEntityRepository<ShoppingCartMenuItems> shoppingCartMenuItemsRepository;
         private readonly IDeletableEntityRepository<MenuItem> menuItemsRepository;
 
         public ShoppingCartService(
             IRepository<ShoppingCart> shopingCartsRepository,
-            //IDeletableEntityRepository<ShoppingCartMenuItems> shoppingCartMenuItemsRepository,
+            IDeletableEntityRepository<ShoppingCartMenuItems> shoppingCartMenuItemsRepository,
             IDeletableEntityRepository<MenuItem> menuItemsRepository)
         {
             this.shopingCartsRepository = shopingCartsRepository;
-            //this.shoppingCartMenuItemsRepository = shoppingCartMenuItemsRepository;
+            this.shoppingCartMenuItemsRepository = shoppingCartMenuItemsRepository;
             this.menuItemsRepository = menuItemsRepository;
         }
 
@@ -50,7 +50,39 @@ namespace GourmeJunk.Services
 
         public async Task UpdateShoppingCartAsync(string menuItemId, int itemCount, ClaimsIdentity user)
         {
-            
+            var userId = user.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            var shoppingCart = await this.shopingCartsRepository
+                .All()
+                .SingleOrDefaultAsync(cart => cart.UserId == userId);
+
+            if (shoppingCart == null)
+            {
+                throw new NullReferenceException(string.Format(ServicesDataConstants.NULL_REFERENCE_USER_CART, userId));
+            }
+
+            var shoppingCartMenuItem = await this.shoppingCartMenuItemsRepository
+                .All()
+                .SingleOrDefaultAsync(cartItem => cartItem.ShoppingCartId == shoppingCart.Id 
+                                      && cartItem.MenuItemId == menuItemId);
+
+            if (shoppingCartMenuItem == null)
+            {
+                shoppingCartMenuItem = new ShoppingCartMenuItems
+                {
+                    ShoppingCart = shoppingCart,
+                    MenuItemId = menuItemId,
+                    Count = itemCount
+                };
+
+                await this.shoppingCartMenuItemsRepository.AddAsync(shoppingCartMenuItem);
+            }
+            else
+            {
+                shoppingCartMenuItem.Count += itemCount;
+            }
+
+            await this.shoppingCartMenuItemsRepository.SaveChangesAsync();
         }
     }
 }

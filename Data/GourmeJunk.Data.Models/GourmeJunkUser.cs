@@ -27,8 +27,7 @@ namespace GourmeJunk.Data.Models
         [Required]
         [MaxLength(100)]
         public string Address { get; set; }
-
-        [Required]
+       
         public string ShoppingCartId { get; set; }
 
         public virtual ShoppingCart ShoppingCart { get; set; }

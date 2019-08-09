@@ -80,12 +80,12 @@ namespace GourmeJunk.Data.Seeding
                 Email = GlobalConstants.ADMINISTRATOR__EMAIL,
                 FirstName = GlobalConstants.ADMINISTRATOR__NAME,
                 LastName = GlobalConstants.ADMINISTRATOR__NAME,
-                Address = GlobalConstants.ADMINISTRATOR__NAME,
+                Address = GlobalConstants.ADMINISTRATOR__NAME
             };
 
-            userManager.CreateAsync(user, GlobalConstants.ADMINISTRATOR_PASSWORD);
-          
-            userManager.AddToRoleAsync(user, GlobalConstants.ADMINISTRATOR_ROLE_NAME).GetAwaiter().GetResult();
+            userManager.CreateAsync(user, GlobalConstants.ADMINISTRATOR_PASSWORD).Wait();
+                      
+            userManager.AddToRoleAsync(user, GlobalConstants.ADMINISTRATOR_ROLE_NAME).Wait();
         }
 
     }

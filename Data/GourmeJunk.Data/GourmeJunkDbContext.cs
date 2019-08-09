@@ -68,10 +68,6 @@ namespace GourmeJunk.Data
                 .WithOne(user => user.ShoppingCart)
                 .HasForeignKey<GourmeJunkUser>(user => user.ShoppingCartId);
 
-            builder.Entity<GourmeJunkUser>()
-                .HasIndex(user => user.ShoppingCartId)
-                .IsUnique();
-
             builder.Entity<ShoppingCartMenuItems>()
                 .HasKey(shoppingCartMenuItems => new { shoppingCartMenuItems.ShoppingCartId, shoppingCartMenuItems.MenuItemId });
 

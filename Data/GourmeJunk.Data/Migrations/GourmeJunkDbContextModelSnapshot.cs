@@ -170,8 +170,7 @@ namespace GourmeJunk.Data.Migrations
 
                     b.Property<string>("SecurityStamp");
 
-                    b.Property<string>("ShoppingCartId")
-                        .IsRequired();
+                    b.Property<string>("ShoppingCartId");
 
                     b.Property<bool>("TwoFactorEnabled");
 
@@ -191,7 +190,8 @@ namespace GourmeJunk.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.HasIndex("ShoppingCartId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[ShoppingCartId] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -399,8 +399,7 @@ namespace GourmeJunk.Data.Migrations
                 {
                     b.HasOne("GourmeJunk.Data.Models.ShoppingCart", "ShoppingCart")
                         .WithOne("User")
-                        .HasForeignKey("GourmeJunk.Data.Models.GourmeJunkUser", "ShoppingCartId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("GourmeJunk.Data.Models.GourmeJunkUser", "ShoppingCartId");
                 });
 
             modelBuilder.Entity("GourmeJunk.Data.Models.MenuItem", b =>

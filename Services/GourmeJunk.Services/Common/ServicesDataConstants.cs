@@ -8,7 +8,9 @@
 
         public const string MENUITEM_DEFAULT_IMG_PATH = @"\images\MenuItems\img_default.jpg";
 
-        public const string NULL_REFERENCE_ID = "{0} with id {1} not found.";
+        public const string NULL_REFERENCE_ID = "{0} with Id {1} not found.";
+
+        public const string NULL_REFERENCE_USER_CART = "User with Id {0} doesn't have a shopping cart.";
 
         public const string NO_SUBCATEGORY_SELECTED_DEFAULT_VALUE = "-1";
 

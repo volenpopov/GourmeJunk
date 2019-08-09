@@ -6,11 +6,6 @@ namespace GourmeJunk.Data.Models
 {
     public class ShoppingCartMenuItems : IAuditableEntity, IDeletableEntity
     {
-        public ShoppingCartMenuItems()
-        {
-            this.Count = 1;
-        }
-
         [Required]
         public string ShoppingCartId { get; set; }
 
@@ -23,7 +18,7 @@ namespace GourmeJunk.Data.Models
 
         [Range(DataModelConstants.CART_MIN_ITEMS_COUNT, int.MaxValue, ErrorMessage = DataModelConstants.CART_ITEMS_COUNT_RANGE_ERRORMSG)]
         public int Count { get; set; }
-
+            
         public DateTime CreatedOn { get; set; }
         public DateTime? LastModifiedOn { get; set; }
         public bool IsDeleted { get; set; }
