@@ -14,7 +14,7 @@ namespace GourmeJunk.Services
 {
     public class ShoppingCartService : IShoppingCartService
     {
-        private readonly IRepository<ShoppingCart> shopingCartsRepository;
+        private readonly IRepository<ShoppingCart> shoppingCartsRepository;
         private readonly IDeletableEntityRepository<ShoppingCartMenuItems> shoppingCartMenuItemsRepository;
         private readonly IDeletableEntityRepository<MenuItem> menuItemsRepository;
 
@@ -23,7 +23,7 @@ namespace GourmeJunk.Services
             IDeletableEntityRepository<ShoppingCartMenuItems> shoppingCartMenuItemsRepository,
             IDeletableEntityRepository<MenuItem> menuItemsRepository)
         {
-            this.shopingCartsRepository = shopingCartsRepository;
+            this.shoppingCartsRepository = shopingCartsRepository;
             this.shoppingCartMenuItemsRepository = shoppingCartMenuItemsRepository;
             this.menuItemsRepository = menuItemsRepository;
         }
@@ -52,13 +52,15 @@ namespace GourmeJunk.Services
         {
             var userId = user.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            var shoppingCart = await this.shopingCartsRepository
+            var shoppingCart = await this.shoppingCartsRepository
                 .All()
                 .SingleOrDefaultAsync(cart => cart.UserId == userId);
 
             if (shoppingCart == null)
             {
-                throw new NullReferenceException(string.Format(ServicesDataConstants.NULL_REFERENCE_USER_CART, userId));
+                shoppingCart = new ShoppingCart { UserId = userId };
+
+                await this.shoppingCartsRepository.AddAsync(shoppingCart);
             }
 
             var shoppingCartMenuItem = await this.shoppingCartMenuItemsRepository
