@@ -8,7 +8,7 @@ namespace GourmeJunk.Data.Models
     {
         public ShoppingCart()
         {
-            //this.ShoppingCartMenuItems = new HashSet<ShoppingCartMenuItems>();
+            this.ShoppingCartMenuItems = new HashSet<ShoppingCartMenuItems>();
         }
 
         [Required]        
@@ -16,6 +16,6 @@ namespace GourmeJunk.Data.Models
         
         public virtual GourmeJunkUser User { get; set; }
 
-        //public ICollection<ShoppingCartMenuItems> ShoppingCartMenuItems { get; set; }
+        public ICollection<ShoppingCartMenuItems> ShoppingCartMenuItems { get; set; }
     }
 }

@@ -50,27 +50,7 @@ namespace GourmeJunk.Services
 
         public async Task UpdateShoppingCartAsync(string menuItemId, int itemCount, ClaimsIdentity user)
         {
-            //var userId = user.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-            //var shoppingCart = await this.shopingCartsRepository
-            //    .All()
-            //    .SingleOrDefaultAsync(cart => cart.UserId == userId);
-
-            //if (shoppingCart == null)
-            //{
-            //    shoppingCart = new ShoppingCart
-            //    {
-            //        UserId = userId                  
-            //    };
-
-            //    await this.shopingCartsRepository.AddAsync(shoppingCart);
-            //}
-            //else
-            //{
-            //    shoppingCart.Count += itemCount;
-            //}
-
-            //await this.shopingCartsRepository.SaveChangesAsync();
+            
         }
     }
 }

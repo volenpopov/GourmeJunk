@@ -13,7 +13,7 @@ namespace GourmeJunk.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
-            //this.ShoppingCart = new ShoppingCart();
+            this.ShoppingCart = new ShoppingCart();
         }
 
         [Required]
@@ -28,10 +28,10 @@ namespace GourmeJunk.Data.Models
         [MaxLength(100)]
         public string Address { get; set; }
 
-        //[Required]
-        //public string ShoppingCartId { get; set; }
+        [Required]
+        public string ShoppingCartId { get; set; }
 
-        //public virtual ShoppingCart ShoppingCart { get; set; }
+        public virtual ShoppingCart ShoppingCart { get; set; }
 
         public DateTime CreatedOn { get; set; }
 

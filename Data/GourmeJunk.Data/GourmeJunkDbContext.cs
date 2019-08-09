@@ -26,9 +26,9 @@ namespace GourmeJunk.Data
 
         public DbSet<Coupon> Coupons { get; set; }
 
-        //public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
 
-        //public DbSet<ShoppingCartMenuItems> ShoppingCartMenuItems { get; set; }
+        public DbSet<ShoppingCartMenuItems> ShoppingCartMenuItems { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
@@ -63,14 +63,18 @@ namespace GourmeJunk.Data
                 .HasIndex(coupon => coupon.Name)
                 .IsUnique();
 
-            //builder.Entity<ShoppingCart>()
-            //    .HasOne(cart => cart.User)
-            //    .WithOne(user => user.ShoppingCart)
-            //    .HasForeignKey<GourmeJunkUser>(user => user.ShoppingCartId);
+            builder.Entity<ShoppingCart>()
+                .HasOne(cart => cart.User)
+                .WithOne(user => user.ShoppingCart)
+                .HasForeignKey<GourmeJunkUser>(user => user.ShoppingCartId);
 
-            //builder.Entity<ShoppingCartMenuItems>()
-            //    .HasKey(shoppingCartMenuItems => new { shoppingCartMenuItems.ShoppingCartId, shoppingCartMenuItems.MenuItemId });
-            
+            builder.Entity<GourmeJunkUser>()
+                .HasIndex(user => user.ShoppingCartId)
+                .IsUnique();
+
+            builder.Entity<ShoppingCartMenuItems>()
+                .HasKey(shoppingCartMenuItems => new { shoppingCartMenuItems.ShoppingCartId, shoppingCartMenuItems.MenuItemId });
+
             // Needed for Identity models configuration
             base.OnModelCreating(builder);
 
