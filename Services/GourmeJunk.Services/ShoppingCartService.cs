@@ -7,6 +7,8 @@ using GourmeJunk.Services.Contracts;
 using GourmeJunk.Services.Mapping;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace GourmeJunk.Services
@@ -42,6 +44,11 @@ namespace GourmeJunk.Services
             };
 
             return shoppingCartModel;
+        }
+
+        public async Task UpdateShoppingCartAsync(string menuItemId, int itemCount, ClaimsIdentity user)
+        {
+            
         }
     }
 }

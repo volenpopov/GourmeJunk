@@ -12,55 +12,54 @@
 
 <form method="post">
     <div class="border backgroundWhite row">
-
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="col-12 pb-4 d-md-none">
             <img src="@Model.MenuItem.Image" class="w-100" style="border-radius:5px;border: 1px solid #bbb9b9;" />
         </div>
         <div class="col-md-8">
-            <div class="form-group row">
-                <div class="col-md-4">
-                    <label asp-for="MenuItem.Name" class="text-info font-weight-bold"></label>
-                </div>
-                <div class="col-md-8">
-                    <input asp-for="MenuItem.Name" readonly class="form-control" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-md-4">
-                    <label asp-for="MenuItem.Description" class="text-info font-weight-bold"></label>
-                </div>
-                <div class="col-md-8">
-                    <div class="border p-2">
-                        @Html.Raw(Model.MenuItem.Description)
+            <fieldset disabled>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label asp-for="MenuItem.Name" class="text-info font-weight-bold"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="MenuItem.Name" class="form-control" />
                     </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-md-4">
-                    <label asp-for="MenuItem.Price" class="text-info font-weight-bold"></label>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label asp-for="MenuItem.Description" class="text-info font-weight-bold"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea class="form-control" rows="3" asp-for="MenuItem.Description"></textarea>
+                    </div>
                 </div>
-                <div class="col-md-8">
-                    <input asp-for="MenuItem.Price" readonly class="form-control" />
-                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label asp-for="MenuItem.Price" class="text-info font-weight-bold"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="MenuItem.Price" class="form-control" />
+                    </div>
 
-            </div>
-            <div class="form-group row">
-                <div class="col-md-4">
-                    <label asp-for="MenuItem.CategoryId" class="text-info font-weight-bold"></label>
                 </div>
-                <div class="col-md-8">
-                    <input asp-for="MenuItem.CategoryName" readonly class="form-control" />
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label asp-for="MenuItem.CategoryId" class="text-info font-weight-bold"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="MenuItem.CategoryName" class="form-control" />
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-md-4">
-                    <label asp-for="MenuItem.SubCategoryId" class="text-info font-weight-bold"></label>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label asp-for="MenuItem.SubCategoryId" class="text-info font-weight-bold"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="MenuItem.SubCategoryName" class="form-control" />
+                    </div>
                 </div>
-                <div class="col-md-8">
-                    <input asp-for="MenuItem.SubCategoryName" readonly class="form-control" />
-                </div>
-            </div>
+            </fieldset>
             <div class="form-group row">
                 <div class="col-md-4">
                     <label asp-for="Count" class="text-info font-weight-bold"></label>
@@ -74,7 +73,7 @@
                 <div class="col-md-4">
                 </div>
                 <div class="col-md-4">
-                    <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                    <a asp-action="Index" class="btn btn-secondary form-control">Back to List</a>
                 </div>
                 <div class="col-md-4">
                     <button type="submit" value="Add to Cart" class="btn btn-primary form-control">Add to Cart</button>

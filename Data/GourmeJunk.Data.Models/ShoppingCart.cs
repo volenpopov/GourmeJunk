@@ -1,4 +1,5 @@
 ﻿using GourmeJunk.Data.Common.Models;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace GourmeJunk.Data.Models
@@ -7,7 +8,7 @@ namespace GourmeJunk.Data.Models
     {
         public ShoppingCart()
         {
-            this.Count = 1;
+            this.ShoppingCartMenuItems = new HashSet<ShoppingCartMenuItems>();
         }
 
         [Required]
@@ -15,12 +16,6 @@ namespace GourmeJunk.Data.Models
 
         public virtual GourmeJunkUser User { get; set; }
 
-        [Required]
-        public string MenuItemId { get; set; }
-
-        public virtual MenuItem MenuItem { get; set; }
-
-        [Range(DataModelConstants.CART_MIN_ITEMS_COUNT, int.MaxValue, ErrorMessage = DataModelConstants.CART_ITEMS_COUNT_RANGE_ERRORMSG)]
-        public int Count { get; set; }
+        public ICollection<ShoppingCartMenuItems> ShoppingCartMenuItems { get; set; }
     }
 }

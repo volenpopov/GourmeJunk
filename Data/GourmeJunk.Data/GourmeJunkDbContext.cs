@@ -28,6 +28,8 @@ namespace GourmeJunk.Data
 
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
 
+        public DbSet<ShoppingCartMenuItems> ShoppingCartMenuItems { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
@@ -60,6 +62,9 @@ namespace GourmeJunk.Data
             builder.Entity<Coupon>()
                 .HasIndex(coupon => coupon.Name)
                 .IsUnique();
+
+            builder.Entity<ShoppingCartMenuItems>()
+                .HasKey(shoppingCartMenuItems => new { shoppingCartMenuItems.ShoppingCartId, shoppingCartMenuItems.MenuItemId });
 
             // Needed for Identity models configuration
             base.OnModelCreating(builder);

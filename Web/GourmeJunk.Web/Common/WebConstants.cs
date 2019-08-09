@@ -4,6 +4,8 @@
     {
         public const string REGISTER_INPUT_ROLE_FIELD = "inputUserRole";
 
+        public const string CART_FORM_MENUITEM_ID_FIELDNAME = "MenuItem.Id";
+
         public class IdentityModels
         {
             public const string USERS_NAME_PATTERN = @"^[a-zA-Z]+$";

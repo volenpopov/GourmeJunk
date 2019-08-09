@@ -1,9 +1,11 @@
 ﻿using GourmeJunk.Models.ViewModels.Home;
 using GourmeJunk.Services.Contracts;
+using GourmeJunk.Web.Common;
 using GourmeJunk.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace GourmeJunk.Web.Controllers
@@ -46,6 +48,27 @@ namespace GourmeJunk.Web.Controllers
             var shoppingCartViewModel = await this.shoppingCartService.GetShoppingCartViewModelAsync(id);
 
             return View(shoppingCartViewModel);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ActionName("Details")]
+        public async Task<IActionResult> DetailsPost(
+            [FromForm(Name = WebConstants.CART_FORM_MENUITEM_ID_FIELDNAME)] string menuItemId,
+            int count)
+        {            
+            if (!ModelState.IsValid)
+            {
+                var shoppingCartViewModel = await this.shoppingCartService.GetShoppingCartViewModelAsync(menuItemId);
+
+                return View(shoppingCartViewModel);
+            }
+
+            var user = (ClaimsIdentity)this.User.Identity;
+            
+            await this.shoppingCartService.UpdateShoppingCartAsync(menuItemId, count, user);
+
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Privacy()
