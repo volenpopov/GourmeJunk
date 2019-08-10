@@ -16,10 +16,17 @@ namespace GourmeJunk.Services
     public class UsersService : IUsersService
     {
         private readonly IDeletableEntityRepository<GourmeJunkUser> usersRepository;
+        private readonly IRepository<ShoppingCart> shoppingCartsRepository;
+        private readonly IDeletableEntityRepository<ShoppingCartMenuItems> shoppingCartMenuItemsRepository;
 
-        public UsersService(IDeletableEntityRepository<GourmeJunkUser> usersRepository)
+        public UsersService(
+            IDeletableEntityRepository<GourmeJunkUser> usersRepository,
+            IRepository<ShoppingCart> shoppingCartsRepository,
+            IDeletableEntityRepository<ShoppingCartMenuItems> shoppingCartMenuItemsRepository)
         {
             this.usersRepository = usersRepository;
+            this.shoppingCartsRepository = shoppingCartsRepository;
+            this.shoppingCartMenuItemsRepository = shoppingCartMenuItemsRepository;
         }
 
         public async Task<IEnumerable<UserViewModel>> GetAllAsync()
@@ -51,7 +58,28 @@ namespace GourmeJunk.Services
             await this.usersRepository.SaveChangesAsync();
         }
 
-        private async Task<GourmeJunkUser> GetUserByIdAsync(string userId)
+        public async Task<int> GetUserIndividualItemsCount(string email)
+        {
+            var individualItemsCount = 0;
+
+            var userId = await this.GetUserIdByEmailAsync(email);
+
+            var shoppingCart = await this.shoppingCartsRepository
+                .All()
+                .SingleOrDefaultAsync(cart => cart.UserId == userId);
+
+            if (shoppingCart != null)
+            {
+                individualItemsCount = this.shoppingCartMenuItemsRepository
+                    .All()
+                    .Where(shoppingCartMenuItem => shoppingCartMenuItem.ShoppingCartId == shoppingCart.Id)
+                    .Count();
+            }
+
+            return individualItemsCount;
+        }
+
+        public async Task<GourmeJunkUser> GetUserByIdAsync(string userId)
         {
             var user = await this.usersRepository
                 .All()
@@ -59,12 +87,26 @@ namespace GourmeJunk.Services
 
             if (user == null)
             {
-                throw new NullReferenceException(string.Format(ServicesDataConstants.NULL_REFERENCE_ID, 
-                    nameof(ServicesDataConstants.USER), 
+                throw new NullReferenceException(string.Format(ServicesDataConstants.NULL_REFERENCE_ID,
+                    nameof(ServicesDataConstants.USER),
                     userId));
             }
 
             return user;
         }
+
+        private async Task<string> GetUserIdByEmailAsync(string email)
+        {
+            var user = await this.usersRepository
+                .All()
+                .SingleOrDefaultAsync(usr => usr.Email == email);
+
+            if (user == null)
+            {
+                throw new NullReferenceException(string.Format(ServicesDataConstants.NULL_REFERENCE_USER_EMAIL, email));
+            }
+
+            return user.Id;
+        }        
     }
 }

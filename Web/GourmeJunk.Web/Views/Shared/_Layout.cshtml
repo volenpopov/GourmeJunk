@@ -1,4 +1,11 @@
 ﻿@using GourmeJunk.Common
+@using GourmeJunk.Web.Common
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Identity
+@using GourmeJunk.Data.Models
+
+@inject IHttpContextAccessor httpContextAccessor
+@inject SignInManager<GourmeJunkUser> signInManager
 
 <!DOCTYPE html>
 <html>
@@ -75,6 +82,21 @@
                                     </a>
                                 </div>
                             </li>
+                        }
+
+                        @if (httpContextAccessor.HttpContext.Session.GetInt32(@WebConstants.SESSION_NAME_SHOPPING_CART_INDIVIDUAL_ITEMS_COUNT) != null)
+                        {
+                            @if (signInManager.IsSignedIn(User))
+                            {
+                                <li style="color:white">
+                                    <a asp-area="Customer" asp-controller="Cart" asp-action="Index" class="nav-link">
+                                        @{
+                                            var userIndividualItemsCount = httpContextAccessor.HttpContext.Session.GetInt32(WebConstants.SESSION_NAME_SHOPPING_CART_INDIVIDUAL_ITEMS_COUNT);
+                                        }
+                                        <i class="fas fa-shopping-cart text-warning"></i>&nbsp; <span class="text-warning">(@userIndividualItemsCount)</span>
+                                    </a>
+                                </li>
+                            }
                         }
 
                         <li class="nav-item text-muted">

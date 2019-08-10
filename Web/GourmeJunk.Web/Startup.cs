@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Reflection;
 
 namespace GourmeJunk.Web
@@ -33,6 +34,13 @@ namespace GourmeJunk.Web
         {
             services.AddDbContext<GourmeJunkDbContext>(options =>
                     options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddSession(options =>
+            {
+                options.Cookie.IsEssential = true;
+                options.Cookie.HttpOnly = true;                
+                options.IdleTimeout = TimeSpan.FromDays(1);
+            });
 
             services.AddIdentity<GourmeJunkUser, GourmeJunkRole>(options =>
                 {
@@ -112,8 +120,8 @@ namespace GourmeJunk.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
             app.UseAuthentication();
-
 
             app.UseMvc(routes =>
             {

@@ -6,6 +6,10 @@
 
         public const string CART_FORM_MENUITEM_ID_FIELDNAME = "MenuItem.Id";
 
+        public const string SESSION_NAME_SHOPPING_CART_INDIVIDUAL_ITEMS_COUNT = "ssCartCount";
+
+        public const int SESSION_SHOPPING_CART_INITIAL_INDIVIDUAL_ITEMS_COUNT = 0;
+
         public class IdentityModels
         {
             public const string USERS_NAME_PATTERN = @"^[a-zA-Z]+$";

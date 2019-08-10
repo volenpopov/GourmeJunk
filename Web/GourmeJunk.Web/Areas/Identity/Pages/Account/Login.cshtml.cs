@@ -10,6 +10,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using GourmeJunk.Services.Contracts;
+using Microsoft.AspNetCore.Http;
+using GourmeJunk.Web.Common;
 
 namespace GourmeJunk.Web.Areas.Identity.Pages.Account
 {
@@ -18,11 +21,16 @@ namespace GourmeJunk.Web.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<GourmeJunkUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly IUsersService _usersService;
 
-        public LoginModel(SignInManager<GourmeJunkUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(
+            SignInManager<GourmeJunkUser> signInManager, 
+            ILogger<LoginModel> logger,
+            IUsersService usersService)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _usersService = usersService;
         }
 
         [BindProperty]
@@ -77,6 +85,10 @@ namespace GourmeJunk.Web.Areas.Identity.Pages.Account
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
+                    var userIndividualItemsCount = await _usersService.GetUserIndividualItemsCount(Input.Email);
+
+                    HttpContext.Session.SetInt32(WebConstants.SESSION_NAME_SHOPPING_CART_INDIVIDUAL_ITEMS_COUNT, userIndividualItemsCount);
+
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }

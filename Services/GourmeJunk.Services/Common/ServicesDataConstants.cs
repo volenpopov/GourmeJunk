@@ -12,6 +12,8 @@
 
         public const string NULL_REFERENCE_USER_CART = "User with Id {0} doesn't have a shopping cart.";
 
+        public const string NULL_REFERENCE_USER_EMAIL = "User with email {0} doesn't exist.";
+
         public const string NO_SUBCATEGORY_SELECTED_DEFAULT_VALUE = "-1";
 
         public const string JPG_EXTENSION = ".jpg";

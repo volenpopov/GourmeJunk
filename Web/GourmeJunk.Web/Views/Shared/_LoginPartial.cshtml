@@ -1,13 +1,13 @@
 @using Microsoft.AspNetCore.Identity
 @using GourmeJunk.Data.Models
 
-@inject SignInManager<GourmeJunkUser> SignInManager
+@inject SignInManager<GourmeJunkUser> signInManager
 
     <ul class="navbar-nav">
-        @if (SignInManager.IsSignedIn(User))
+        @if (signInManager.IsSignedIn(User))
         {
         <li class="nav-item">            
-            <a class="nav-link text-light" href="#">Hi, @User.Identity.Name!</a>
+            <a class="nav-link text-light" href="#">Hi, <span class="text-warning"><u>@User.Identity.Name!</u></span></a>
         </li>
             <li class="nav-item ml-3">
                 <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout">

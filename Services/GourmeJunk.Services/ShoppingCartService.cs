@@ -48,9 +48,9 @@ namespace GourmeJunk.Services
             return shoppingCartModel;
         }
 
-        public async Task UpdateShoppingCartAsync(string menuItemId, int itemCount, ClaimsIdentity user)
+        public async Task UpdateShoppingCartAsync(string menuItemId, int itemCount, ClaimsIdentity claimsIdentity)
         {
-            var userId = user.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             var shoppingCart = await this.shoppingCartsRepository
                 .All()

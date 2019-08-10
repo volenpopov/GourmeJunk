@@ -3,6 +3,7 @@ using GourmeJunk.Services.Contracts;
 using GourmeJunk.Web.Common;
 using GourmeJunk.Web.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Security.Claims;
@@ -16,18 +17,21 @@ namespace GourmeJunk.Web.Controllers
         private readonly ICategoriesService categoriesService;
         private readonly IMenuItemsService menuItemsService;
         private readonly IShoppingCartService shoppingCartService;
+        private readonly IUsersService usersService;
 
         public HomeController(
             ICouponsService couponsService,
             ICategoriesService categoriesService,
             IMenuItemsService menuItemsService,
-            IShoppingCartService shoppingCartService
+            IShoppingCartService shoppingCartService,
+            IUsersService usersService
             )
         {
             this.couponsService = couponsService;
             this.categoriesService = categoriesService;
             this.menuItemsService = menuItemsService;
             this.shoppingCartService = shoppingCartService;
+            this.usersService = usersService;
         }
 
         public async Task<IActionResult> Index()
@@ -38,6 +42,20 @@ namespace GourmeJunk.Web.Controllers
                 Categories = await this.categoriesService.GetAllAsync(),
                 MenuItems = await this.menuItemsService.GetAllIndexMenuItemsModelsAsync()
             };
+
+            var claimsIdentity = (ClaimsIdentity)this.User.Identity;
+            var userIdClaim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+            if (userIdClaim != null)
+            {
+                var userId = userIdClaim.Value;
+
+                var user = await this.usersService.GetUserByIdAsync(userId);
+
+                var userIndividualItemsCount = await this.usersService.GetUserIndividualItemsCount(user.Email);
+
+                HttpContext.Session.SetInt32(WebConstants.SESSION_NAME_SHOPPING_CART_INDIVIDUAL_ITEMS_COUNT, userIndividualItemsCount);
+            }
 
             return View(indexViewModel);
         }
@@ -64,9 +82,9 @@ namespace GourmeJunk.Web.Controllers
                 return View(shoppingCartViewModel);
             }
 
-            var user = (ClaimsIdentity)this.User.Identity;
+            var claimsIdentity = (ClaimsIdentity)this.User.Identity;
             
-            await this.shoppingCartService.UpdateShoppingCartAsync(menuItemId, count, user);
+            await this.shoppingCartService.UpdateShoppingCartAsync(menuItemId, count, claimsIdentity);
 
             return RedirectToAction(nameof(Index));
         }
