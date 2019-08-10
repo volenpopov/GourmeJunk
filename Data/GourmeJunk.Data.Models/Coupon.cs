@@ -11,10 +11,8 @@ namespace GourmeJunk.Data.Models
         
         public CouponType CouponType { get; set; }
         
-        [Range(typeof(decimal), DataModelConstants.MIN_PRICE, DataModelConstants.MAX_PRICE)]
         public decimal Discount { get; set; }
-
-        [Range(typeof(decimal), DataModelConstants.MIN_PRICE, DataModelConstants.MAX_PRICE)]
+      
         public decimal? MinimumOrderAmount { get; set; }
 
         public byte[] Image { get; set; }

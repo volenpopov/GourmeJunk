@@ -15,13 +15,15 @@ namespace GourmeJunk.Data.Models
         public string MenuItemId { get; set; }
 
         public MenuItem MenuItem { get; set; }
-
-        [Range(DataModelConstants.CART_MIN_ITEMS_COUNT, int.MaxValue, ErrorMessage = DataModelConstants.CART_ITEMS_COUNT_RANGE_ERRORMSG)]
+        
         public int Count { get; set; }
             
         public DateTime CreatedOn { get; set; }
+
         public DateTime? LastModifiedOn { get; set; }
+
         public bool IsDeleted { get; set; }
+
         public DateTime? DeletedOn { get; set; }
     }
 }

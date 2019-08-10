@@ -20,8 +20,7 @@ namespace GourmeJunk.Data.Models
         public string SubCategoryId { get; set; }
 
         public virtual SubCategory SubCategory { get; set; }
-
-        [Range(typeof(decimal), DataModelConstants.MIN_PRICE, DataModelConstants.MAX_PRICE)]
+        
         public decimal Price { get; set; }
     }
 }
