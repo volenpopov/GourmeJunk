@@ -10,6 +10,8 @@
 
         public const int SESSION_SHOPPING_CART_INITIAL_INDIVIDUAL_ITEMS_COUNT = 0;
 
+        public const string SESSION_NAME_COUPON_CODE = "ssCouponCode";        
+
         public class IdentityModels
         {
             public const string USERS_NAME_PATTERN = @"^[a-zA-Z]+$";
@@ -21,11 +23,26 @@
             public const string FIRSTNAME_DISPLAY = "First Name";
 
             public const string LASTNAME_DISPLAY = "Last Name";
-        }        
+        }
 
         public class Error
         {
-            public const string ENTITY_ALREADY_EXISTS = "Error: {0} already exists!";            
+            public const string ENTITY_ALREADY_EXISTS = "Error: {0} already exists!";
+        }
+
+        public class OrderItem
+        {
+            public const string ITEM_ID_PROPERTY = "item.Id";
+            public const string ITEM_NAME_PROPERTY = "item.Name";
+            public const string ITEM_PRICE_PROPERTY = "item.Price";
+            public const string ITEM_COUNT_PROPERTY = "item.Count";
+        }
+
+        public class Stripe
+        {
+            public const string STRIPE_SECTION_NAME = "Stripe";
+
+            public const string SECRET_KEY_SECTION_NAME = "SecretKey";            
         }
     }
 }

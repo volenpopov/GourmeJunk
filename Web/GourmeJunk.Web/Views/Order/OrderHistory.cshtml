@@ -1,0 +1,137 @@
+﻿@using GourmeJunk.Models.ViewModels.Orders
+@using GourmeJunk.Data.Models
+
+@model OrdersHistoryListViewModel
+
+@{
+    ViewData["Title"] = "Order History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br />
+<div class="border backgroundWhite">
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-info"> Past Order List</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a class="btn btn-secondary" asp-controller="Home" asp-action="Index">Go Back</a>
+        </div>
+    </div>
+    <br />
+    <div>
+        @if (Model.Orders.Count() > 0)
+        {
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+                    <th>
+                        @Html.DisplayNameFor(m => m.Orders.First().Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.Orders.First().PickupName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.Orders.First().Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.Orders.First().PickupTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.Orders.First().OrderTotal)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.Orders.First().TotalItems)
+                    </th>
+                    <th></th>
+
+                </tr>
+                @foreach (var item in Model.Orders)
+                {
+                    <tr>
+                        <td>
+                            @{
+                                var shortId = item.Id.Substring(item.Id.Length - 5, 5).ToUpper();
+                            }
+                            @Html.DisplayFor(m => shortId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.PickupName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.PickupTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.OrderTotal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.TotalItems)
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary anchorDetail" data-id="@item.Id" data-toggle="modal">
+                                <i class="far fa-list-alt"></i> Details
+                            </button>
+                            @if (item.Status != OrderStatus.Cancelled.ToString())
+                            {
+                                <button type="button" class="btn btn-secondary btnOrderStatus" data-id="@item.Id" data-toggle="modal">
+                                    <i class="far fa-clock"></i> Status
+                                </button>
+                            }
+                            else
+                            {
+                                <button type="button" class="btn btn-warning">
+                                    Cancelled
+                                </button>
+                            }
+                        </td>
+                    </tr>
+                }
+            </table>
+            <div page-model="@Model.PagingInfo" page-classes-enabled="true" page-class="btn border"
+                     page-class-normal="btn btn-light" page-class-selected="btn btn-info active"
+                     class="btn-group float-right">
+            </div>
+            <br />
+        }
+        else
+        {
+            <p class="lead  ">No orders exist...</p>
+        }
+    </div>
+</div>
+
+<div class="modal fade" id="orderDetailsModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-light justify-content-center">
+                <h5 class="modal-title">Order Details</h5>
+            </div>
+            <div class="modal-body justify-content-center" id="orderDetailsContent">
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary px-5" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="orderStatusModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info text-light justify-content-center">
+                <h5 class="modal-title">Order Status </h5>
+            </div>
+            <div class="modal-body justify-content-center" id='orderStatusContent'>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary px-5" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/js/showOrderDetailsOrStatus.js"></script>
+}

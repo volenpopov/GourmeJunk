@@ -8,6 +8,7 @@ using GourmeJunk.Models.ViewModels.Categories;
 using GourmeJunk.Services;
 using GourmeJunk.Services.Contracts;
 using GourmeJunk.Services.Mapping;
+using GourmeJunk.Web.Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -16,6 +17,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Stripe;
 using System;
 using System.Reflection;
 
@@ -68,6 +70,8 @@ namespace GourmeJunk.Web
                     options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
                 });
 
+            services.Configure<StripeSettings>(Configuration.GetSection(WebConstants.Stripe.STRIPE_SECTION_NAME));
+
             //services.AddSingleton(this.Configuration);
 
             // Identity stores
@@ -86,6 +90,7 @@ namespace GourmeJunk.Web
             services.AddScoped<ICouponsService, CouponsService>();
             services.AddScoped<IUsersService, UsersService>();
             services.AddScoped<IShoppingCartService, ShoppingCartService>();
+            services.AddScoped<IOrdersService, OrdersService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -116,6 +121,9 @@ namespace GourmeJunk.Web
                 app.UseExceptionHandler("/Home/Error");               
                 app.UseHsts();
             }
+
+            StripeConfiguration.ApiKey = Configuration
+                .GetSection(WebConstants.Stripe.STRIPE_SECTION_NAME)[WebConstants.Stripe.SECRET_KEY_SECTION_NAME];
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

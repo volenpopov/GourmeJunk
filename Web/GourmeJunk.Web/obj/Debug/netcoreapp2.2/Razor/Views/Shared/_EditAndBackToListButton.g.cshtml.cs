@@ -19,12 +19,12 @@ using GourmeJunk.Web;
 #line default
 #line hidden
 #line 2 "E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\Views\_ViewImports.cshtml"
-using GourmeJunk.Web.Models;
+using GourmeJunk.Web.TagHelpers;
 
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b8894900a106ad232657257ddf56658d78adff16", @"/Views/Shared/_EditAndBackToListButton.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"966d4390df66aff9690f17888bd09a63bc809817", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"39c800862f702875aded245ff5f6ac5608923ed1", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__EditAndBackToListButton : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<string>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("type", new global::Microsoft.AspNetCore.Html.HtmlString("submit"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -59,7 +59,7 @@ using GourmeJunk.Web.Models;
             WriteLiteral("\r\n<div class=\"row\">\r\n    <div class=\"col-6\">\r\n        ");
             EndContext();
             BeginContext(71, 94, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "b8894900a106ad232657257ddf56658d78adff165259", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "b8894900a106ad232657257ddf56658d78adff165263", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_FormActionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.FormActionTagHelper>();
@@ -92,7 +92,7 @@ using GourmeJunk.Web.Models;
             WriteLiteral("\r\n    </div>\r\n    <div class=\"col-6\">\r\n        ");
             EndContext();
             BeginContext(212, 77, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b8894900a106ad232657257ddf56658d78adff167638", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b8894900a106ad232657257ddf56658d78adff167642", async() => {
                 BeginContext(273, 12, true);
                 WriteLiteral("Back to List");
                 EndContext();

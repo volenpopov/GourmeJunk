@@ -19,12 +19,12 @@ using GourmeJunk.Web;
 #line default
 #line hidden
 #line 2 "E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\Views\_ViewImports.cshtml"
-using GourmeJunk.Web.Models;
+using GourmeJunk.Web.TagHelpers;
 
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"caf0ba0e017fe2d5d40e06cba52017213983ba34", @"/Views/Shared/_StatusMessage.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"966d4390df66aff9690f17888bd09a63bc809817", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"39c800862f702875aded245ff5f6ac5608923ed1", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__StatusMessage : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<string>
     {
         #pragma warning disable 1998

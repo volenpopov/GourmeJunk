@@ -14,7 +14,7 @@ namespace GourmeJunk.Data.Models
         [Required]
         public string MenuItemId { get; set; }
 
-        public MenuItem MenuItem { get; set; }
+        public virtual MenuItem MenuItem { get; set; }
         
         public int Count { get; set; }
             

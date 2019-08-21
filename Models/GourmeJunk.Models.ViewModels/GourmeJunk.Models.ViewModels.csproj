@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\GourmeJunk.Data.Models\GourmeJunk.Data.Models.csproj" />
+    <ProjectReference Include="..\..\GourmeJunk.Common\GourmeJunk.Common.csproj" />
     <ProjectReference Include="..\..\Services\GourmeJunk.Services.Mapping\GourmeJunk.Services.Mapping.csproj" />
     <ProjectReference Include="..\GourmeJunk.Models.Common\GourmeJunk.Models.Common.csproj" />
   </ItemGroup>

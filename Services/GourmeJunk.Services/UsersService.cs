@@ -71,12 +71,19 @@ namespace GourmeJunk.Services
             if (shoppingCart != null)
             {
                 individualItemsCount = this.shoppingCartMenuItemsRepository
-                    .All()
+                    .AllAsNoTracking()
                     .Where(shoppingCartMenuItem => shoppingCartMenuItem.ShoppingCartId == shoppingCart.Id)
                     .Count();
             }
 
             return individualItemsCount;
+        }
+
+        public async Task<string> GetUserFirstLastNameByIdAsync(string userId)
+        {
+            var user = await this.GetUserByIdAsync(userId);
+
+            return $"{user.FirstName} {user.LastName}";
         }
 
         public async Task<GourmeJunkUser> GetUserByIdAsync(string userId)

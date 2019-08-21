@@ -2,11 +2,11 @@
 using GourmeJunk.Models.ViewModels.MenuItems;
 using GourmeJunk.Services.Mapping;
 
-namespace GourmeJunk.Models.ViewModels.Home
+namespace GourmeJunk.Models.ViewModels.ShoppingCarts
 {
-    public class ShoppingCartViewModel : IMapFrom<ShoppingCart>
+    public class ShoppingCartMenuItemDetailsViewModel : IMapFrom<ShoppingCart>
     {
-        public ShoppingCartViewModel()
+        public ShoppingCartMenuItemDetailsViewModel()
         {
             this.Count = 1;
         }

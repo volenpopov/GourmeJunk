@@ -156,6 +156,16 @@
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
         }
       },
+      "GourmeJunk.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/GourmeJunk.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GourmeJunk.Common.dll": {}
+        }
+      },
       "GourmeJunk.Data.Common/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -968,6 +978,11 @@
         "system.threading.tasks.nuspec"
       ]
     },
+    "GourmeJunk.Common/1.0.0": {
+      "type": "project",
+      "path": "../../GourmeJunk.Common/GourmeJunk.Common.csproj",
+      "msbuildProject": "../../GourmeJunk.Common/GourmeJunk.Common.csproj"
+    },
     "GourmeJunk.Data.Common/1.0.0": {
       "type": "project",
       "path": "../../Data/GourmeJunk.Data.Common/GourmeJunk.Data.Common.csproj",
@@ -991,6 +1006,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
+      "GourmeJunk.Common >= 1.0.0",
       "GourmeJunk.Data.Models >= 1.0.0",
       "GourmeJunk.Models.Common >= 1.0.0",
       "GourmeJunk.Services.Mapping >= 1.0.0",
@@ -1029,6 +1045,9 @@
           "projectReferences": {
             "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Models\\GourmeJunk.Data.Models.csproj": {
               "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Models\\GourmeJunk.Data.Models.csproj"
+            },
+            "E:\\Volen\\Programming\\Github\\GourmeJunk\\GourmeJunk.Common\\GourmeJunk.Common.csproj": {
+              "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\GourmeJunk.Common\\GourmeJunk.Common.csproj"
             },
             "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.Common\\GourmeJunk.Models.Common.csproj": {
               "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.Common\\GourmeJunk.Models.Common.csproj"

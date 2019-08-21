@@ -19,12 +19,12 @@ using GourmeJunk.Web;
 #line default
 #line hidden
 #line 2 "E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\Views\_ViewImports.cshtml"
-using GourmeJunk.Web.Models;
+using GourmeJunk.Web.TagHelpers;
 
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a81817d22abb356f77b74ca374998f54a43135af", @"/Views/Shared/_CreateButtonPartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"966d4390df66aff9690f17888bd09a63bc809817", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"39c800862f702875aded245ff5f6ac5608923ed1", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__CreateButtonPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Create", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -55,7 +55,7 @@ using GourmeJunk.Web.Models;
             WriteLiteral("<p>\r\n    ");
             EndContext();
             BeginContext(9, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a81817d22abb356f77b74ca374998f54a43135af3964", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a81817d22abb356f77b74ca374998f54a43135af3968", async() => {
                 BeginContext(53, 56, true);
                 WriteLiteral("\r\n    <i class=\"fas fa-plus\"></i>&nbsp; Create New\r\n    ");
                 EndContext();

@@ -386,6 +386,9 @@
               "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Models\\GourmeJunk.Data.Models.csproj": {
                 "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data.Models\\GourmeJunk.Data.Models.csproj"
               },
+              "E:\\Volen\\Programming\\Github\\GourmeJunk\\GourmeJunk.Common\\GourmeJunk.Common.csproj": {
+                "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\GourmeJunk.Common\\GourmeJunk.Common.csproj"
+              },
               "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.Common\\GourmeJunk.Models.Common.csproj": {
                 "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.Common\\GourmeJunk.Models.Common.csproj"
               },
@@ -537,6 +540,10 @@
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[28.2.0, )"
             }
           },
           "imports": [

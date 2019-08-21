@@ -16,6 +16,8 @@
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/jquery-ui.css" />
+        <link rel="stylesheet" href="~/css/jquery.timepicker.min.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -23,6 +25,8 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
+        <link rel="stylesheet" href="~/css/jquery-ui.css" />
+        <link rel="stylesheet" href="~/css/jquery.timepicker.min.css" />
     </environment>
     <link rel="stylesheet" href="~/fontawesome/css/all.css" />
     <link rel="stylesheet" href="~/css/site.css" />
@@ -89,7 +93,12 @@
                             @if (signInManager.IsSignedIn(User))
                             {
                                 <li style="color:white">
-                                    <a asp-area="Customer" asp-controller="Cart" asp-action="Index" class="nav-link">
+                                    <a asp-controller="Order" asp-action="OrderHistory" class="nav-link">
+                                        <span class="text-white">Order History</span>
+                                    </a>
+                                </li>
+                                <li style="color:white">
+                                    <a asp-controller="ShoppingCart" asp-action="Index" class="nav-link">
                                         @{
                                             var userIndividualItemsCount = httpContextAccessor.HttpContext.Session.GetInt32(WebConstants.SESSION_NAME_SHOPPING_CART_INDIVIDUAL_ITEMS_COUNT);
                                         }
@@ -97,7 +106,7 @@
                                     </a>
                                 </li>
                             }
-                        }                        
+                        }
                     </ul>
                 </div>
             </div>
@@ -118,6 +127,7 @@
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="~/js/jquery-ui.js"></script>
     </environment>
     <environment exclude="Development">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
@@ -132,6 +142,8 @@
                 crossorigin="anonymous"
                 integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
         </script>
+        <script src="~/js/jquery-ui.js"></script>
+        <script src="~/js/jquery.timepicker.min.js"></script>
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
 

@@ -25,6 +25,10 @@
     <Compile Remove="Migrations\20190809132836_AddShoppingCartModel.Designer.cs" />
     <Compile Remove="Migrations\20190809134205_AddShoppingCartModel.cs" />
     <Compile Remove="Migrations\20190809134205_AddShoppingCartModel.Designer.cs" />
+    <Compile Remove="Migrations\20190817185336_AddOrderAndOrderMenuItemsModels.cs" />
+    <Compile Remove="Migrations\20190817185336_AddOrderAndOrderMenuItemsModels.Designer.cs" />
+    <Compile Remove="Migrations\20190818124520_unknown.cs" />
+    <Compile Remove="Migrations\20190818124520_unknown.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -19,7 +19,7 @@ using GourmeJunk.Web;
 #line default
 #line hidden
 #line 2 "E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\Views\_ViewImports.cshtml"
-using GourmeJunk.Web.Models;
+using GourmeJunk.Web.TagHelpers;
 
 #line default
 #line hidden
@@ -29,7 +29,7 @@ using GourmeJunk.Models.ViewModels.Home;
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"493d317a85bf904896d348f96e4fb1adbe5337df", @"/Views/Home/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"966d4390df66aff9690f17888bd09a63bc809817", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"39c800862f702875aded245ff5f6ac5608923ed1", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IndexViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("name", "_ThumbnailAreaPartial", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -186,7 +186,7 @@ WriteAttributeValue("", 903, imgSrc, 903, 7, false);
             WriteLiteral("        <div class=\"row\" id=\"menu-wrapper\">\r\n            ");
             EndContext();
             BeginContext(1633, 120, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "493d317a85bf904896d348f96e4fb1adbe5337df9364", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "493d317a85bf904896d348f96e4fb1adbe5337df9368", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();
@@ -223,7 +223,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper.Model = Model.MenuItems.W
                 WriteLiteral("   \r\n");
                 EndContext();
                 BeginContext(1810, 62, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "493d317a85bf904896d348f96e4fb1adbe5337df11544", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "493d317a85bf904896d348f96e4fb1adbe5337df11548", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

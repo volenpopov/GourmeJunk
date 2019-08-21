@@ -1,0 +1,175 @@
+﻿@using GourmeJunk.Models.ViewModels.Orders
+@using GourmeJunk.Web.Common
+@using Microsoft.Extensions.Options
+
+@inject IOptions<StripeSettings> Stripe
+
+@model OrderSummaryViewModel
+
+@{
+    ViewData["Title"] = "Order Summary Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post">
+    @if (Model.OrderItems.Count() > 0)
+    {
+        <br />
+        <input id="userId" asp-for="@Model.UserId" hidden />
+        <div>
+            <div class="container">
+                <div class="card">
+                    <div class="card-header bg-dark text-light ml-0 row container">
+                        <div class="col-6">
+                            <i class="fas fa-shopping-cart"></i> &nbsp;
+                            Order Summary
+                        </div>
+                        <div class="col-6 text-right">
+                            <a asp-controller="ShoppingCart" asp-action="Index" class="btn btn-outline-light btn-sm">Back to Cart</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="container rounded p-2">
+                            <div class="row">
+                                <div class="col-12 col-lg-6 pb-4">
+                                    <div class="row">
+                                        <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                            <span class="text-info">PickUp Details:</span>
+                                        </h4>
+                                    </div>
+                                    <div class="row my-1">
+                                        <div class="col-3">
+                                            <label class="text-secondary font-weight-bold">Name</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input asp-for="@Model.PickupName" id="txtName" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="row my-1">
+                                        <div class="col-3">
+                                            <label class="text-secondary font-weight-bold">Phone</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input asp-for="@Model.PhoneNumber" id="phone" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="row my-1">
+                                        <div class="col-3">
+                                            <label class="text-secondary font-weight-bold">Date</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input asp-for="@Model.PickupDate" id="datepicker" value="" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="row my-1">
+                                        <div class="col-3">
+                                            <label class="text-secondary font-weight-bold">Time</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input asp-for="@Model.PickupTime" id="timepicker" value="" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="row my-1">
+                                        <div class="col-3">
+                                            <label class="text-secondary font-weight-bold">Comments: </label>
+                                        </div>
+                                        <div class="col-9">
+                                            <textarea asp-for="@Model.Comments" rows="3" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-lg-5 offset-lg-1">
+                                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                        <span class="text-info">Order Summary:</span>
+                                    </h4>
+                                    <ul class="list-group mb-3">
+                                        @foreach (var item in Model.OrderItems)
+                                        {
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <div>
+                                                    <input asp-for="@item.Id" hidden />
+                                                    <input asp-for="@item.Count" hidden />
+                                                    <h6 class="my-0 text-secondary font-weight-bold">@item.Name</h6>
+                                                    <small class="text-muted">Quantity: @item.Count</small>
+                                                </div>
+                                                <span class="text-muted">$@(item.Price * item.Count)</span>
+                                            </li>
+                                        }
+                                        @if (Model.CouponName != null)
+                                        {
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <div class="text-success">
+                                                    <h6 class="my-0">Promo Code</h6>
+                                                    <input asp-for="@Model.CouponName" hidden />
+                                                    <small class="text-success">@Model.CouponName</small>
+                                                </div>
+                                                <span class="text-success">-@((Model.OrderTotalOriginal - Model.OrderTotal).ToString("C"))</span>
+                                            </li>
+                                        }
+                                        <li class="list-group-item d-flex justify-content-between bg-light">
+                                            <input asp-for="@Model.OrderTotalOriginal" hidden />
+                                            <input asp-for="@Model.OrderTotal" hidden />
+                                            <small class="text-info font-weight-bold">Total (USD)</small>
+                                            <strong class="text-info">
+
+                                                @if (Model.OrderTotal != default(decimal))
+                                                {
+                                                    @Model.OrderTotal.ToString("C")
+                                                }
+                                                else
+                                                {
+                                                    @Model.OrderTotalOriginal.ToString("C")
+                                                }
+                                            </strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-12 col-md-4 offset-md-8">
+                                @{
+                                    //Has to be multiplied by 100 to turn it from cents to dollars for Stripe.
+                                    var orderTotalForStripe = 0m;
+
+                                    if (Model.OrderTotal != default(decimal))
+                                    {
+                                        orderTotalForStripe = Model.OrderTotal * 100;
+                                    }
+                                    else
+                                    {
+                                        orderTotalForStripe = Model.OrderTotalOriginal * 100;
+                                    }
+                                }
+                                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                        data-key="@Stripe.Value.PublishableKey"
+                                        data-amount="@orderTotalForStripe"
+                                        data-name="GourmeJunk Restaurant"
+                                        data-label="Place Order"
+                                        data-description="Finest Junk Food"
+                                        data-locale="auto"
+                                        data-allow-remember-me="false"
+                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png">
+                                </script>
+                                <script>document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';</script>
+                                <input type="submit" onclick="return validateInput()" class="btn btn-secondary form-control" value="Place Order" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="backgroundWhite"> No items have been added to the shopping cart...</div>
+    }
+</form>
+
+@section Scripts{
+    <script src="~/js/jquery.timepicker.min.js"></script>
+    <script src="~/js/orderDateAndTimeValidation.js"></script>
+}

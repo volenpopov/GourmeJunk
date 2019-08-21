@@ -16,5 +16,7 @@ namespace GourmeJunk.Services.Contracts
         Task UnLockUserAsync(string userId);
 
         Task<int> GetUserIndividualItemsCount(string email);
+
+        Task<string> GetUserFirstLastNameByIdAsync(string userId);
     }
 }

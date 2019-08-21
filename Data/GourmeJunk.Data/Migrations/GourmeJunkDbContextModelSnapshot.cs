@@ -238,6 +238,68 @@ namespace GourmeJunk.Data.Migrations
                     b.ToTable("MenuItems");
                 });
 
+            modelBuilder.Entity("GourmeJunk.Data.Models.Order", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Comments");
+
+                    b.Property<string>("CouponName");
+
+                    b.Property<DateTime>("CreatedOn");
+
+                    b.Property<DateTime?>("LastModifiedOn");
+
+                    b.Property<DateTime>("OrderDate");
+
+                    b.Property<int>("OrderStatus");
+
+                    b.Property<decimal>("OrderTotal");
+
+                    b.Property<decimal>("OrderTotalOriginal");
+
+                    b.Property<int>("PaymentStatus");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired();
+
+                    b.Property<DateTime>("PickUpDateAndTime");
+
+                    b.Property<string>("PickupName")
+                        .IsRequired();
+
+                    b.Property<string>("TransactionId");
+
+                    b.Property<string>("UserId")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("GourmeJunk.Data.Models.OrderMenuItems", b =>
+                {
+                    b.Property<string>("OrderId");
+
+                    b.Property<string>("MenuItemId");
+
+                    b.Property<int>("Count");
+
+                    b.Property<DateTime>("CreatedOn");
+
+                    b.Property<DateTime?>("LastModifiedOn");
+
+                    b.HasKey("OrderId", "MenuItemId");
+
+                    b.HasIndex("MenuItemId");
+
+                    b.ToTable("OrderMenuItems");
+                });
+
             modelBuilder.Entity("GourmeJunk.Data.Models.ShoppingCart", b =>
                 {
                     b.Property<string>("Id")
@@ -412,6 +474,27 @@ namespace GourmeJunk.Data.Migrations
                     b.HasOne("GourmeJunk.Data.Models.SubCategory", "SubCategory")
                         .WithMany()
                         .HasForeignKey("SubCategoryId");
+                });
+
+            modelBuilder.Entity("GourmeJunk.Data.Models.Order", b =>
+                {
+                    b.HasOne("GourmeJunk.Data.Models.GourmeJunkUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("GourmeJunk.Data.Models.OrderMenuItems", b =>
+                {
+                    b.HasOne("GourmeJunk.Data.Models.MenuItem", "MenuItem")
+                        .WithMany()
+                        .HasForeignKey("MenuItemId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("GourmeJunk.Data.Models.Order", "Order")
+                        .WithMany("OrderMenuItems")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("GourmeJunk.Data.Models.ShoppingCartMenuItems", b =>

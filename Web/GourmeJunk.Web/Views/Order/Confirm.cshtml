@@ -1,0 +1,30 @@
+﻿@using GourmeJunk.Models.ViewModels.Orders
+@model OrderConfirmViewModel
+
+@{
+    ViewData["Title"] = "Order Confirmation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div class="backgroundWhite mx-5">
+
+    <div class="text-center">
+        <h2 class="text-info d-inline mx-2">Order Confirmed</h2>
+    </div>
+
+    @if (Model.Id != null)
+    {
+        <div style="color:maroon" class="p-3 text-center">
+            Your order has been confirmed! Please see the order summary below.
+            <br />
+            Feel free to contact us if you have any questions.
+        </div>
+        <partial name="_IndividualOrderDetails" model="Model" />    
+    }
+    else
+    {
+        <div class="text-danger">Error... Please try again.</div>
+    }
+</div>
+

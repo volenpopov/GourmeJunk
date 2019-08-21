@@ -63,7 +63,7 @@ namespace GourmeJunk.Web.Controllers
         [Authorize]
         public async Task<IActionResult> Details(string id)
         {
-            var shoppingCartViewModel = await this.shoppingCartService.GetShoppingCartViewModelAsync(id);
+            var shoppingCartViewModel = await this.shoppingCartService.GetShoppingCartMenuItemDetailsViewModelAsync(id);
 
             return View(shoppingCartViewModel);
         }
@@ -77,7 +77,7 @@ namespace GourmeJunk.Web.Controllers
         {            
             if (!ModelState.IsValid)
             {
-                var shoppingCartViewModel = await this.shoppingCartService.GetShoppingCartViewModelAsync(menuItemId);
+                var shoppingCartViewModel = await this.shoppingCartService.GetShoppingCartMenuItemDetailsViewModelAsync(menuItemId);
 
                 return View(shoppingCartViewModel);
             }

@@ -19,12 +19,12 @@ using GourmeJunk.Web;
 #line default
 #line hidden
 #line 2 "E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\Views\_ViewImports.cshtml"
-using GourmeJunk.Web.Models;
+using GourmeJunk.Web.TagHelpers;
 
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"def3af426e68247130a9599ff03b69b16af7d5c9", @"/Views/Shared/_TableButtonPartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"966d4390df66aff9690f17888bd09a63bc809817", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"39c800862f702875aded245ff5f6ac5608923ed1", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__TableButtonPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<string>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("btn btn-primary text-white"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -59,7 +59,7 @@ using GourmeJunk.Web.Models;
             WriteLiteral("\r\n<td style=\"width:150px\">\r\n    <div class=\"btn-group\" role=\"group\">\r\n        ");
             EndContext();
             BeginContext(95, 133, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "def3af426e68247130a9599ff03b69b16af7d5c95386", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "def3af426e68247130a9599ff03b69b16af7d5c95390", async() => {
                 BeginContext(173, 51, true);
                 WriteLiteral("\r\n            <i class=\"fas fa-edit\"></i>\r\n        ");
                 EndContext();
@@ -95,7 +95,7 @@ using GourmeJunk.Web.Models;
             WriteLiteral("\r\n\r\n        ");
             EndContext();
             BeginContext(240, 142, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "def3af426e68247130a9599ff03b69b16af7d5c97902", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "def3af426e68247130a9599ff03b69b16af7d5c97906", async() => {
                 BeginContext(323, 55, true);
                 WriteLiteral("\r\n            <i class=\"fas fa-list-alt\"></i>\r\n        ");
                 EndContext();
@@ -131,7 +131,7 @@ using GourmeJunk.Web.Models;
             WriteLiteral("\r\n\r\n        ");
             EndContext();
             BeginContext(394, 139, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "def3af426e68247130a9599ff03b69b16af7d5c910427", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "def3af426e68247130a9599ff03b69b16af7d5c910431", async() => {
                 BeginContext(473, 56, true);
                 WriteLiteral("\r\n            <i class=\"fas fa-trash-alt\"></i>\r\n        ");
                 EndContext();

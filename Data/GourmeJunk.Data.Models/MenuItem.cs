@@ -8,6 +8,7 @@ namespace GourmeJunk.Data.Models
         [Required]
         [MaxLength(DataModelConstants.MENUITEM_NAME_MAX_LENGTH)]
         public string Name { get; set; }
+
         public string Description { get; set; }
 
         public string Image { get; set; }

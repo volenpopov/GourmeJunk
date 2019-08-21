@@ -19,7 +19,7 @@ using GourmeJunk.Web;
 #line default
 #line hidden
 #line 2 "E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\Views\_ViewImports.cshtml"
-using GourmeJunk.Web.Models;
+using GourmeJunk.Web.TagHelpers;
 
 #line default
 #line hidden
@@ -29,7 +29,7 @@ using GourmeJunk.Models.ViewModels.Home;
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1c3a5064bbf9c76d3465e174f9534fdf977d3016", @"/Views/Shared/_ThumbnailAreaPArtial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"966d4390df66aff9690f17888bd09a63bc809817", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"39c800862f702875aded245ff5f6ac5608923ed1", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__ThumbnailAreaPArtial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<IndexMenuItemViewModel>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "Home", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -201,7 +201,7 @@ WriteAttributeValue("", 675, item.Image, 675, 11, false);
             WriteLiteral("                        </p>\r\n                    </div>\r\n                    <div class=\"col-md-3 col-sm-12 offset-md-9 text-center\">\r\n                        ");
             EndContext();
             BeginContext(2432, 115, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1c3a5064bbf9c76d3465e174f9534fdf977d301611455", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1c3a5064bbf9c76d3465e174f9534fdf977d301611459", async() => {
                 BeginContext(2536, 7, true);
                 WriteLiteral("Details");
                 EndContext();

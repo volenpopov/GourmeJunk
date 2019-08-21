@@ -19,7 +19,7 @@ using GourmeJunk.Web;
 #line default
 #line hidden
 #line 2 "E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\Views\_ViewImports.cshtml"
-using GourmeJunk.Web.Models;
+using GourmeJunk.Web.TagHelpers;
 
 #line default
 #line hidden
@@ -34,7 +34,7 @@ using GourmeJunk.Data.Models;
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"adf9d1aa888b0302ba552586a7fb8628aef0bac0", @"/Views/Shared/_LoginPartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"966d4390df66aff9690f17888bd09a63bc809817", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"39c800862f702875aded245ff5f6ac5608923ed1", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__LoginPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("form-inline"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -93,7 +93,7 @@ using GourmeJunk.Data.Models;
             WriteLiteral("!</u></span></a>\r\n        </li>\r\n            <li class=\"nav-item ml-3\">\r\n                ");
             EndContext();
             BeginContext(449, 198, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "adf9d1aa888b0302ba552586a7fb8628aef0bac06892", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "adf9d1aa888b0302ba552586a7fb8628aef0bac06896", async() => {
                 BeginContext(522, 118, true);
                 WriteLiteral("\r\n                    <input type=\"submit\" value=\"Logout\" class=\"nav-link btn btn-link text-light\"/>\r\n                ");
                 EndContext();
@@ -130,7 +130,7 @@ using GourmeJunk.Data.Models;
             WriteLiteral("            <li class=\"nav-item\">\r\n                ");
             EndContext();
             BeginContext(755, 92, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "adf9d1aa888b0302ba552586a7fb8628aef0bac09290", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "adf9d1aa888b0302ba552586a7fb8628aef0bac09294", async() => {
                 BeginContext(835, 8, true);
                 WriteLiteral("Register");
                 EndContext();
@@ -155,7 +155,7 @@ using GourmeJunk.Data.Models;
             WriteLiteral("\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                ");
             EndContext();
             BeginContext(919, 86, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "adf9d1aa888b0302ba552586a7fb8628aef0bac011019", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "adf9d1aa888b0302ba552586a7fb8628aef0bac011023", async() => {
                 BeginContext(996, 5, true);
                 WriteLiteral("Login");
                 EndContext();

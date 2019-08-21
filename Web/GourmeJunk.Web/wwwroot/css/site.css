@@ -67,6 +67,13 @@ body {
     margin-bottom: 30px;
 }
 
+.backgroundWhiteBorder {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
 .menu-filter-list li {
     display: inline-block;
     cursor: pointer;
@@ -86,5 +93,13 @@ body {
 .menu-filter-list li:hover {
     background-color: #545b62;
     color: #fff;
+}
+
+.activeStatus {
+    padding: 8px;
+    color: green;
+    font-weight: bold;
+    border: 2px solid green;
+    border-radius: 50%;
 }
 
