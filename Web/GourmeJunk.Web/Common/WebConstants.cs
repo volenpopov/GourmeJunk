@@ -20,6 +20,8 @@
 
             public const string ADDRESS_PATTERN = @"^[a-zA-Z0-9-\s-\,-.]+[a-zA-Z-0-9]$";
 
+            public const string ADDRESS_PATTERN_ERROR = @"Invalid input for address.";
+
             public const string FIRSTNAME_DISPLAY = "First Name";
 
             public const string LASTNAME_DISPLAY = "Last Name";
@@ -43,6 +45,18 @@
             public const string STRIPE_SECTION_NAME = "Stripe";
 
             public const string SECRET_KEY_SECTION_NAME = "SecretKey";            
+        }
+
+        public class Facebook
+        {
+            public const string FB_APPID_SECTION = "Authentication:Facebook:AppId";
+            public const string FB_APP_SECRET_SECTION = "Authentication:Facebook:AppSecret";
+        }
+
+        public class Google
+        {
+            public const string GOOGLE_CLIENTID_SECTION = "Authentication:Google:ClientId";
+            public const string GOOGLE_CLIENTSECRET_SECTION = "Authentication:Google:ClientSecret";
         }
     }
 }

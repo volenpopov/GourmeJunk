@@ -97,6 +97,28 @@
                                         <span class="text-white">Order History</span>
                                     </a>
                                 </li>
+
+                                @if (User.IsInRole(GlobalConstants.KITCHEN_ROLE_NAME) 
+                                    || User.IsInRole(GlobalConstants.RECEPTION_ROLE_NAME) 
+                                    || User.IsInRole(GlobalConstants.ADMINISTRATOR_ROLE_NAME))
+                                {
+                                    <li class="nav-item dropdown text-white-50">
+                                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Order
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropDownMenuLink">
+                                            @if (User.IsInRole(GlobalConstants.KITCHEN_ROLE_NAME) || User.IsInRole(GlobalConstants.ADMINISTRATOR_ROLE_NAME))
+                                            {
+                                                <a class="dropdown-item" asp-action="ManageOrders" asp-controller="Order">Manage Orders</a>
+                                            }
+                                            @if (User.IsInRole(GlobalConstants.RECEPTION_ROLE_NAME) || User.IsInRole(GlobalConstants.ADMINISTRATOR_ROLE_NAME))
+                                            {
+                                                <a class="dropdown-item" asp-action="OrderPickup" asp-controller="Order">Orders Pickup</a>
+                                            }
+                                        </div>
+                                    </li>
+                                }
+
                                 <li style="color:white">
                                     <a asp-controller="ShoppingCart" asp-action="Index" class="nav-link">
                                         @{

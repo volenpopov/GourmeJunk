@@ -42,9 +42,19 @@
 
         public const string COUPON_NOT_FOUND_ERROR = "Error: Coupon with name \"{0}\" was not found. Please try again.";
 
-        public const int PAGE_SIZE = 2;
+        public const int PAGE_SIZE = 3;
 
-        public const string PAGINATION_URL_PARAM = "/Order/OrderHistory?productPage=:";
+        public const string ORDER_HISTORY_PAGINATION_URL_PARAM = "/Order/OrderHistory?productPage=:";
+
+        public const string MANAGE_ORDER_PAGINATION_URL_PARAM = "/Order/ManageOrders?productPage=:";
+
+        public const string ORDERS_PICKUP_PAGINATION_URL_PARAM = "/Order/OrderPickup?productPage=:";
+
+        public const string SEARCH_NAME_PARAM = "&searchName=";
+
+        public const string SEARCH_EMAIL_PARAM = "&searchEmail=";
+
+        public const string SEARCH_PHONE_PARAM = "&searchPhone=";
 
         public class Stripe
         {

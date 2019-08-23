@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using GourmeJunk.Common;
 using GourmeJunk.Data.Models;
+using GourmeJunk.Web.Common;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace GourmeJunk.Web.Areas.Identity.Pages.Account
 {
@@ -44,7 +43,36 @@ namespace GourmeJunk.Web.Areas.Identity.Pages.Account
         {
             [Required]
             [EmailAddress]
+            [Display(Name = "Email")]
             public string Email { get; set; }
+            
+            [Required]
+            [MaxLength(25)]
+            [Display(Name = WebConstants.IdentityModels.FIRSTNAME_DISPLAY)]
+            [RegularExpression(WebConstants.IdentityModels.USERS_NAME_PATTERN, ErrorMessage = WebConstants.IdentityModels.USERS_NAME_PATTERN_ERROR)]
+            public string FirstName { get; set; }
+
+            [Required]
+            [MaxLength(25)]
+            [Display(Name = WebConstants.IdentityModels.LASTNAME_DISPLAY)]
+            [RegularExpression(WebConstants.IdentityModels.USERS_NAME_PATTERN, ErrorMessage = WebConstants.IdentityModels.USERS_NAME_PATTERN_ERROR)]
+            public string LastName { get; set; }
+
+            [Required]
+            [MaxLength(100)]
+            [RegularExpression(WebConstants.IdentityModels.ADDRESS_PATTERN, ErrorMessage = WebConstants.IdentityModels.ADDRESS_PATTERN_ERROR)]
+            public string Address { get; set; }
+
+            [Required]
+            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [DataType(DataType.Password)]
+            [Display(Name = "Password")]
+            public string Password { get; set; }
+
+            [DataType(DataType.Password)]
+            [Display(Name = "Confirm password")]
+            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            public string ConfirmPassword { get; set; }
         }
 
         public IActionResult OnGetAsync()
@@ -95,7 +123,9 @@ namespace GourmeJunk.Web.Areas.Identity.Pages.Account
                 {
                     Input = new InputModel
                     {
-                        Email = info.Principal.FindFirstValue(ClaimTypes.Email)
+                        Email = info.Principal.FindFirstValue(ClaimTypes.Email),
+                        FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName),
+                        LastName = info.Principal.FindFirstValue(ClaimTypes.Surname),                        
                     };
                 }
                 return Page();
@@ -115,13 +145,22 @@ namespace GourmeJunk.Web.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var user = new GourmeJunkUser { UserName = Input.Email, Email = Input.Email };
-                var result = await _userManager.CreateAsync(user);
+                var user = new GourmeJunkUser
+                {
+                    UserName = Input.Email,
+                    FirstName = Input.FirstName,
+                    LastName = Input.LastName,
+                    Email = Input.Email,
+                    Address = Input.Address,
+                };
+
+                var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
                     result = await _userManager.AddLoginAsync(user, info);
                     if (result.Succeeded)
                     {
+                        await _userManager.AddToRoleAsync(user, GlobalConstants.CUSTOMER_ROLE_NAME);
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
                         return LocalRedirect(returnUrl);

@@ -91,6 +91,18 @@ namespace GourmeJunk.Web
             services.AddScoped<IUsersService, UsersService>();
             services.AddScoped<IShoppingCartService, ShoppingCartService>();
             services.AddScoped<IOrdersService, OrdersService>();
+
+            services.AddAuthentication().AddFacebook(facebookOptions =>
+            {
+                facebookOptions.AppId = this.Configuration[WebConstants.Facebook.FB_APPID_SECTION];
+                facebookOptions.AppSecret = this.Configuration[WebConstants.Facebook.FB_APP_SECRET_SECTION];
+            });
+
+            services.AddAuthentication().AddGoogle(googleOptions =>
+            {
+                googleOptions.ClientId = this.Configuration[WebConstants.Google.GOOGLE_CLIENTID_SECTION];
+                googleOptions.ClientSecret = this.Configuration[WebConstants.Google.GOOGLE_CLIENTSECRET_SECTION];
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

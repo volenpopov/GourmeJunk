@@ -1,6 +1,7 @@
 ﻿using GourmeJunk.Data.Common.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -37,6 +38,8 @@ namespace GourmeJunk.Data.Repositories
         }
 
         public virtual void Delete(TEntity entity) => this.DbSet.Remove(entity);
+
+        public virtual void DeleteRange(IEnumerable<TEntity> entities) => this.DbSet.RemoveRange(entities);
 
         public Task<int> SaveChangesAsync() => this.Context.SaveChangesAsync();
 

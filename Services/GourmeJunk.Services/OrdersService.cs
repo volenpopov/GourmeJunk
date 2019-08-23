@@ -10,6 +10,7 @@ using Stripe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Order = GourmeJunk.Data.Models.Order;
 
@@ -18,17 +19,14 @@ namespace GourmeJunk.Services
     public class OrdersService : IOrdersService
     {
         private readonly IRepository<Order> ordersRepository;
-        private readonly IDeletableEntityRepository<MenuItem> menuItemsRepository;
-        private readonly IRepository<ShoppingCart> shoppingCartsRepository;
+        private readonly IDeletableEntityRepository<ShoppingCartMenuItems> shoppingCartMenuItemsService;
 
         public OrdersService(
             IRepository<Order> ordersRepository,
-            IDeletableEntityRepository<MenuItem> menuItemsRepository,
-            IRepository<ShoppingCart> shoppingCartsRepository)
+            IDeletableEntityRepository<ShoppingCartMenuItems> shoppingCartMenuItemsService)
         {
             this.ordersRepository = ordersRepository;
-            this.menuItemsRepository = menuItemsRepository;
-            this.shoppingCartsRepository = shoppingCartsRepository;
+            this.shoppingCartMenuItemsService = shoppingCartMenuItemsService;
         }
 
         public OrderSummaryViewModel GetOrderSummaryViewModel(OrderSummaryInputModel model,
@@ -144,27 +142,33 @@ namespace GourmeJunk.Services
                 order.OrderStatus = OrderStatus.Cancelled;
             }
 
+            var userShoppingCartMenuItems = await this.shoppingCartMenuItemsService
+                .All()
+                .Include(cartItem => cartItem.ShoppingCart)
+                .Where(cartItem => cartItem.ShoppingCart.UserId == model.UserId)
+                .ToArrayAsync();
+
+            this.shoppingCartMenuItemsService.HardDeleteRange(userShoppingCartMenuItems);
+
             await this.ordersRepository.SaveChangesAsync();
 
             return order.Id;
         }
 
-        public async Task<OrderConfirmViewModel> GetOrderConfirmViewModelAsync(string orderId, string userId)
+        public async Task<OrderFullInfoViewModel> GetOrderFullInfoViewModelAsync(string orderId, string userId)
         {
-            var order = await this.GetOrderByIdAndUserIdAsync(orderId, userId);
+            var order = new Order();
 
-            var shoppingCart = await this.shoppingCartsRepository
-                .All()
-                .Include(cart => cart.ShoppingCartMenuItems)
-                .ThenInclude(cartItem => cartItem.MenuItem)
-                .SingleOrDefaultAsync(cart => cart.UserId == userId);
-
-            if (shoppingCart == null)
+            if (userId != null)
             {
-                throw new NullReferenceException(string.Format(ServicesDataConstants.NULL_REFERENCE_USER_CART, userId));
+                order = await this.GetOrderByIdAndUserIdAsync(orderId, userId);
+            }
+            else
+            {
+                order = await this.GetOrderByIdAsync(orderId);
             }
 
-            var orderConfirmViewModel = new OrderConfirmViewModel
+            var OrderFullInfoViewModel = new OrderFullInfoViewModel
             {
                 Id = order.Id,
                 PickupName = order.PickupName,
@@ -179,7 +183,7 @@ namespace GourmeJunk.Services
 
             var orderItemsViewModels = new List<OrderItemViewModel>();
 
-            foreach (var item in shoppingCart.ShoppingCartMenuItems)
+            foreach (var item in order.OrderMenuItems)
             {
                 var orderItemViewModel = new OrderItemViewModel
                 {
@@ -192,14 +196,14 @@ namespace GourmeJunk.Services
                 orderItemsViewModels.Add(orderItemViewModel);
             }
 
-            orderConfirmViewModel.OrderItems = orderItemsViewModels;
+            OrderFullInfoViewModel.OrderItems = orderItemsViewModels;
 
-            return orderConfirmViewModel;
+            return OrderFullInfoViewModel;
         }
 
-        public async Task<OrdersHistoryListViewModel> GetOrdersHistoryListViewModelAsync(string userId, int productPage)
+        public async Task<OrdersListViewModel> GetOrdersHistoryListViewModelAsync(string userId, int productPage)
         {
-            var ordersHistoryListViewModel = new OrdersHistoryListViewModel();
+            var ordersHistoryListViewModel = new OrdersListViewModel();
 
             var orders = await this.ordersRepository
                 .All()
@@ -210,7 +214,7 @@ namespace GourmeJunk.Services
 
             foreach (var order in orders)
             {
-                var orderHistoryViewModel = new OrderHistoryViewModel
+                var orderHistoryViewModel = new OrderViewModel
                 {
                     Id = order.Id,
                     Email = order.User.Email,
@@ -239,7 +243,7 @@ namespace GourmeJunk.Services
                 CurrentPage = productPage,
                 ItemsPerPage = ServicesDataConstants.PAGE_SIZE,
                 TotalItems = totalItems,
-                UrlParam = ServicesDataConstants.PAGINATION_URL_PARAM
+                UrlParam = ServicesDataConstants.ORDER_HISTORY_PAGINATION_URL_PARAM
             };
 
             return ordersHistoryListViewModel;
@@ -252,11 +256,232 @@ namespace GourmeJunk.Services
             return order.OrderStatus.ToString();
         }
 
+        public async Task<ManageOrdersListViewModel> GetManageOrdersListViewModelAsync(int productPage)
+        {
+            var manageOrdersListViewModel = new ManageOrdersListViewModel();
+
+            var orders = await this.ordersRepository
+                .All()
+                .Where(order => order.OrderStatus != OrderStatus.Delivered
+                    && order.OrderStatus != OrderStatus.Cancelled
+                    && order.OrderStatus != OrderStatus.Ready)
+                .Include(order => order.OrderMenuItems)
+                .ThenInclude(orderMenuItem => orderMenuItem.MenuItem)
+                .ToArrayAsync();
+
+            foreach (var order in orders)
+            {
+                var manageOrderViewModel = new ManageOrderViewModel
+                {
+                    Id = order.Id,
+                    PickupTime = order.PickUpDateAndTime.ToString("dd/MM/yyyy HH:mm"),
+                    Comments = order.Comments,
+                    Status = order.OrderStatus.ToString(),
+                };
+
+                foreach (var item in order.OrderMenuItems)
+                {
+                    var manageOrderItemViewModel = new OrderItemViewModel
+                    {
+                        Name = item.MenuItem.Name,
+                        Count = item.Count
+                    };
+
+                    manageOrderViewModel.OrderItems.Add(manageOrderItemViewModel);
+                }
+
+                manageOrdersListViewModel.Orders.Add(manageOrderViewModel);
+            }
+
+            var totalItems = manageOrdersListViewModel.Orders.Count();
+
+            manageOrdersListViewModel.Orders = manageOrdersListViewModel.Orders
+                .OrderBy(order => order.PickupTime)
+                .Skip((productPage - 1) * ServicesDataConstants.PAGE_SIZE)
+                .Take(ServicesDataConstants.PAGE_SIZE)
+                .ToArray();
+
+            manageOrdersListViewModel.PagingInfo = new PagingInfo
+            {
+                CurrentPage = productPage,
+                ItemsPerPage = ServicesDataConstants.PAGE_SIZE,
+                TotalItems = totalItems,
+                UrlParam = ServicesDataConstants.MANAGE_ORDER_PAGINATION_URL_PARAM
+            };
+
+            return manageOrdersListViewModel;
+        }
+
+        public async Task UpdateOrderStatusToCookingAsync(string orderId)
+        {
+            var order = await this.GetOrderByIdAsync(orderId);
+
+            order.OrderStatus = OrderStatus.Cooking;
+
+            await this.ordersRepository.SaveChangesAsync();
+        }
+
+        public async Task UpdateOrderStatusToReadyAsync(string orderId)
+        {
+            var order = await this.GetOrderByIdAsync(orderId);
+
+            order.OrderStatus = OrderStatus.Ready;
+
+            await this.ordersRepository.SaveChangesAsync();
+        }
+
+        public async Task UpdateOrderStatusToCancelledAsync(string orderId)
+        {
+            var order = await this.GetOrderByIdAsync(orderId);
+
+            order.OrderStatus = OrderStatus.Cancelled;
+
+            await this.ordersRepository.SaveChangesAsync();
+        }
+
+        public async Task UpdateOrderStatusToDeliveredAsync(string orderId)
+        {
+            var order = await this.GetOrderByIdAsync(orderId);
+
+            order.OrderStatus = OrderStatus.Delivered;
+
+            await this.ordersRepository.SaveChangesAsync();
+        }
+
+        public async Task<OrdersListViewModel> GetOrdersListViewModelAsync(int productPage, string userId)
+        {
+            var ordersListViewModel = new OrdersListViewModel();
+
+            var orders = await this.ordersRepository
+                 .All()
+                 .Include(order => order.User)
+                 .Include(order => order.OrderMenuItems)
+                 .Where(order => order.UserId == userId)
+                 .ToArrayAsync();
+
+            ordersListViewModel = PopulateOrdersListViewModel(orders);
+
+            var totalItems = ordersListViewModel.Orders.Count();
+
+            ordersListViewModel.Orders = ordersListViewModel.Orders
+                .OrderBy(order => order.PickupTime)
+                .Skip((productPage - 1) * ServicesDataConstants.PAGE_SIZE)
+                .Take(ServicesDataConstants.PAGE_SIZE)
+                .ToArray();
+
+            ordersListViewModel.PagingInfo = new PagingInfo
+            {
+                CurrentPage = productPage,
+                ItemsPerPage = ServicesDataConstants.PAGE_SIZE,
+                TotalItems = totalItems,
+                UrlParam = ServicesDataConstants.ORDER_HISTORY_PAGINATION_URL_PARAM
+            };
+
+            return ordersListViewModel;
+        }
+
+        public async Task<OrdersListViewModel> GetOrdersPickupListViewModelAsync(int productPage, string searchEmail, string searchPhone, string searchName)
+        {
+            var ordersListViewModel = new OrdersListViewModel();
+
+            var orders = await this.ordersRepository
+                 .All()                 
+                 .Where(order => order.OrderStatus == OrderStatus.Ready)
+                 .Include(order => order.User)
+                 .Include(order => order.OrderMenuItems)
+                 .ToArrayAsync();
+
+            ordersListViewModel = PopulateOrdersListViewModel(orders);
+            
+            var paramsBuilder = new StringBuilder();
+
+            paramsBuilder.Append(ServicesDataConstants.ORDERS_PICKUP_PAGINATION_URL_PARAM);
+
+            paramsBuilder.Append(ServicesDataConstants.SEARCH_NAME_PARAM);
+            if (searchName != null)
+            {
+                paramsBuilder.Append(searchName);
+            }
+
+            paramsBuilder.Append(ServicesDataConstants.SEARCH_EMAIL_PARAM);
+            if (searchEmail != null)
+            {
+                paramsBuilder.Append(searchEmail);
+            }
+
+            paramsBuilder.Append(ServicesDataConstants.SEARCH_PHONE_PARAM);
+            if (searchPhone != null)
+            {
+                paramsBuilder.Append(searchPhone);
+            }
+
+            if (searchName != null || searchEmail != null || searchPhone != null)
+            {
+                if (searchName != null)
+                {
+                    ordersListViewModel.Orders = ordersListViewModel.Orders
+                        .Where(order => order.PickupName.ToLower().Contains(searchName.ToLower()))
+                        .ToArray();
+                }   
+                else
+                {
+                    if (searchEmail != null)
+                    {
+                        ordersListViewModel.Orders = ordersListViewModel.Orders
+                        .Where(order => order.Email.ToLower().Contains(searchEmail.ToLower()))
+                        .ToArray();
+                    }
+                    else
+                    {
+                        ordersListViewModel.Orders = ordersListViewModel.Orders
+                        .Where(order => order.PhoneNumber.Contains(searchPhone))
+                        .ToArray();
+                    }
+                }
+            }
+
+            var totalItems = ordersListViewModel.Orders.Count();
+
+            ordersListViewModel.Orders = ordersListViewModel.Orders
+            .OrderBy(order => order.PickupTime)
+            .Skip((productPage - 1) * ServicesDataConstants.PAGE_SIZE)
+            .Take(ServicesDataConstants.PAGE_SIZE)
+            .ToArray();
+
+            ordersListViewModel.PagingInfo = new PagingInfo
+            {
+                CurrentPage = productPage,
+                ItemsPerPage = ServicesDataConstants.PAGE_SIZE,
+                TotalItems = totalItems,
+                UrlParam = paramsBuilder.ToString()
+            };
+
+            return ordersListViewModel;
+        }
+
+        private async Task<Order> GetOrderByIdAsync(string orderId)
+        {
+            var order = await this.ordersRepository
+                .All()
+                .Include(ordr => ordr.OrderMenuItems)
+                .ThenInclude(orderItem => orderItem.MenuItem)
+                .SingleOrDefaultAsync(ordr => ordr.Id == orderId);
+
+            if (order == null)
+            {
+                throw new NullReferenceException(string.Format(ServicesDataConstants.NULL_REFERENCE_ID, nameof(Order), orderId));
+            }
+
+            return order;
+        }
+
         private async Task<Order> GetOrderByIdAndUserIdAsync(string orderId, string userId)
         {
             var order = await this.ordersRepository
                 .All()
                 .Include(ordr => ordr.User)
+                .Include(ordr => ordr.OrderMenuItems)
+                .ThenInclude(orderItem => orderItem.MenuItem)
                 .SingleOrDefaultAsync(ordr => ordr.Id == orderId && ordr.UserId == userId);
 
             if (order == null)
@@ -265,6 +490,32 @@ namespace GourmeJunk.Services
             }
 
             return order;
+        }
+
+        private static OrdersListViewModel PopulateOrdersListViewModel(Order[] orders)
+        {
+            var ordersListViewModel = new OrdersListViewModel();
+
+            foreach (var order in orders)
+            {
+                var orderViewModel = new OrderViewModel
+                {
+                    Id = order.Id,
+                    Email = order.User.Email,
+                    PickupName = order.PickupName,
+                    PhoneNumber = order.PhoneNumber,
+                    PickupTime = order.PickUpDateAndTime.ToString("dd/MM/yyyy HH:mm"),
+                    OrderTotal = order.OrderTotal != default(decimal)
+                        ? order.OrderTotal.ToString("C")
+                        : order.OrderTotalOriginal.ToString("C"),
+                    Status = order.OrderStatus.ToString(),
+                    TotalItems = order.OrderMenuItems.Count
+                };
+
+                ordersListViewModel.Orders.Add(orderViewModel);
+            }
+
+            return ordersListViewModel;
         }
     }
 }

@@ -101,7 +101,7 @@ namespace GourmeJunk.Web.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
-                    if (role == GlobalConstants.KITCHEN_ROLE_NAME || role == GlobalConstants.DELIVERY_ROLE_NAME)
+                    if (role == GlobalConstants.KITCHEN_ROLE_NAME || role == GlobalConstants.RECEPTION_ROLE_NAME)
                     {
                         await _userManager.AddToRoleAsync(user, role);
                     }

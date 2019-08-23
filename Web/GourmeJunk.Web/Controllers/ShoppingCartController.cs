@@ -137,6 +137,8 @@ namespace GourmeJunk.Web.Controllers
             var orderSummaryViewModel = TempData.Get<OrderSummaryViewModel>(nameof(OrderSummaryViewModel));
             TempData.Remove(nameof(OrderSummaryViewModel));
 
+            HttpContext.Session.SetInt32(WebConstants.SESSION_NAME_SHOPPING_CART_INDIVIDUAL_ITEMS_COUNT, WebConstants.SESSION_SHOPPING_CART_INITIAL_INDIVIDUAL_ITEMS_COUNT);
+
             return View(orderSummaryViewModel);
         }
 
@@ -155,6 +157,8 @@ namespace GourmeJunk.Web.Controllers
             var itemsCount = formData[WebConstants.OrderItem.ITEM_COUNT_PROPERTY];
 
             var orderId = await this.ordersService.CreateOrderAsync(model, itemsIds, itemsCount, stripeEmail, stripeToken);
+
+
 
             return RedirectToAction("Confirm", "Order", new { orderId });
         }

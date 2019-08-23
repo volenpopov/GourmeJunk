@@ -34,15 +34,20 @@
             } else if (name.toString() === '') {
                 alert("Please enter pickup name!");
                 return false;
-            } else if (phoneNumber.toString() === '' || !phoneNumber.match(/^[0-9]+$/)) {
+            } else if (phoneNumber.toString() === '' || !phoneNumber.match(/^[0-9]{7,}$/)) {
                 alert("Please enter a valid phone number!");
                 return false;
             }            
 
-            if (selectedDate === currentDate) {
-                if (selectedHours < currentHours + 1) {
-                    alert("We need more time to prepare your order. Please select a later hour!");
+            if (selectedDate <= currentDate) {
+                if (selectedDate < currentDate) {
+                    alert("Please select a valid date!");
                     return false;
-                }
-            }
+                } else if (selectedDate === currentDate) {
+                    if (selectedHours < currentHours + 1) {
+                        alert("We need more time to prepare your order. Please select a later hour!");
+                        return false;
+                    }
+                }                
+            }            
         }

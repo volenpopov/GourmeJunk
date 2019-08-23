@@ -118,3 +118,5 @@ E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\Order\OrderHistory.g.cshtml.cs
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_OrderStatus.g.cshtml.cs
 E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.g.cshtml.cs
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\Order\ManageOrders.g.cshtml.cs
+E:\Volen\Programming\Github\GourmeJunk\Web\GourmeJunk.Web\obj\Debug\netcoreapp2.2\Razor\Views\Order\OrderPickup.g.cshtml.cs

@@ -2,9 +2,9 @@
 @using GourmeJunk.Data.Models
 @using GourmeJunk.Common
 
-@model OrderConfirmViewModel
+@model OrderFullInfoViewModel
 
-<form asp-action="OrderPickup" asp-controller="Order" asp-route-orderId="@Model.Id" method="post">
+<form asp-action="OrderPickup" asp-controller="Order" asp-route-id="@Model.Id" method="post">
     <div class="container row border ml-1 backgroundWhiteBorder mx-auto">
         <div class="col-lg-8 col-12" style="border-right:1px solid #bbb9b9">
             <br />
@@ -97,9 +97,9 @@
                 </li>
 
             </ul>
-            @if (Model.Status.Equals(OrderStatus.Ready) && (User.IsInRole(GlobalConstants.ADMINISTRATOR_ROLE_NAME) || User.IsInRole(GlobalConstants.DELIVERY_ROLE_NAME)))
+            @if (Model.Status.Equals(OrderStatus.Ready.ToString()) && (User.IsInRole(GlobalConstants.ADMINISTRATOR_ROLE_NAME) || User.IsInRole(GlobalConstants.RECEPTION_ROLE_NAME)))
             {
-                <button type="submit" class="btn btn-success form-control"><i class="far fa-thumbs-up"></i> Confirm Pickup</button>
+                <button type="submit" class="btn btn-secondary form-control"><i class="far fa-thumbs-up"></i> Confirm Pickup</button>
             }
             else
             {

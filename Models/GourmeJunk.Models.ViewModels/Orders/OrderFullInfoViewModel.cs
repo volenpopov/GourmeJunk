@@ -1,13 +1,11 @@
-﻿using GourmeJunk.Data.Models;
-using GourmeJunk.Services.Mapping;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace GourmeJunk.Models.ViewModels.Orders
 {
-    public class OrderConfirmViewModel : IMapFrom<Order>
+    public class OrderFullInfoViewModel
     {
-        public OrderConfirmViewModel()
+        public OrderFullInfoViewModel()
         {
             this.OrderItems = new HashSet<OrderItemViewModel>();
         }

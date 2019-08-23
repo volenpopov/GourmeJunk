@@ -3,12 +3,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GourmeJunk.Models.ViewModels.Orders
 {
-    public class OrderHistoryViewModel
+    public class OrderViewModel
     {
         public string Id { get; set; }
 
         [Display(Name = ModelConstants.Order.PICKUPNAME_DISPLAY)]
         public string PickupName { get; set; }
+
+        public string PhoneNumber { get; set; }
 
         public string Email { get; set; }
 

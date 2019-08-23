@@ -52,7 +52,7 @@ namespace GourmeJunk.Data.Seeding
         {
             SeedRole(GlobalConstants.ADMINISTRATOR_ROLE_NAME, roleManager);
             SeedRole(GlobalConstants.KITCHEN_ROLE_NAME, roleManager);
-            SeedRole(GlobalConstants.DELIVERY_ROLE_NAME, roleManager);
+            SeedRole(GlobalConstants.RECEPTION_ROLE_NAME, roleManager);
             SeedRole(GlobalConstants.CUSTOMER_ROLE_NAME, roleManager);
         }
 

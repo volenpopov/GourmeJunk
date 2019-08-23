@@ -1,7 +1,7 @@
 ﻿@using GourmeJunk.Models.ViewModels.Orders
 @using GourmeJunk.Data.Models
 
-@model OrdersHistoryListViewModel
+@model OrdersListViewModel
 
 @{
     ViewData["Title"] = "Order History";
@@ -12,7 +12,7 @@
 <div class="border backgroundWhite">
     <div class="row">
         <div class="col-6">
-            <h2 class="text-info"> Past Order List</h2>
+            <h2 class="text-info"> Past Orders List</h2>
         </div>
         <div class="col-6 text-right">
             <a class="btn btn-secondary" asp-controller="Home" asp-action="Index">Go Back</a>
@@ -81,7 +81,7 @@
                             }
                             else
                             {
-                                <button type="button" class="btn btn-warning">
+                                <button type="button" class="btn btn-danger">
                                     Cancelled
                                 </button>
                             }

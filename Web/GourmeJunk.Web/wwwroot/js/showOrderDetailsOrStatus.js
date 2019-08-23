@@ -20,7 +20,6 @@ $(function () {
                 alert("Dynamic content load failed");
             }
         });
-
     });
 
     $(".btnOrderStatus").click(function () {

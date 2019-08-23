@@ -1,4 +1,5 @@
 ﻿using GourmeJunk.Data.Common.Models;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,6 +15,8 @@ namespace GourmeJunk.Data.Common.Repositories
         Task<TEntity> GetByIdWithDeletedAsync(params object[] id);
 
         void HardDelete(TEntity entity);
+
+        void HardDeleteRange(IEnumerable<TEntity> entities);
 
         void Undelete(TEntity entity);
 

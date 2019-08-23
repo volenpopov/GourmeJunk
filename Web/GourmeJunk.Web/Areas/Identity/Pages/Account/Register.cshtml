@@ -12,8 +12,7 @@
         <div class="col-md-4">
             <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
                 <h4 class="text-center">Create a new account.</h4>
-                <hr />
-                <div asp-validation-summary="All" class="text-danger"></div>
+                <hr />                
                 <div class="form-group">
                     <label asp-for="Input.FirstName" class="font-weight-bold text-secondary"></label>
                     <input asp-for="Input.FirstName" class="form-control" />
@@ -42,7 +41,6 @@
                 <div class="form-group">
                     <label asp-for="Input.ConfirmPassword" class="font-weight-bold text-secondary"></label>
                     <input asp-for="Input.ConfirmPassword" class="form-control" />
-                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                 </div>
 
                 @if (User.IsInRole(GlobalConstants.ADMINISTRATOR_ROLE_NAME))
@@ -54,8 +52,8 @@
                                 <label for="kitchenRole" class="form-check-label text-secondary font-weight-bold" style="font-size: 1.2rem">@GlobalConstants.KITCHEN_ROLE_NAME</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input type="radio" class="form-check-input" id="deliveryRole" name="inputUserRole" value="@GlobalConstants.DELIVERY_ROLE_NAME" checked />
-                                <label for="deliveryRole" class="form-check-label text-secondary font-weight-bold" style="font-size: 1.2rem">@GlobalConstants.DELIVERY_ROLE_NAME</label>
+                                <input type="radio" class="form-check-input" id="deliveryRole" name="inputUserRole" value="@GlobalConstants.RECEPTION_ROLE_NAME" checked />
+                                <label for="deliveryRole" class="form-check-label text-secondary font-weight-bold" style="font-size: 1.2rem">@GlobalConstants.RECEPTION_ROLE_NAME</label>
                             </div>
                         </div>
                     </div>

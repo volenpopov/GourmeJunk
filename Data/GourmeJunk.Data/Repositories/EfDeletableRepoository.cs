@@ -2,6 +2,7 @@
 using GourmeJunk.Data.Common.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
@@ -31,6 +32,8 @@ namespace GourmeJunk.Data.Repositories
         }
 
         public void HardDelete(TEntity entity) => base.Delete(entity);
+
+        public void HardDeleteRange(IEnumerable<TEntity> entities) => base.DeleteRange(entities);
 
         public void Undelete(TEntity entity)
         {

@@ -1,0 +1,137 @@
+﻿@using GourmeJunk.Models.ViewModels.Orders
+
+@model OrdersListViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<form method="get">
+    <br /><br />
+    <h2 class="text-info"> Orders Ready for Pickup : </h2>
+    <div class="border backgroundWhite">
+        <div class="container border border-secondary" style="height:60px;">
+            <div class="row container">
+                <div class="col-11">
+                    <div class="row" style="padding-top:10px">
+                        <div class="col-4">
+                            @Html.Editor("searchName", new { htmlAttributes = new { @class = "form-control", @placeholder = "Name..." } })
+                        </div>
+                        <div class="col-4">
+                            @Html.Editor("searchPhone", new { htmlAttributes = new { @class = "form-control", @placeholder = "Phone..." } })
+                        </div>
+                        <div class="col-4">
+                            @Html.Editor("searchEmail", new { htmlAttributes = new { @class = "form-control", @placeholder = "Email..." } })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div class="row" style="padding-top:10px;">
+                        <button type="submit" name="submit" value="Search" class="btn btn-info form-control">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br />
+        <div>
+            @if (Model.Orders.Count() > 0)
+            {
+                <table class="table table-striped border">
+                    <tr class="table-secondary">
+                        <th>
+                            @Html.DisplayNameFor(m => m.Orders.First().Id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.Orders.First().PickupName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.Orders.First().Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.Orders.First().PhoneNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.Orders.First().PickupTime)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.Orders.First().OrderTotal)
+                        </th>
+                        <th>
+                            Total Items
+                        </th>
+                        <th></th>
+
+                    </tr>
+                    @foreach (var item in Model.Orders)
+                    {
+                <tr>
+                    <td>
+                        @{
+                            var shortId = item.Id.Substring(item.Id.Length - 5, 5).ToUpper();
+                        }
+                        @Html.DisplayFor(m => shortId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.PickupName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.PhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.PickupTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.OrderTotal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.TotalItems)
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary anchorDetail" data-id="@item.Id" data-toggle="modal">
+                            <i class="far fa-list-alt"></i> Details
+                        </button>
+                    </td>
+                </tr>
+                    }
+                </table>
+                <div page-model="@Model.PagingInfo" page-classes-enabled="true" page-class="btn border"
+                     page-class-normal="btn btn-light" page-class-selected="btn btn-info active"
+                     class="btn-group float-right">
+                </div>
+                <br />
+            }
+            else
+            {
+                <p>No orders ready for pickup exist...</p>
+            }
+        </div>
+    </div>
+</form>
+
+<div class="modal fade" id="orderDetailsModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-light justify-content-center">
+                <h5 class="modal-title">Order Details</h5>
+            </div>
+            <div class="modal-body justify-content-center" id="orderDetailsContent">
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary px-5" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/js/showOrderDetailsOrStatus.js"></script>
+}

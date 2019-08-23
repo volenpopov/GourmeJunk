@@ -12,7 +12,7 @@
 
         public const string KITCHEN_ROLE_NAME = "Kitchen";
 
-        public const string DELIVERY_ROLE_NAME = "Delivery";
+        public const string RECEPTION_ROLE_NAME = "Reception";
 
         public const string CUSTOMER_ROLE_NAME = "Customer";
     }
