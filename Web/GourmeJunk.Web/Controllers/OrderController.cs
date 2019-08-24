@@ -108,7 +108,10 @@ namespace GourmeJunk.Web.Controllers
             GlobalConstants.RECEPTION_ROLE_NAME)]
         public async Task<IActionResult> OrderCancel(string id)
         {
-            await this.ordersService.UpdateOrderStatusToCancelledAsync(id);
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            await this.ordersService.UpdateOrderStatusToCancelledAsync(id, userId);
 
             return RedirectToAction(nameof(ManageOrders));
         }

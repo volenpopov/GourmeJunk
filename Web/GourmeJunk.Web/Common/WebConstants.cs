@@ -10,7 +10,9 @@
 
         public const int SESSION_SHOPPING_CART_INITIAL_INDIVIDUAL_ITEMS_COUNT = 0;
 
-        public const string SESSION_NAME_COUPON_CODE = "ssCouponCode";        
+        public const string SESSION_NAME_COUPON_CODE = "ssCouponCode";
+
+        public const string RESTAURANT_NAME = "GourmeJunk Restaurant";
 
         public class IdentityModels
         {

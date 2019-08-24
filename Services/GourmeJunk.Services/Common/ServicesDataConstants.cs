@@ -56,6 +56,8 @@
 
         public const string SEARCH_PHONE_PARAM = "&searchPhone=";
 
+        public const int ORDER_ID_SHORT_LENGTH = 5;
+
         public class Stripe
         {
             public const string STRIPE_ORDER_DESCRIPTION = "Order Id: ";
@@ -63,6 +65,21 @@
             public const string STRIPE_CURRENCY = "USD";
 
             public const string STRIPE_CHARGE_STATUS_SUCCEEDED = "succeeded";
+        }
+
+        public class Email
+        {
+            public const string EMAIL_SUBJECT_ORDER_CREATED = "GourmeJunk - Order Created";
+
+            public const string EMAIL_SUBJECT_ORDER_CANCELLED = "GourmeJunk - Order Cancelled";
+
+            public const string EMAIL_CONTENT_ORDER_SUBMITTED = "Order has been submitted successfully. Order Id: {0}";
+
+            public const string EMAIL_CONTENT_ORDER_CANCELLED= "Order has been cancelled. Order Id: {0}";
+
+            public const string EMAIL_SUBJECT_ACCOUNT_CREATION_SUCCESSFULL = "GourmeJunk - Successfull Registration";
+
+            public const string EMAIL_CONTENT_ACCOUNT_CREATION_SUCCESSFULL= "Welcome to GourmeJunk, {0} {1}! You have successfully created an account.";
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using GourmeJunk.Common;
 using GourmeJunk.Data.Models;
+using GourmeJunk.Services.Common;
 using GourmeJunk.Web.Common;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -110,23 +111,18 @@ namespace GourmeJunk.Web.Areas.Identity.Pages.Account
                         await _userManager.AddToRoleAsync(user, GlobalConstants.CUSTOMER_ROLE_NAME);
                         await _signInManager.SignInAsync(user, isPersistent: false);
 
+                        await _emailSender.SendEmailAsync(user.Email,
+                            ServicesDataConstants.Email.EMAIL_SUBJECT_ACCOUNT_CREATION_SUCCESSFULL,
+                            string.Format(ServicesDataConstants.Email.EMAIL_CONTENT_ACCOUNT_CREATION_SUCCESSFULL, user.FirstName, user.LastName));
+
                         return LocalRedirect(returnUrl);
                     }
 
                     _logger.LogInformation("User created a new account with password.");
-
-                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //var callbackUrl = Url.Page(
-                    //    "/Account/ConfirmEmail",
-                    //    pageHandler: null,
-                    //    values: new { userId = user.Id, code = code },
-                    //    protocol: Request.Scheme);
-
-                    //await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                    //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");                                       
-
+                   
                     return RedirectToAction("Index", "User", new { Area = "Admin"});
                 }
+
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);

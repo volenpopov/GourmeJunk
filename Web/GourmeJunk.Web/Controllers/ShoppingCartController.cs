@@ -155,10 +155,8 @@ namespace GourmeJunk.Web.Controllers
 
             var itemsIds = formData[WebConstants.OrderItem.ITEM_ID_PROPERTY];            
             var itemsCount = formData[WebConstants.OrderItem.ITEM_COUNT_PROPERTY];
-
+            
             var orderId = await this.ordersService.CreateOrderAsync(model, itemsIds, itemsCount, stripeEmail, stripeToken);
-
-
 
             return RedirectToAction("Confirm", "Order", new { orderId });
         }

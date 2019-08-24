@@ -1,8 +1,10 @@
 ﻿using GourmeJunk.Common;
 using GourmeJunk.Data.Models;
+using GourmeJunk.Services.Common;
 using GourmeJunk.Web.Common;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -18,16 +20,19 @@ namespace GourmeJunk.Web.Areas.Identity.Pages.Account
         private readonly SignInManager<GourmeJunkUser> _signInManager;
         private readonly UserManager<GourmeJunkUser> _userManager;
         private readonly ILogger<ExternalLoginModel> _logger;
+        private readonly IEmailSender _emailSender;
 
         public ExternalLoginModel(
             SignInManager<GourmeJunkUser> signInManager,
             UserManager<GourmeJunkUser> userManager,
-            ILogger<ExternalLoginModel> logger)
+            ILogger<ExternalLoginModel> logger,
+            IEmailSender emailSender)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _logger = logger;
-        }
+            _emailSender = emailSender;
+    }
 
         [BindProperty]
         public InputModel Input { get; set; }
@@ -162,7 +167,13 @@ namespace GourmeJunk.Web.Areas.Identity.Pages.Account
                     {
                         await _userManager.AddToRoleAsync(user, GlobalConstants.CUSTOMER_ROLE_NAME);
                         await _signInManager.SignInAsync(user, isPersistent: false);
+
+                        await _emailSender.SendEmailAsync(user.Email,
+                            ServicesDataConstants.Email.EMAIL_SUBJECT_ACCOUNT_CREATION_SUCCESSFULL,
+                            string.Format(ServicesDataConstants.Email.EMAIL_CONTENT_ACCOUNT_CREATION_SUCCESSFULL, user.FirstName, user.LastName));
+
                         _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
+
                         return LocalRedirect(returnUrl);
                     }
                 }

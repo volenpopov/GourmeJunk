@@ -5,6 +5,7 @@ using GourmeJunk.Models.ViewModels;
 using GourmeJunk.Models.ViewModels.Orders;
 using GourmeJunk.Services.Common;
 using GourmeJunk.Services.Contracts;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Stripe;
 using System;
@@ -20,13 +21,19 @@ namespace GourmeJunk.Services
     {
         private readonly IRepository<Order> ordersRepository;
         private readonly IDeletableEntityRepository<ShoppingCartMenuItems> shoppingCartMenuItemsService;
+        private readonly IRepository<GourmeJunkUser> usersRepository;
+        private readonly IEmailSender emailSender;
 
         public OrdersService(
             IRepository<Order> ordersRepository,
-            IDeletableEntityRepository<ShoppingCartMenuItems> shoppingCartMenuItemsService)
+            IDeletableEntityRepository<ShoppingCartMenuItems> shoppingCartMenuItemsService,
+            IRepository<GourmeJunkUser> usersRepository,
+            IEmailSender emailSender)
         {
             this.ordersRepository = ordersRepository;
             this.shoppingCartMenuItemsService = shoppingCartMenuItemsService;
+            this.usersRepository = usersRepository;
+            this.emailSender = emailSender;
         }
 
         public OrderSummaryViewModel GetOrderSummaryViewModel(OrderSummaryInputModel model,
@@ -115,11 +122,13 @@ namespace GourmeJunk.Services
                     chargeAmount = model.OrderTotalOriginal * 100;
                 }
 
+                var orderIdShort = order.Id.Substring(order.Id.Length - ServicesDataConstants.ORDER_ID_SHORT_LENGTH, ServicesDataConstants.ORDER_ID_SHORT_LENGTH);
+
                 var charge = charges.Create(new ChargeCreateOptions
                 {
                     Amount = (long)chargeAmount,
                     Description = ServicesDataConstants.Stripe.STRIPE_ORDER_DESCRIPTION
-                        + order.Id.Substring(order.Id.Length - 5, 5),
+                        + orderIdShort,
                     Currency = ServicesDataConstants.Stripe.STRIPE_CURRENCY,
                     CustomerId = customer.Id
                 });
@@ -129,6 +138,12 @@ namespace GourmeJunk.Services
                 if (charge.Status.ToLower() == ServicesDataConstants.Stripe.STRIPE_CHARGE_STATUS_SUCCEEDED)
                 {
                     order.PaymentStatus = PaymentStatus.Approved;
+
+                    var userEmail = this.GetUserEmail(model.UserId);                     
+
+                    await this.emailSender.SendEmailAsync(userEmail, 
+                        ServicesDataConstants.Email.EMAIL_SUBJECT_ORDER_CREATED,
+                        string.Format(ServicesDataConstants.Email.EMAIL_CONTENT_ORDER_SUBMITTED, orderIdShort));
                 }
                 else
                 {
@@ -330,15 +345,20 @@ namespace GourmeJunk.Services
             await this.ordersRepository.SaveChangesAsync();
         }
 
-        public async Task UpdateOrderStatusToCancelledAsync(string orderId)
+        public async Task UpdateOrderStatusToCancelledAsync(string orderId, string userId)
         {
             var order = await this.GetOrderByIdAsync(orderId);
 
-            order.OrderStatus = OrderStatus.Cancelled;
+            order.OrderStatus = OrderStatus.Cancelled;           
+
+            await this.emailSender.SendEmailAsync(order.User.Email,
+                        ServicesDataConstants.Email.EMAIL_SUBJECT_ORDER_CANCELLED,
+                        string.Format(ServicesDataConstants.Email.EMAIL_CONTENT_ORDER_CANCELLED, 
+                            orderId.Substring(orderId.Length - ServicesDataConstants.ORDER_ID_SHORT_LENGTH, ServicesDataConstants.ORDER_ID_SHORT_LENGTH)));
 
             await this.ordersRepository.SaveChangesAsync();
         }
-
+        
         public async Task UpdateOrderStatusToDeliveredAsync(string orderId)
         {
             var order = await this.GetOrderByIdAsync(orderId);
@@ -463,6 +483,7 @@ namespace GourmeJunk.Services
         {
             var order = await this.ordersRepository
                 .All()
+                .Include(ordr => ordr.User)
                 .Include(ordr => ordr.OrderMenuItems)
                 .ThenInclude(orderItem => orderItem.MenuItem)
                 .SingleOrDefaultAsync(ordr => ordr.Id == orderId);
@@ -516,6 +537,20 @@ namespace GourmeJunk.Services
             }
 
             return ordersListViewModel;
+        }
+
+        private string GetUserEmail(string userId)
+        {
+            var user = this.usersRepository
+                .All()
+                .SingleOrDefault(usr => usr.Id == userId);
+
+            if (user == null)
+            {
+                throw new NullReferenceException(string.Format(ServicesDataConstants.NULL_REFERENCE_ID, ServicesDataConstants.USER, userId));
+            }
+
+            return user.Email;
         }
     }
 }

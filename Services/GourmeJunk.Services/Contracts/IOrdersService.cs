@@ -24,7 +24,7 @@ namespace GourmeJunk.Services.Contracts
 
         Task UpdateOrderStatusToReadyAsync(string orderId);
 
-        Task UpdateOrderStatusToCancelledAsync(string orderId);
+        Task UpdateOrderStatusToCancelledAsync(string orderId, string userId);
 
         Task UpdateOrderStatusToDeliveredAsync(string orderId);
 

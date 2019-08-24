@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -70,9 +71,11 @@ namespace GourmeJunk.Web
                     options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
                 });
 
-            services.Configure<StripeSettings>(Configuration.GetSection(WebConstants.Stripe.STRIPE_SECTION_NAME));
+            services.Configure<StripeSettings>(this.Configuration.GetSection(WebConstants.Stripe.STRIPE_SECTION_NAME));
 
-            //services.AddSingleton(this.Configuration);
+            services.AddSingleton<IEmailSender, EmailSender>();
+            services.Configure<EmailOptions>(this.Configuration);
+            
 
             // Identity stores
             services.AddTransient<IUserStore<GourmeJunkUser>, GourmeJunkUserStore>();
