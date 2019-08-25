@@ -1,0 +1,8 @@
+E:\Volen\Programming\Github\GourmeJunk\Tests\GourmeJunk.Services.Tests\bin\Debug\netcoreapp2.2\GourmeJunk.Services.Tests.deps.json
+E:\Volen\Programming\Github\GourmeJunk\Tests\GourmeJunk.Services.Tests\bin\Debug\netcoreapp2.2\GourmeJunk.Services.Tests.dll
+E:\Volen\Programming\Github\GourmeJunk\Tests\GourmeJunk.Services.Tests\obj\Debug\netcoreapp2.2\GourmeJunk.Services.Tests.csproj.CoreCompileInputs.cache
+E:\Volen\Programming\Github\GourmeJunk\Tests\GourmeJunk.Services.Tests\obj\Debug\netcoreapp2.2\GourmeJunk.Services.Tests.AssemblyInfoInputs.cache
+E:\Volen\Programming\Github\GourmeJunk\Tests\GourmeJunk.Services.Tests\obj\Debug\netcoreapp2.2\GourmeJunk.Services.Tests.AssemblyInfo.cs
+E:\Volen\Programming\Github\GourmeJunk\Tests\GourmeJunk.Services.Tests\bin\Debug\netcoreapp2.2\GourmeJunk.Services.Tests.runtimeconfig.json
+E:\Volen\Programming\Github\GourmeJunk\Tests\GourmeJunk.Services.Tests\bin\Debug\netcoreapp2.2\GourmeJunk.Services.Tests.runtimeconfig.dev.json
+E:\Volen\Programming\Github\GourmeJunk\Tests\GourmeJunk.Services.Tests\obj\Debug\netcoreapp2.2\GourmeJunk.Services.Tests.csprojAssemblyReference.cache
