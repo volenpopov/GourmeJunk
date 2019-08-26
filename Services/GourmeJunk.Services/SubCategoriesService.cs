@@ -47,7 +47,7 @@ namespace GourmeJunk.Services
 
         public async Task<SubCategoryCreateViewModel> GetSubCategoryCreateViewModelAsync()
         {
-            var categoryList = await this.categoriesService.GetAllAsync();
+            var categoryList = await this.categoriesService.GetAllCategoriesViewModelsAsync();
             
             var subCategoryCreateViewModel = new SubCategoryCreateViewModel
             {

@@ -23,7 +23,7 @@ namespace GourmeJunk.Services
             this.categoriesRepository = categoriesRepository;            
         }
 
-        public async Task<IEnumerable<CategoryViewModel>> GetAllAsync()
+        public async Task<IEnumerable<CategoryViewModel>> GetAllCategoriesViewModelsAsync()
         {
             var categoriesViewModels = await this.categoriesRepository               
                 .AllAsNoTracking()

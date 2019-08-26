@@ -23,7 +23,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var categoriesViewModels = await this.categoriesService.GetAllAsync();
+            var categoriesViewModels = await this.categoriesService.GetAllCategoriesViewModelsAsync();
 
             return View(categoriesViewModels);
         }

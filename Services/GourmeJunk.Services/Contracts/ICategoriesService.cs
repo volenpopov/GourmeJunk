@@ -7,7 +7,7 @@ namespace GourmeJunk.Services.Contracts
 {
     public interface ICategoriesService
     {
-        Task<IEnumerable<CategoryViewModel>> GetAllAsync();
+        Task<IEnumerable<CategoryViewModel>> GetAllCategoriesViewModelsAsync();
 
         Task<bool> CheckIfCategoryExistsAsync(string categoryName);
 

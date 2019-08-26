@@ -46,7 +46,7 @@ namespace GourmeJunk.Services
 
         public async Task<MenuItemCreateViewModel> GetMenuItemCreateViewModelAsync()
         {
-            var categories = await this.categoriesService.GetAllAsync();
+            var categories = await this.categoriesService.GetAllCategoriesViewModelsAsync();
 
             var menuItemCreateViewModel = new MenuItemCreateViewModel
             {
@@ -105,7 +105,7 @@ namespace GourmeJunk.Services
         {
             var menuItem = await this.GetMenuItemByIdAsync(menuItemId);
 
-            var categories = await this.categoriesService.GetAllAsync();
+            var categories = await this.categoriesService.GetAllCategoriesViewModelsAsync();
             var subCategories = await this.subCategoriesService.GetSubCategoriesOfACategoryAsync(menuItem.CategoryId);
 
             var menuItemEditViewModel = new MenuItemEditViewModel
