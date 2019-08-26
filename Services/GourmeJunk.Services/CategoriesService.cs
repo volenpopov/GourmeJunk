@@ -15,15 +15,12 @@ namespace GourmeJunk.Services
 {
     public class CategoriesService : ICategoriesService
     {
-        private readonly IDeletableEntityRepository<Category> categoriesRepository;
-        private readonly IDeletableEntityRepository<SubCategory> subCategoriesRepository;
+        private readonly IDeletableEntityRepository<Category> categoriesRepository;        
 
         public CategoriesService(
-            IDeletableEntityRepository<Category> categoriesRepository,
-            IDeletableEntityRepository<SubCategory> subCategoriesRepository)
+            IDeletableEntityRepository<Category> categoriesRepository)
         {
-            this.categoriesRepository = categoriesRepository;
-            this.subCategoriesRepository = subCategoriesRepository;
+            this.categoriesRepository = categoriesRepository;            
         }
 
         public async Task<IEnumerable<CategoryViewModel>> GetAllAsync()
