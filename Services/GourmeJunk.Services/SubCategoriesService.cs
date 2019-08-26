@@ -1,29 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using GourmeJunk.Data.Common.Repositories;
+﻿using GourmeJunk.Data.Common.Repositories;
 using GourmeJunk.Data.Models;
 using GourmeJunk.Models.InputModels._AdminInputModels;
+using GourmeJunk.Models.ViewModels.Categories;
 using GourmeJunk.Models.ViewModels.SubCategories;
 using GourmeJunk.Services.Common;
 using GourmeJunk.Services.Contracts;
 using GourmeJunk.Services.Mapping;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace GourmeJunk.Services
 {
     public class SubCategoriesService : ISubCategoriesService
     {
         private readonly IDeletableEntityRepository<SubCategory> subCategoriesRepository;
-        private readonly ICategoriesService categoriesService;
 
         public SubCategoriesService(
             IDeletableEntityRepository<SubCategory> subCategoriesRepository,
             ICategoriesService categoriesService)
         {
             this.subCategoriesRepository = subCategoriesRepository;
-            this.categoriesService = categoriesService;
         }
 
         public async Task<IEnumerable<SubCategoryViewModel>> GetAllAsync()
@@ -45,13 +44,11 @@ namespace GourmeJunk.Services
                           && subCategory.CategoryId == categoryId);
         }
 
-        public async Task<SubCategoryCreateViewModel> GetSubCategoryCreateViewModelAsync()
-        {
-            var categoryList = await this.categoriesService.GetAllCategoriesViewModelsAsync();
-            
+        public SubCategoryCreateViewModel GetSubCategoryCreateViewModelAsync(IEnumerable<CategoryViewModel> categoryList)
+        {            
             var subCategoryCreateViewModel = new SubCategoryCreateViewModel
             {
-                CategoryList = categoryList,
+                CategoryList = categoryList
             };
 
             return subCategoryCreateViewModel;

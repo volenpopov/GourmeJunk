@@ -33,7 +33,9 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Create()
         {
-            var subCategoryCreateViewModel = await this.subCategoriesService.GetSubCategoryCreateViewModelAsync ();
+            var categoriesViewModels = await this.categoriesService.GetAllCategoriesViewModelsAsync();
+
+            var subCategoryCreateViewModel = this.subCategoriesService.GetSubCategoryCreateViewModelAsync(categoriesViewModels);
 
             return View(subCategoryCreateViewModel);
         }
@@ -46,7 +48,9 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
             if (pairAlreadyExists || !ModelState.IsValid)
             {
-                var subCategoryCreateViewModel = await this.subCategoriesService.GetSubCategoryCreateViewModelAsync();
+                var categoriesViewModels = await this.categoriesService.GetAllCategoriesViewModelsAsync();
+
+                var subCategoryCreateViewModel = this.subCategoriesService.GetSubCategoryCreateViewModelAsync(categoriesViewModels);
 
                 if (pairAlreadyExists)
                 {
