@@ -122,8 +122,6 @@ namespace GourmeJunk.Web
                 }
 
                 ApplicationDbContextSeeder.Seed(dbContext, serviceScope.ServiceProvider);
-
-                //TODO: Seed sample data
             }
 
             if (env.IsDevelopment())
