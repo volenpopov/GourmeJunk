@@ -19,8 +19,7 @@ namespace GourmeJunk.Services
         private readonly IDeletableEntityRepository<SubCategory> subCategoriesRepository;
 
         public SubCategoriesService(
-            IDeletableEntityRepository<SubCategory> subCategoriesRepository,
-            ICategoriesService categoriesService)
+            IDeletableEntityRepository<SubCategory> subCategoriesRepository)
         {
             this.subCategoriesRepository = subCategoriesRepository;
         }
