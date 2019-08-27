@@ -54,13 +54,13 @@ namespace GourmeJunk.Services.Tests
             Assert.Collection(actual,
                 elem1 =>
                 {
-                    Assert.Equal(expected[0].CategoryName, TEST_CATEGORY_NAME);
-                    Assert.Equal(expected[0].Name, TEST_BEVERAGES_SUBCATEGORY_NAME);
+                    Assert.Equal(expected[0].CategoryName, elem1.CategoryName);
+                    Assert.Equal(expected[0].Name, elem1.Name);
                 },
                 elem2 =>
                 {
-                    Assert.Equal(expected[1].CategoryName, TEST_CATEGORY_NAME);
-                    Assert.Equal(expected[1].Name, SECOND_TEST_BEVERAGES_SUBCATEGORY_NAME);
+                    Assert.Equal(expected[1].CategoryName, elem2.CategoryName);
+                    Assert.Equal(expected[1].Name, elem2.Name);
                 });
         }
 
