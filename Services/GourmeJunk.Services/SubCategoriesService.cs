@@ -18,13 +18,12 @@ namespace GourmeJunk.Services
     {
         private readonly IDeletableEntityRepository<SubCategory> subCategoriesRepository;
 
-        public SubCategoriesService(
-            IDeletableEntityRepository<SubCategory> subCategoriesRepository)
+        public SubCategoriesService(IDeletableEntityRepository<SubCategory> subCategoriesRepository)
         {
             this.subCategoriesRepository = subCategoriesRepository;
         }
 
-        public async Task<IEnumerable<SubCategoryViewModel>> GetAllAsync()
+        public async Task<IEnumerable<SubCategoryViewModel>> GetAllSubCategoriesViewModelsAsync()
         {
             var subCategoriesViewModels = await this.subCategoriesRepository
                 .AllAsNoTracking()                
@@ -101,7 +100,7 @@ namespace GourmeJunk.Services
 
             var newSubCategoryAsExistingDeletedSubCategory = await this.subCategoriesRepository
                 .AllWithDeleted()
-                .SingleOrDefaultAsync(subCateg => subCateg.Name == model.Name);
+                .SingleOrDefaultAsync(subCateg => subCateg.Name == model.Name && subCateg.CategoryId == model.CategoryId);
 
             if (newSubCategoryAsExistingDeletedSubCategory != null && newSubCategoryAsExistingDeletedSubCategory.IsDeleted)
             {
@@ -115,18 +114,7 @@ namespace GourmeJunk.Services
             }
 
             await this.subCategoriesRepository.SaveChangesAsync();
-        }
-
-        public async Task<string[]> GetSubCategoriesNamesOfACategoryAsync(string categoryId)
-        {
-            var subCategoriesNames = await this.subCategoriesRepository
-                .AllAsNoTracking()
-                .Where(subCategory => subCategory.CategoryId == categoryId)
-                .Select(subCategory => subCategory.Name)
-                .ToArrayAsync();
-
-            return subCategoriesNames;
-        }
+        }        
 
         public async Task<IEnumerable<SubCategoryBaseViewModel>> GetSubCategoriesOfACategoryAsync(string categoryId)
         {
@@ -160,6 +148,17 @@ namespace GourmeJunk.Services
             this.subCategoriesRepository.Delete(subCategory);
 
             await this.subCategoriesRepository.SaveChangesAsync();
+        }
+
+        private async Task<string[]> GetSubCategoriesNamesOfACategoryAsync(string categoryId)
+        {
+            var subCategoriesNames = await this.subCategoriesRepository
+                .AllAsNoTracking()
+                .Where(subCategory => subCategory.CategoryId == categoryId)
+                .Select(subCategory => subCategory.Name)
+                .ToArrayAsync();
+
+            return subCategoriesNames;
         }
 
         private async Task<SubCategory> GetSubCategoryByIdAsync(string subCategoryId)

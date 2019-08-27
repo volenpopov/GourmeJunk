@@ -43,6 +43,9 @@ namespace GourmeJunk.Services.Tests
 
             var actual = await this.categoriesServiceMock.GetAllCategoriesViewModelsAsync();
 
+            Assert.IsType<CategoryViewModel[]>(actual);
+            Assert.Equal(expected.Length, actual.Count());
+
             Assert.Collection(actual,
                 elem1 =>
                 {
@@ -51,10 +54,8 @@ namespace GourmeJunk.Services.Tests
                 elem2 =>
                 {
                     Assert.Equal(expected[1].Name, elem2.Name);
-                });
-
-            Assert.Equal(expected.Length, actual.Count());
-        }
+                });            
+        }        
 
         [Fact]
         public async Task GetAllCategoriesViewModelsAsync_ReturnsNone_WhenNoCategoriesExist()

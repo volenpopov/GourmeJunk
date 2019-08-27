@@ -26,7 +26,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var subCategoryViewModels = await this.subCategoriesService.GetAllAsync();
+            var subCategoryViewModels = await this.subCategoriesService.GetAllSubCategoriesViewModelsAsync();
 
             return View(subCategoryViewModels);
         }
