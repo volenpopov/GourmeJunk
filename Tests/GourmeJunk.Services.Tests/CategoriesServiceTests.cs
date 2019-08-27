@@ -3,6 +3,7 @@ using GourmeJunk.Models.InputModels._AdminInputModels;
 using GourmeJunk.Models.ViewModels.Categories;
 using GourmeJunk.Services.Common;
 using GourmeJunk.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
@@ -108,7 +109,7 @@ namespace GourmeJunk.Services.Tests
                });
 
             var expected = TEST_CATEGORY_NAME;
-            var actual = this.DbContext.Categories.First().Name;
+            var actual = this.DbContext.Categories.FirstAsync().Result.Name;
 
             Assert.Equal(expected, actual);
         }
@@ -120,7 +121,7 @@ namespace GourmeJunk.Services.Tests
 
             var expectedCount = 2;
 
-            var actual = this.DbContext.Categories.First();
+            var actual = await this.DbContext.Categories.FirstAsync();
             actual.IsDeleted = true;
 
             await this.categoriesServiceMock.CreateCategoryAsync(
@@ -137,9 +138,9 @@ namespace GourmeJunk.Services.Tests
         {
             await this.AddTestingCategoriesToDb();
 
-            var id = this.DbContext.Categories.Skip(1).First().Id;
+            var id = this.DbContext.Categories.Skip(1).FirstAsync().Result.Id;
 
-            var expected = this.DbContext.Categories.Skip(1).First();
+            var expected = await this.DbContext.Categories.Skip(1).FirstAsync();
             var actual = await this.categoriesServiceMock.GetCategoryModelByIdAsync<CategoryViewModel>(id);
 
             Assert.IsType<CategoryViewModel>(actual);
@@ -178,7 +179,7 @@ namespace GourmeJunk.Services.Tests
         {
             await this.AddTestingCategoriesToDb();
 
-            var category = this.DbContext.Categories.First();
+            var category = await this.DbContext.Categories.FirstAsync();
 
             var expectedName = "Edited";
             var editModel = new CategoryEditInputModel { Id = category.Id, Name = expectedName };
@@ -211,7 +212,7 @@ namespace GourmeJunk.Services.Tests
         {
             await this.AddTestingCategoriesToDb();
 
-            var category = this.DbContext.Categories.First();
+            var category = await this.DbContext.Categories.FirstAsync();
             var expectedName = category.Name;
 
             var actualName = await this.categoriesServiceMock.GetCategoryNameByIdAsync(category.Id);
@@ -238,11 +239,10 @@ namespace GourmeJunk.Services.Tests
         [Fact]
         public async Task CheckContainsSubCategoryAsync_ReturnsTrueForExistingSubcategory()
         {
-            await this.AddTestingCategoriesToDb();
-            await this.AddTestingSubcategoriesToDb();
+            await this.AddTestingCategoriesAndSubcategoriesToDb();
 
-            var category = this.DbContext.Categories.First();
-            var subcategory = this.DbContext.SubCategories.First();
+            var category = await this.DbContext.Categories.FirstAsync();
+            var subcategory = await this.DbContext.SubCategories.FirstAsync();
 
             var actual = await this.categoriesServiceMock.CheckContainsSubCategoryAsync(category.Id, subcategory.Id);
 
@@ -254,7 +254,7 @@ namespace GourmeJunk.Services.Tests
         {
             await this.AddTestingCategoriesToDb();
 
-            var category = this.DbContext.Categories.First();
+            var category = await this.DbContext.Categories.FirstAsync();
 
             var actual = await this.categoriesServiceMock.CheckContainsSubCategoryAsync(category.Id, string.Empty);
 
@@ -270,16 +270,15 @@ namespace GourmeJunk.Services.Tests
             Assert.Equal(string.Format(ServicesDataConstants.NULL_REFERENCE_ID, nameof(Category), string.Empty), exception.Message);
         }
 
-
         private async Task AddTestingCategoriesToDb()
         {
-            this.DbContext.Categories.Add(
+            await this.DbContext.Categories.AddAsync(
                 new Category
                 {
                     Name = TEST_CATEGORY_NAME
                 });
 
-            this.DbContext.Categories.Add(
+            await this.DbContext.Categories.AddAsync(
                 new Category
                 {
                     Name = SECOND_TEST_CATEGORY_NAME
@@ -288,18 +287,20 @@ namespace GourmeJunk.Services.Tests
             await this.DbContext.SaveChangesAsync();
         }
 
-        private async Task AddTestingSubcategoriesToDb()
+        private async Task AddTestingCategoriesAndSubcategoriesToDb()
         {
-            var category = this.DbContext.Categories.First();
+            await this.AddTestingCategoriesToDb();
 
-            this.DbContext.SubCategories.Add(
+            var category = await this.DbContext.Categories.FirstAsync();
+
+            await this.DbContext.SubCategories.AddAsync(
                 new SubCategory
                 {
                     Category = category,
                     Name = TEST_BEVERAGES_SUBCATEGORY_NAME
                 });
 
-            this.DbContext.SubCategories.Add(
+            await this.DbContext.SubCategories.AddAsync(
                 new SubCategory
                 {
                     Category = category,
