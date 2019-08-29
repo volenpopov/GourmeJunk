@@ -38,7 +38,7 @@ namespace GourmeJunk.Web.Controllers
         {
             var indexViewModel = new IndexViewModel()
             {
-                Coupons = await this.couponsService.GetAllIndexCouponsModelsAsync(),
+                Coupons = await this.couponsService.GetAllActiveCouponsWithImageIndexCouponsModelsAsync(),
                 Categories = await this.categoriesService.GetAllCategoriesViewModelsAsync(),
                 MenuItems = await this.menuItemsService.GetAllIndexMenuItemsModelsAsync()
             };

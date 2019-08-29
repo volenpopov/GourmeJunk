@@ -22,7 +22,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var couponsViewModels = await this.couponsService.GetAllAsync();
+            var couponsViewModels = await this.couponsService.GetAllCouponsViewModelsAsync();
 
             return View(couponsViewModels);
         }
@@ -74,7 +74,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(CouponEditInputModel model)
         {            
-            var alreadyExists = await this.couponsService.CheckIfCouponExistsAsync(model.Id, model.Name);
+            var alreadyExists = await this.couponsService.CheckIfAnotherCouponWithTheSameNameExistsAsync(model.Id, model.Name);
 
             if (alreadyExists || !ModelState.IsValid)
             {

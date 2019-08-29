@@ -9,11 +9,11 @@ namespace GourmeJunk.Services.Contracts
 {
     public interface ICouponsService
     {
-        Task<IEnumerable<CouponViewModel>> GetAllAsync();
+        Task<IEnumerable<CouponViewModel>> GetAllCouponsViewModelsAsync();
 
         Task<bool> CheckIfCouponExistsAsync(string couponId);
 
-        Task<bool> CheckIfCouponExistsAsync(string couponId, string couponName);
+        Task<bool> CheckIfAnotherCouponWithTheSameNameExistsAsync(string couponId, string couponName);
 
         Task CreateCouponAsync(CouponCreateInputModel model, IFormFile image);
 
@@ -23,6 +23,6 @@ namespace GourmeJunk.Services.Contracts
 
         Task DeleteCouponAsync(string id);
 
-        Task<IEnumerable<IndexCouponViewModel>>  GetAllIndexCouponsModelsAsync();
+        Task<IEnumerable<IndexCouponViewModel>>  GetAllActiveCouponsWithImageIndexCouponsModelsAsync();
     }
 }

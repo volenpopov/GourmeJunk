@@ -25,7 +25,7 @@ namespace GourmeJunk.Services
             this.couponsRepository = couponsRepository;
         }
 
-        public async Task<IEnumerable<CouponViewModel>> GetAllAsync()
+        public async Task<IEnumerable<CouponViewModel>> GetAllCouponsViewModelsAsync()
         {
             var couponsModels = await this.couponsRepository
                 .AllAsNoTracking()
@@ -42,11 +42,11 @@ namespace GourmeJunk.Services
                 .AnyAsync(coupon => coupon.Name == couponName);
         }
 
-        public async Task<bool> CheckIfCouponExistsAsync(string couponId, string couponName)
+        public async Task<bool> CheckIfAnotherCouponWithTheSameNameExistsAsync(string couponId, string couponName)
         {
             return await this.couponsRepository
                 .AllAsNoTracking()
-                .AnyAsync(menuItem => menuItem.Name == couponName && menuItem.Id != couponId);
+                .AnyAsync(coupon => coupon.Name == couponName && coupon.Id != couponId);
         }
 
         public async Task CreateCouponAsync(CouponCreateInputModel model, IFormFile image)
@@ -124,11 +124,11 @@ namespace GourmeJunk.Services
             await this.couponsRepository.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<IndexCouponViewModel>> GetAllIndexCouponsModelsAsync()
+        public async Task<IEnumerable<IndexCouponViewModel>> GetAllActiveCouponsWithImageIndexCouponsModelsAsync()
         {
             return await this.couponsRepository
                 .AllAsNoTracking()
-                .Where(cpn => cpn.IsActive && cpn.Image.Length > 0)
+                .Where(cpn => cpn.IsActive && cpn.Image != null)
                 .To<IndexCouponViewModel>()
                 .ToArrayAsync();
         }
