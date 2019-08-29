@@ -29,7 +29,7 @@ namespace GourmeJunk.Services
             this.shoppingCartMenuItemsRepository = shoppingCartMenuItemsRepository;
         }
 
-        public async Task<IEnumerable<UserViewModel>> GetAllAsync()
+        public async Task<IEnumerable<UserViewModel>> GetAllUsersViewModels()
         {
             var usersViewModels = await this.usersRepository
                 .AllAsNoTracking()                
@@ -95,7 +95,7 @@ namespace GourmeJunk.Services
             if (user == null)
             {
                 throw new NullReferenceException(string.Format(ServicesDataConstants.NULL_REFERENCE_ID,
-                    nameof(ServicesDataConstants.USER),
+                    ServicesDataConstants.USER,
                     userId));
             }
 
