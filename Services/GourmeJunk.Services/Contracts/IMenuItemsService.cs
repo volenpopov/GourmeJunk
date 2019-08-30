@@ -9,7 +9,7 @@ namespace GourmeJunk.Services.Contracts
 {
     public interface IMenuItemsService
     {
-        Task<IEnumerable<MenuItemViewModel>> GetAllAsync();
+        Task<IEnumerable<MenuItemViewModel>> GetAllMenuItemsViewModelsAsync();
 
         Task<MenuItemCreateViewModel> GetMenuItemCreateViewModelAsync();
 

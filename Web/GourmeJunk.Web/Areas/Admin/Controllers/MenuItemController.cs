@@ -22,7 +22,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var menuItemViewModels = await this.menuItemsService.GetAllAsync();
+            var menuItemViewModels = await this.menuItemsService.GetAllMenuItemsViewModelsAsync();
 
             return View(menuItemViewModels);
         }

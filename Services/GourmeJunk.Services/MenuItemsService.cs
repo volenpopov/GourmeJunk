@@ -32,7 +32,7 @@ namespace GourmeJunk.Services
             this.subCategoriesService = subCategoriesService;
         }
 
-        public async Task<IEnumerable<MenuItemViewModel>> GetAllAsync()
+        public async Task<IEnumerable<MenuItemViewModel>> GetAllMenuItemsViewModelsAsync()
         {
             var menuItemViewModels = await this.menuItemsRepository
                 .AllAsNoTracking()
@@ -45,7 +45,7 @@ namespace GourmeJunk.Services
         }
 
         public async Task<MenuItemCreateViewModel> GetMenuItemCreateViewModelAsync()
-        {
+        {            
             var categories = await this.categoriesService.GetAllCategoriesViewModelsAsync();
 
             var menuItemCreateViewModel = new MenuItemCreateViewModel
@@ -260,7 +260,9 @@ namespace GourmeJunk.Services
 
             var subCategoryIsWithinCategory = await this.categoriesService.CheckContainsSubCategoryAsync(menuItem.CategoryId, model.SubCategoryId);
 
-            if (model.SubCategoryId != null && model.SubCategoryId != "-1" && subCategoryIsWithinCategory)
+            if (model.SubCategoryId != null 
+                && model.SubCategoryId != ServicesDataConstants.NO_SUBCATEGORY_SELECTED_DEFAULT_VALUE 
+                && subCategoryIsWithinCategory)
             {
                 menuItem.SubCategoryId = model.SubCategoryId;
             }
