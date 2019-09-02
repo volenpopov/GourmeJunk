@@ -6,7 +6,6 @@ using GourmeJunk.Web.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Stripe;
 using System.Security.Claims;
 using System.Threading.Tasks;
 

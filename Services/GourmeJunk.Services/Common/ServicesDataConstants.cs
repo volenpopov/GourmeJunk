@@ -42,6 +42,8 @@
 
         public const string COUPON_NOT_FOUND_ERROR = "Error: Coupon with name \"{0}\" was not found. Please try again.";
 
+        public const string ORDER_TOTAL_NOT_COVERING_MIN_COUPON_AMOUNT = "Error: Minimum order amount for this coupon is: ${0:f2}.";
+
         public const int PAGE_SIZE = 3;
 
         public const string ORDER_HISTORY_PAGINATION_URL_PARAM = "/Order/OrderHistory?productPage=:";

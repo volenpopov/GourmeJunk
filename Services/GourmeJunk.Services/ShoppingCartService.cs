@@ -133,7 +133,7 @@ namespace GourmeJunk.Services
         {
             var coupon = await this.couponsRepository
                 .All()
-                .SingleOrDefaultAsync(cpn => cpn.Name == model.CouponName);
+                .SingleOrDefaultAsync(cpn => cpn.Name == model.CouponName && cpn.IsActive);
 
             if (coupon == null)
             {
@@ -144,14 +144,24 @@ namespace GourmeJunk.Services
             var discountedOrderTotal = 0m;
 
             var isPercentageType = (int) coupon.CouponType == 0;
-            
-            if (isPercentageType)
+
+            coupon.MinimumOrderAmount = coupon.MinimumOrderAmount ?? default(decimal);
+
+            if (model.OrderTotalOriginal >= coupon.MinimumOrderAmount)
             {
-                discountedOrderTotal = model.OrderTotalOriginal - ((model.OrderTotalOriginal * coupon.Discount)/100);
-            }
+                if (isPercentageType)
+                {
+                    discountedOrderTotal = model.OrderTotalOriginal - ((model.OrderTotalOriginal * coupon.Discount) / 100);
+                }
+                else
+                {
+                    discountedOrderTotal = model.OrderTotalOriginal - coupon.Discount;
+                }
+            } 
             else
             {
-                discountedOrderTotal = model.OrderTotalOriginal - coupon.Discount;
+                model.StatusMessage = string.Format(ServicesDataConstants.ORDER_TOTAL_NOT_COVERING_MIN_COUPON_AMOUNT, coupon.MinimumOrderAmount);
+                return model;
             }
 
             model.OrderTotal = discountedOrderTotal;
@@ -218,7 +228,7 @@ namespace GourmeJunk.Services
 
             return shoppingCartMenuItem.Count == 1;
         }
-
+        
         private async Task<ShoppingCart> GetShoppingCartByUserId(string userId)
         {
             var shoppingCart = await this.shoppingCartsRepository

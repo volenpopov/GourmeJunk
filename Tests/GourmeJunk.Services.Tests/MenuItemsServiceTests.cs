@@ -42,7 +42,7 @@ namespace GourmeJunk.Services.Tests
         [Fact]
         public async Task GetAllMenuItemsViewModelsAsync_ReturnsValidModels()
         {
-            await this.AddTestingMenuItemsToDb();
+            await this.AddTestingMenuItemsWithCategoryToDb();
 
             var firstMenuItem = await this.DbContext.MenuItems.FirstAsync();
             var secondMenuItem = await this.DbContext.MenuItems.LastAsync();
@@ -84,7 +84,7 @@ namespace GourmeJunk.Services.Tests
         [Fact]
         public async Task GetMenuItemCreateViewModelAsync_ReturnsValidModels()
         {
-            await this.AddTestingMenuItemsToDb();
+            await this.AddTestingMenuItemsWithCategoryToDb();
 
             var expected = await this.DbContext.Categories
                 .Select(category => new CategoryViewModel
@@ -117,7 +117,7 @@ namespace GourmeJunk.Services.Tests
         [Fact]
         public async Task CheckIfMenuItemExistsAsync_ReturnsTrueForExistingItem()
         {
-            await this.AddTestingMenuItemsToDb();
+            await this.AddTestingMenuItemsWithCategoryToDb();
 
             var firstMenuItem = await this.DbContext.MenuItems.FirstAsync();
             var secondMenuItem = await this.DbContext.MenuItems.LastAsync();
@@ -138,7 +138,7 @@ namespace GourmeJunk.Services.Tests
         [Fact]
         public async Task CheckIfMenuItemExistsAsync_ReturnsFalseForNonExistingItem()
         {
-            await this.AddTestingMenuItemsToDb();
+            await this.AddTestingMenuItemsWithCategoryToDb();
 
             var firstMenuItem = await this.DbContext.MenuItems.FirstAsync();
             var secondMenuItem = await this.DbContext.MenuItems.LastAsync();
@@ -190,7 +190,7 @@ namespace GourmeJunk.Services.Tests
         [Fact]
         public async Task GetMenuItemEditViewModelAsync_ReturnsValidModel()
         {
-            await this.AddTestingMenuItemsToDb();
+            await this.AddTestingMenuItemsWithCategoryToDb();
 
             var menuItem = await this.DbContext.MenuItems.FirstAsync();
             var category = await this.DbContext.Categories.FirstAsync();
@@ -238,7 +238,7 @@ namespace GourmeJunk.Services.Tests
         [Fact]
         public async Task EditMenuItemAsync_SucessfullyEditsMenuItemWithoutImageAndSetsItImageToDefault()
         {
-            await this.AddTestingMenuItemsToDb();
+            await this.AddTestingMenuItemsWithCategoryToDb();
 
             var menuItem = await this.DbContext.MenuItems.FirstAsync();
             
@@ -272,7 +272,7 @@ namespace GourmeJunk.Services.Tests
         [Fact]
         public async Task EditMenuItemAsync_DeletesCurrentItemAndRestoresPreviouslyDeletdItemWhenPreviouslyDeletedItemIsGivenAsInput()
         {
-            await this.AddTestingMenuItemsToDb();
+            await this.AddTestingMenuItemsWithCategoryToDb();
 
             var menuItem = await this.DbContext.MenuItems.FirstAsync();
 
@@ -328,7 +328,7 @@ namespace GourmeJunk.Services.Tests
         [Fact]
         public async Task GetMenuItemViewModelExtendedAsync_ReturnsValidModel()
         {
-            await this.AddTestingMenuItemsToDb();
+            await this.AddTestingMenuItemsWithCategoryToDb();
 
             var subcategory = await this.DbContext.SubCategories.FirstAsync();
 
@@ -368,7 +368,7 @@ namespace GourmeJunk.Services.Tests
         [Fact]
         public async Task DeleteMenuItemAsync_SuccessfullyMarksItemAsDeletedAndSetsImageToNull()
         {
-            await this.AddTestingMenuItemsToDb();
+            await this.AddTestingMenuItemsWithCategoryToDb();
 
             var menuItem = await this.DbContext.MenuItems.FirstAsync();
 
@@ -395,7 +395,7 @@ namespace GourmeJunk.Services.Tests
         [Fact]
         public async Task GetAllIndexMenuItemsModelsAsync_ReturnsValidModels()
         {
-            await this.AddTestingMenuItemsToDb();
+            await this.AddTestingMenuItemsWithCategoryToDb();
 
             var menuItems = await this.DbContext.MenuItems.ToArrayAsync();
 
@@ -434,7 +434,7 @@ namespace GourmeJunk.Services.Tests
             Assert.Empty(actual);
         }
 
-        private async Task AddTestingMenuItemsToDb()
+        private async Task AddTestingMenuItemsWithCategoryToDb()
         {
             await this.DbContext.Categories.AddAsync(
                 new Category
