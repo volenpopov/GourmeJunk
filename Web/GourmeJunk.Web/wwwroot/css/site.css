@@ -132,3 +132,17 @@ body {
     }
 }
 
+.indexMenuItemName {
+    font-size: 21px;
+    color: maroon;
+}
+
+@media only screen and (max-width: 767px) {
+    .indexMenuItemName {
+        margin-left: 16px;
+    }
+    .indexMenuItemSubcatgory {
+        margin-left: 16px;
+    }
+}
+
