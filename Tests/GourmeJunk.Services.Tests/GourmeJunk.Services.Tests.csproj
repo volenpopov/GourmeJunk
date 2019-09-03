@@ -19,6 +19,13 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\GourmeJunk.Data\GourmeJunk.Data.csproj" />
     <ProjectReference Include="..\..\Services\GourmeJunk.Services\GourmeJunk.Services.csproj" />
+    <ProjectReference Include="..\..\Web\GourmeJunk.Web\GourmeJunk.Web.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Identity.UI">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.identity.ui\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Identity.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

@@ -6,8 +6,10 @@ using GourmeJunk.Data.Repositories;
 using GourmeJunk.Models.ViewModels.Categories;
 using GourmeJunk.Services.Contracts;
 using GourmeJunk.Services.Mapping;
+using GourmeJunk.Web.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -20,7 +22,7 @@ namespace GourmeJunk.Services.Tests
         protected IServiceProvider ServiceProvider { get; set; }
 
         protected GourmeJunkDbContext DbContext { get; set; }
-
+        
         protected BaseServiceTests()
         {
             var services = this.SetServices();
@@ -59,6 +61,8 @@ namespace GourmeJunk.Services.Tests
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             //Application Services
+            services.AddSingleton<IEmailSender, EmailSender>();
+            
             services.AddScoped<ICategoriesService, CategoriesService>();
             services.AddScoped<ISubCategoriesService, SubCategoriesService>();
             services.AddScoped<IMenuItemsService, MenuItemsService>();

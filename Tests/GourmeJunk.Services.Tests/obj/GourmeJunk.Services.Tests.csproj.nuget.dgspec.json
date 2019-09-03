@@ -246,6 +246,62 @@
         }
       }
     },
+    "E:\\Volen\\Programming\\Github\\GourmeJunk\\GourmeJunk.Services.Mapping\\GourmeJunk.Services.Mapping.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Volen\\Programming\\Github\\GourmeJunk\\GourmeJunk.Services.Mapping\\GourmeJunk.Services.Mapping.csproj",
+        "projectName": "GourmeJunk.Services.Mapping",
+        "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\GourmeJunk.Services.Mapping\\GourmeJunk.Services.Mapping.csproj",
+        "packagesPath": "C:\\Users\\volenpopov\\.nuget\\packages\\",
+        "outputPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\GourmeJunk.Services.Mapping\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\volenpopov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
     "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.Common\\GourmeJunk.Models.Common.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -585,6 +641,9 @@
               },
               "E:\\Volen\\Programming\\Github\\GourmeJunk\\Services\\GourmeJunk.Services\\GourmeJunk.Services.csproj": {
                 "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Services\\GourmeJunk.Services\\GourmeJunk.Services.csproj"
+              },
+              "E:\\Volen\\Programming\\Github\\GourmeJunk\\Web\\GourmeJunk.Web\\GourmeJunk.Web.csproj": {
+                "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Web\\GourmeJunk.Web\\GourmeJunk.Web.csproj"
               }
             }
           }
@@ -629,6 +688,100 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.4.1, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "E:\\Volen\\Programming\\Github\\GourmeJunk\\Web\\GourmeJunk.Web\\GourmeJunk.Web.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Web\\GourmeJunk.Web\\GourmeJunk.Web.csproj",
+        "projectName": "GourmeJunk.Web",
+        "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Web\\GourmeJunk.Web\\GourmeJunk.Web.csproj",
+        "packagesPath": "C:\\Users\\volenpopov\\.nuget\\packages\\",
+        "outputPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Web\\GourmeJunk.Web\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\volenpopov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data\\GourmeJunk.Data.csproj": {
+                "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Data\\GourmeJunk.Data\\GourmeJunk.Data.csproj"
+              },
+              "E:\\Volen\\Programming\\Github\\GourmeJunk\\GourmeJunk.Common\\GourmeJunk.Common.csproj": {
+                "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\GourmeJunk.Common\\GourmeJunk.Common.csproj"
+              },
+              "E:\\Volen\\Programming\\Github\\GourmeJunk\\GourmeJunk.Services.Mapping\\GourmeJunk.Services.Mapping.csproj": {
+                "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\GourmeJunk.Services.Mapping\\GourmeJunk.Services.Mapping.csproj"
+              },
+              "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.InputModels\\GourmeJunk.Models.InputModels.csproj": {
+                "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Models\\GourmeJunk.Models.InputModels\\GourmeJunk.Models.InputModels.csproj"
+              },
+              "E:\\Volen\\Programming\\Github\\GourmeJunk\\Services\\GourmeJunk.Services.Mapping\\GourmeJunk.Services.Mapping.csproj": {
+                "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Services\\GourmeJunk.Services.Mapping\\GourmeJunk.Services.Mapping.csproj"
+              },
+              "E:\\Volen\\Programming\\Github\\GourmeJunk\\Services\\GourmeJunk.Services\\GourmeJunk.Services.csproj": {
+                "projectPath": "E:\\Volen\\Programming\\Github\\GourmeJunk\\Services\\GourmeJunk.Services\\GourmeJunk.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            },
+            "Sendgrid": {
+              "target": "Package",
+              "version": "[9.12.0, )"
+            },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[28.2.0, )"
             }
           },
           "imports": [

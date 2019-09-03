@@ -74,8 +74,7 @@ namespace GourmeJunk.Web
             services.Configure<StripeSettings>(this.Configuration.GetSection(WebConstants.Stripe.STRIPE_SECTION_NAME));
 
             services.AddSingleton<IEmailSender, EmailSender>();
-            services.Configure<EmailOptions>(this.Configuration);
-            
+            services.Configure<EmailOptions>(this.Configuration);            
 
             // Identity stores
             services.AddTransient<IUserStore<GourmeJunkUser>, GourmeJunkUserStore>();

@@ -33,3 +33,7 @@ E:\Volen\Programming\Github\GourmeJunk\Tests\GourmeJunk.Services.Tests\bin\Debug
 E:\Volen\Programming\Github\GourmeJunk\Tests\GourmeJunk.Services.Tests\bin\Debug\netcoreapp2.2\GourmeJunk.Services.Tests.pdb
 E:\Volen\Programming\Github\GourmeJunk\Tests\GourmeJunk.Services.Tests\obj\Debug\netcoreapp2.2\GourmeJunk.Services.Tests.dll
 E:\Volen\Programming\Github\GourmeJunk\Tests\GourmeJunk.Services.Tests\obj\Debug\netcoreapp2.2\GourmeJunk.Services.Tests.pdb
+E:\Volen\Programming\Github\GourmeJunk\Tests\GourmeJunk.Services.Tests\bin\Debug\netcoreapp2.2\GourmeJunk.Web.Views.dll
+E:\Volen\Programming\Github\GourmeJunk\Tests\GourmeJunk.Services.Tests\bin\Debug\netcoreapp2.2\GourmeJunk.Web.Views.pdb
+E:\Volen\Programming\Github\GourmeJunk\Tests\GourmeJunk.Services.Tests\bin\Debug\netcoreapp2.2\GourmeJunk.Web.dll
+E:\Volen\Programming\Github\GourmeJunk\Tests\GourmeJunk.Services.Tests\bin\Debug\netcoreapp2.2\GourmeJunk.Web.pdb

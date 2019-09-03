@@ -60,6 +60,10 @@
 
         public const int ORDER_ID_SHORT_LENGTH = 5;
 
+        public const string DATETIME_FORMAT = "dd/MM/yyyy HH:mm";
+
+        public const string CURRENCY_FORMAT = "C";
+
         public class Stripe
         {
             public const string STRIPE_ORDER_DESCRIPTION = "Order Id: ";

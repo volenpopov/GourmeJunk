@@ -234,10 +234,10 @@ namespace GourmeJunk.Services
                     Id = order.Id,
                     Email = order.User.Email,
                     PickupName = order.PickupName,
-                    PickupTime = order.PickUpDateAndTime.ToString("dd/MM/yyyy HH:mm"),
+                    PickupTime = order.PickUpDateAndTime.ToString(ServicesDataConstants.DATETIME_FORMAT),
                     OrderTotal = order.OrderTotal != default(decimal)
-                        ? order.OrderTotal.ToString("C")
-                        : order.OrderTotalOriginal.ToString("C"),
+                        ? order.OrderTotal.ToString(ServicesDataConstants.CURRENCY_FORMAT)
+                        : order.OrderTotalOriginal.ToString(ServicesDataConstants.CURRENCY_FORMAT),
                     Status = order.OrderStatus.ToString(),
                     TotalItems = order.OrderMenuItems.Count
                 };
@@ -289,7 +289,7 @@ namespace GourmeJunk.Services
                 var manageOrderViewModel = new ManageOrderViewModel
                 {
                     Id = order.Id,
-                    PickupTime = order.PickUpDateAndTime.ToString("dd/MM/yyyy HH:mm"),
+                    PickupTime = order.PickUpDateAndTime.ToString(ServicesDataConstants.DATETIME_FORMAT),
                     Comments = order.Comments,
                     Status = order.OrderStatus.ToString(),
                 };
@@ -525,10 +525,10 @@ namespace GourmeJunk.Services
                     Email = order.User.Email,
                     PickupName = order.PickupName,
                     PhoneNumber = order.PhoneNumber,
-                    PickupTime = order.PickUpDateAndTime.ToString("dd/MM/yyyy HH:mm"),
+                    PickupTime = order.PickUpDateAndTime.ToString(ServicesDataConstants.DATETIME_FORMAT),
                     OrderTotal = order.OrderTotal != default(decimal)
-                        ? order.OrderTotal.ToString("C")
-                        : order.OrderTotalOriginal.ToString("C"),
+                        ? order.OrderTotal.ToString(ServicesDataConstants.CURRENCY_FORMAT)
+                        : order.OrderTotalOriginal.ToString(ServicesDataConstants.CURRENCY_FORMAT),
                     Status = order.OrderStatus.ToString(),
                     TotalItems = order.OrderMenuItems.Count
                 };
