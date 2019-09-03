@@ -33,107 +33,105 @@
 </head>
 <body class="search-background">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm bg-dark border-bottom box-shadow mb-3 px-5">
-            <div class="container-fluid">
-                <a class="navbar-brand text-light" asp-controller="Home" asp-action="Index">GourmeJunk</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        @if (User.IsInRole(GlobalConstants.ADMINISTRATOR_ROLE_NAME))
-                        {
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-light"
-                                   href="#"
-                                   id="navbarDropDownMenuLink"
-                                   role="button"
-                                   data-toggle="dropdown"
-                                   aria-haspopup="true"
-                                   aria-expanded="false">
-                                    Content Management
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-lg-3">
+            <a class="navbar-brand text-light" asp-controller="Home" asp-action="Index">GourmeJunk</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-lg-flex justify-content-lg-between" id="navbarNav">
+                <partial name="_LoginPartial" />
+                <ul class="navbar-nav d-md-flex flex-row order-lg-1">
+                    @if (User.IsInRole(GlobalConstants.ADMINISTRATOR_ROLE_NAME))
+                    {
+                        <li class="nav-item dropdown mr-3 mr-lg-1">
+                            <a class="nav-link dropdown-toggle text-light"
+                               href="#"
+                               id="navbarDropDownMenuLink"
+                               role="button"
+                               data-toggle="dropdown"
+                               aria-haspopup="true"
+                               aria-expanded="false">
+                                Content Management
+                            </a>
+                            <div class="dropdown-menu p-0" aria-labelledby="navbarDropDownMenuLink">
+                                <a class="dropdown-item"
+                                   asp-area="Admin"
+                                   asp-controller="Category"
+                                   asp-action="Index">Categories</a>
+                                <a class="dropdown-item"
+                                   asp-area="Admin"
+                                   asp-controller="SubCategory"
+                                   asp-action="Index">
+                                    SubCategories
                                 </a>
-                                <div class="dropdown-menu p-0" aria-labelledby="navbarDropDownMenuLink">
-                                    <a class="dropdown-item"
-                                       asp-area="Admin"
-                                       asp-controller="Category"
-                                       asp-action="Index">Categories</a>
-                                    <a class="dropdown-item"
-                                       asp-area="Admin"
-                                       asp-controller="SubCategory"
-                                       asp-action="Index">
-                                        SubCategories
-                                    </a>
-                                    <a class="dropdown-item"
-                                       asp-area="Admin"
-                                       asp-controller="MenuItem"
-                                       asp-action="Index">
-                                        Menu Items
-                                    </a>
-                                    <a class="dropdown-item"
-                                       asp-area="Admin"
-                                       asp-controller="Coupon"
-                                       asp-action="Index">
-                                        Coupons
-                                    </a>
-                                    <a class="dropdown-item"
-                                       asp-area="Admin"
-                                       asp-controller="User"
-                                       asp-action="Index">
-                                        Users
-                                    </a>
-                                </div>
-                            </li>
-                        }
+                                <a class="dropdown-item"
+                                   asp-area="Admin"
+                                   asp-controller="MenuItem"
+                                   asp-action="Index">
+                                    Menu Items
+                                </a>
+                                <a class="dropdown-item"
+                                   asp-area="Admin"
+                                   asp-controller="Coupon"
+                                   asp-action="Index">
+                                    Coupons
+                                </a>
+                                <a class="dropdown-item"
+                                   asp-area="Admin"
+                                   asp-controller="User"
+                                   asp-action="Index">
+                                    Users
+                                </a>
+                            </div>
+                        </li>
+                    }
 
-                        @if (httpContextAccessor.HttpContext.Session.GetInt32(@WebConstants.SESSION_NAME_SHOPPING_CART_INDIVIDUAL_ITEMS_COUNT) != null)
+                    @if (httpContextAccessor.HttpContext.Session.GetInt32(@WebConstants.SESSION_NAME_SHOPPING_CART_INDIVIDUAL_ITEMS_COUNT) != null)
+                    {
+                        @if (signInManager.IsSignedIn(User))
                         {
-                            @if (signInManager.IsSignedIn(User))
+                            <li class="mr-3 mr-lg-1" style="color:white">
+                                <a asp-controller="Order" asp-action="OrderHistory" class="nav-link">
+                                    <span class="text-white">Order History</span>
+                                </a>
+                            </li>
+
+                            @if (User.IsInRole(GlobalConstants.KITCHEN_ROLE_NAME)
+                             || User.IsInRole(GlobalConstants.RECEPTION_ROLE_NAME)
+                             || User.IsInRole(GlobalConstants.ADMINISTRATOR_ROLE_NAME))
                             {
-                                <li style="color:white">
-                                    <a asp-controller="Order" asp-action="OrderHistory" class="nav-link">
-                                        <span class="text-white">Order History</span>
+                                <li class="nav-item dropdown text-white-50 mr-3 mr-lg-1">
+                                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Orders
                                     </a>
-                                </li>
-
-                                @if (User.IsInRole(GlobalConstants.KITCHEN_ROLE_NAME) 
-                                    || User.IsInRole(GlobalConstants.RECEPTION_ROLE_NAME) 
-                                    || User.IsInRole(GlobalConstants.ADMINISTRATOR_ROLE_NAME))
-                                {
-                                    <li class="nav-item dropdown text-white-50">
-                                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Order
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropDownMenuLink">
-                                            @if (User.IsInRole(GlobalConstants.KITCHEN_ROLE_NAME) || User.IsInRole(GlobalConstants.ADMINISTRATOR_ROLE_NAME))
-                                            {
-                                                <a class="dropdown-item" asp-action="ManageOrders" asp-controller="Order">Manage Orders</a>
-                                            }
-                                            @if (User.IsInRole(GlobalConstants.RECEPTION_ROLE_NAME) || User.IsInRole(GlobalConstants.ADMINISTRATOR_ROLE_NAME))
-                                            {
-                                                <a class="dropdown-item" asp-action="OrderPickup" asp-controller="Order">Orders Pickup</a>
-                                            }
-                                        </div>
-                                    </li>
-                                }
-
-                                <li style="color:white">
-                                    <a asp-controller="ShoppingCart" asp-action="Index" class="nav-link">
-                                        @{
-                                            var userIndividualItemsCount = httpContextAccessor.HttpContext.Session.GetInt32(WebConstants.SESSION_NAME_SHOPPING_CART_INDIVIDUAL_ITEMS_COUNT);
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropDownMenuLink">
+                                        @if (User.IsInRole(GlobalConstants.KITCHEN_ROLE_NAME) || User.IsInRole(GlobalConstants.ADMINISTRATOR_ROLE_NAME))
+                                        {
+                                            <a class="dropdown-item" asp-action="ManageOrders" asp-controller="Order">Manage Orders</a>
                                         }
-                                        <i class="fas fa-shopping-cart text-warning"></i>&nbsp; <span class="text-warning">(@userIndividualItemsCount)</span>
-                                    </a>
+                                        @if (User.IsInRole(GlobalConstants.RECEPTION_ROLE_NAME) || User.IsInRole(GlobalConstants.ADMINISTRATOR_ROLE_NAME))
+                                        {
+                                            <a class="dropdown-item" asp-action="OrderPickup" asp-controller="Order">Orders Pickup</a>
+                                        }
+                                    </div>
                                 </li>
                             }
+
+                            <li style="color:white">
+                                <a asp-controller="ShoppingCart" asp-action="Index" class="nav-link">
+                                    @{
+                                        var userIndividualItemsCount = httpContextAccessor.HttpContext.Session.GetInt32(WebConstants.SESSION_NAME_SHOPPING_CART_INDIVIDUAL_ITEMS_COUNT);
+                                    }
+                                    <i class="fas fa-shopping-cart text-warning"></i>&nbsp; <span class="text-warning">(@userIndividualItemsCount)</span>
+                                </a>
+                            </li>
                         }
-                    </ul>
-                </div>
+                    }
+                </ul>
             </div>
         </nav>
-    </header>
+    </header>    
+    
     <div class="container-fluid">
         <main role="main" class="p-3">
             @RenderBody()

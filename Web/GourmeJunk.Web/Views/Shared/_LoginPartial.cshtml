@@ -3,21 +3,21 @@
 
 @inject SignInManager<GourmeJunkUser> signInManager
 
-    <ul class="navbar-nav">
+    <ul class="navbar-nav d-flex flex-row order-lg-2">
         @if (signInManager.IsSignedIn(User))
         {
         <li class="nav-item">            
             <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index">Hi, <span class="text-warning"><u>@User.Identity.Name</u> <i class="far fa-user"></i></span></a>
         </li>
-            <li class="nav-item ml-3">
-                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout">
-                    <input type="submit" value="Logout" class="nav-link btn btn-link text-light"/>
-                </form>
-            </li>
+        <li class="nav-item ml-3">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout">
+                <input type="submit" value="Logout" class="nav-link btn btn-link text-light"/>
+            </form>
+        </li>
         }
         else
         {
-            <li class="nav-item">
+            <li class="nav-item mr-3">
                 <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Register">Register</a>
             </li>
             <li class="nav-item">
