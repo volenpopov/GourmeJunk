@@ -146,3 +146,14 @@ body {
     }
 }
 
+@media only screen and (max-width: 570px) {
+    .subCategoryListTitleShrink {
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .subCategoryListTitleShrink {
+        font-size: 15px;
+    }
+}
