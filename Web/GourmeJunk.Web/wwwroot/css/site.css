@@ -103,3 +103,32 @@ body {
     border-radius: 50%;
 }
 
+@media only screen and (max-width: 1000px) {
+    .couponImgShrink {
+        width: 650px;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .couponImgShrink {
+        width: 450px;
+        height: 40px;
+    }
+}
+
+
+@media only screen and (max-width: 530px) {
+    .couponImgShrink {
+        width: 350px;
+        height: 35px;
+    }
+}
+
+
+@media only screen and (max-width: 425px) {
+    .couponImgShrink {
+        width: 250px;
+        height: 35px;
+    }
+}
+
