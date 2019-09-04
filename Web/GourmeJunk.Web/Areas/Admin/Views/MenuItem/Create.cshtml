@@ -21,7 +21,7 @@
             <div class="col-2">
                 <label asp-for="Name" class="col-form-label text-secondary font-weight-bold"></label>
             </div>
-            <div class="col-5">
+            <div class="col-md-5">
                 <input asp-for="Name" class="form-control" />
             </div>
             <span asp-validation-for="Name" class="text-danger"></span>
@@ -30,7 +30,7 @@
             <div class="col-2">
                 <label asp-for="Description" class="col-form-label  text-secondary font-weight-bold"></label>
             </div>
-            <div class="col-5">
+            <div class="col-md-5">
                 <textarea class="form-control" rows="3" asp-for="Description"></textarea>
             </div>
             <span asp-validation-for="Description" class="text-danger"></span>
@@ -39,7 +39,7 @@
             <div class="col-2">
                 <label asp-for="Price" class="col-form-label text-secondary font-weight-bold"></label>
             </div>
-            <div class="col-5">
+            <div class="col-md-5">
                 <input asp-for="Price" class="form-control" />
             </div>
             <span asp-validation-for="Price" class="text-danger"></span>
@@ -48,7 +48,7 @@
             <div class="col-2">
                 <label asp-for="Image" class="col-form-label text-secondary font-weight-bold"></label>
             </div>
-            <div class="col-5">
+            <div class="col-md-5">
                 <input type="file" name="files" class="btn btn-outline-secondary" />
             </div>
         </div>
@@ -57,7 +57,7 @@
             <div class="col-2">
                 <label asp-for="CategoryId" class="col-form-label text-secondary font-weight-bold"></label>
             </div>
-            <div class="col-5">
+            <div class="col-md-5">
                 <select asp-for="@Model.CategoryId" id="CategoryId" asp-items="Model.Categories.ToSelectListItem(Model.CategoryId)" class="form-control">
                     <option selected disabled>Please select</option>
                 </select>
@@ -68,13 +68,13 @@
             <div class="col-2">
                 <label asp-for="SubCategoryId" class="col-form-label text-secondary font-weight-bold"></label>
             </div>
-            <div class="col-5">
+            <div class="col-md-5">
                 <select asp-for="@Model.SubCategoryId" name="SubCategoryId" id="SubCategoryId" asp-items="@(new SelectList(string.Empty,"Id","Name"))" class="form-control"></select>
             </div>
         </div>
 
         <div class="form-group row">
-            <div class="col-5 offset-2">
+            <div class="col-md-5 offset-md-2">
                 <partial name="_CreateAndBackToListButton" />
             </div>
         </div>
