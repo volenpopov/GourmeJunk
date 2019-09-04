@@ -78,6 +78,8 @@ namespace GourmeJunk.Web.Areas.Identity.Pages.Account
         {
             returnUrl = returnUrl ?? Url.Content("~/");
 
+            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
             if (ModelState.IsValid)
             {
                 // This doesn't count login failures towards account lockout
@@ -103,11 +105,11 @@ namespace GourmeJunk.Web.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");                    
                     return Page();
                 }
             }
-
+            
             // If we got this far, something failed, redisplay form
             return Page();
         }
