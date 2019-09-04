@@ -9,13 +9,13 @@
 <h2 class="text-info">Details MenuItem</h2>
 <br />
 <div class="border backgroundWhite row">
-    <div class="col-8">
+    <div class="col-md-8">
         <fieldset disabled>
             <div class="form-group row">
                 <div class="col-4">
                     <label asp-for="Name" class="custom-label text-secondary font-weight-bold"></label>
                 </div>
-                <div class="col-8">
+                <div class="col-md-8">
                     <input asp-for="Name" class="form-control" />
                 </div>
             </div>
@@ -23,7 +23,7 @@
                 <div class="col-4">
                     <label asp-for="Description" class="custom-label text-secondary font-weight-bold"></label>
                 </div>
-                <div class="col-8">
+                <div class="col-md-8">
                     <textarea class="form-control" rows="3" asp-for="Description"></textarea>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                 <div class="col-4">
                     <label asp-for="Price" class="custom-label text-secondary font-weight-bold"></label>
                 </div>
-                <div class="col-8">
+                <div class="col-md-8">
                     <input asp-for="Price" class="form-control" />
                 </div>
             </div>
@@ -40,7 +40,7 @@
                 <div class="col-4">
                     <label asp-for="CategoryId" class="custom-label text-secondary font-weight-bold"></label>
                 </div>
-                <div class="col-8">
+                <div class="col-md-8">
                     <input asp-for="CategoryName" class="form-control" />
                 </div>
             </div>
@@ -48,17 +48,17 @@
                 <div class="col-4">
                     <label asp-for="SubCategoryId" class="custom-label text-secondary font-weight-bold"></label>
                 </div>
-                <div class="col-8">
+                <div class="col-md-8">
                     <input asp-for="SubCategoryName" class="form-control" />
                 </div>
             </div>
         </fieldset>
     </div>
-    <div class="col-3 offset-1">
+    <div class="col-6 col-md-3 offset-md-1 offset-0 mb-3">
         <img src="@Model.Image" class="w-100" style="padding: 3px; border-radius:5px; border: 2px solid #bbb9b9;" />
     </div>
-    <div class="col-8">
-        <div class="col-8 offset-4">
+    <div class="col-md-8 pl-0 pl-md-2">
+        <div class="col-md-8 offset-md-4 offset-0">
             <partial name="_DetailsAndBackToListButton" model="Model.Id" />
         </div>
     </div>
