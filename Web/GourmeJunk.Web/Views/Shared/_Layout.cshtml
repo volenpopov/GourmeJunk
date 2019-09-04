@@ -117,7 +117,7 @@
                                 </li>
                             }
 
-                            <li style="color:white">
+                            <li style="color:white;">
                                 <a asp-controller="ShoppingCart" asp-action="Index" class="nav-link">
                                     @{
                                         var userIndividualItemsCount = httpContextAccessor.HttpContext.Session.GetInt32(WebConstants.SESSION_NAME_SHOPPING_CART_INDIVIDUAL_ITEMS_COUNT);
