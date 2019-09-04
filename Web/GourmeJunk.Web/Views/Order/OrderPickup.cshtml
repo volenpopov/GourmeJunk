@@ -12,22 +12,22 @@
     <br /><br />    
           <div class="border backgroundWhite">
               <h2 class="text-info mb-4"> Orders Ready for Pickup : </h2>
-              <div class="container border border-secondary" style="height:60px;">
+              <div class="container  border-secondary mb-5 mb-md-0" style="height:60px;">
                   <div class="row container">
                       <div class="col-11">
                           <div class="row" style="padding-top:10px">
-                              <div class="col-4">
-                                  @Html.Editor("searchName", new { htmlAttributes = new { @class = "form-control", @placeholder = "Name..." } })
+                              <div class="col-md-4">
+                                  @Html.Editor("searchName", new { htmlAttributes = new { @class = "form-control", @placeholder = "Name search..." } })
                               </div>
-                              <div class="col-4">
-                                  @Html.Editor("searchPhone", new { htmlAttributes = new { @class = "form-control", @placeholder = "Phone..." } })
+                              <div class="col-md-4">
+                                  @Html.Editor("searchPhone", new { htmlAttributes = new { @class = "form-control", @placeholder = "Phone search..." } })
                               </div>
-                              <div class="col-4">
-                                  @Html.Editor("searchEmail", new { htmlAttributes = new { @class = "form-control", @placeholder = "Email..." } })
+                              <div class="col-md-4">
+                                  @Html.Editor("searchEmail", new { htmlAttributes = new { @class = "form-control", @placeholder = "Email search..." } })
                               </div>
                           </div>
                       </div>
-                      <div class="col-1">
+                      <div class="col-3 ml-3 ml-md-0 col-md-1">
                           <div class="row" style="padding-top:10px;">
                               <button type="submit" name="submit" value="Search" class="btn btn-info form-control">
                                   <i class="fas fa-search"></i>
@@ -38,10 +38,10 @@
 
               </div>
               <br />
-              <div>
+              <div class="mt-5 mt-md-0">
                   @if (Model.Orders.Count() > 0)
                   {
-                      <table class="table table-striped border">
+                      <table class="table table-responsive-lg table-striped border">
                           <tr class="table-secondary">
                               <th>
                                   @Html.DisplayNameFor(m => m.Orders.First().Id)
