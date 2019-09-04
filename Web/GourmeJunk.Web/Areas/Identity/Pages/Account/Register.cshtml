@@ -12,7 +12,8 @@
         <div class="col-md-4">
             <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
                 <h4 class="text-center">Create a new account.</h4>
-                <hr />                
+                <hr />
+                <span class="text-danger">@Html.ValidationSummary(true)</span>
                 <div class="form-group">
                     <label asp-for="Input.FirstName" class="font-weight-bold text-secondary"></label>
                     <input asp-for="Input.FirstName" class="form-control" />
@@ -45,7 +46,7 @@
 
                 @if (User.IsInRole(GlobalConstants.ADMINISTRATOR_ROLE_NAME))
                 {
-                    <div class="form-group row justify-content-center">                        
+                    <div class="form-group row justify-content-center">
                         <div>
                             <div class="form-check form-check-inline">
                                 <input type="radio" class="form-check-input" id="kitchenRole" name="inputUserRole" value="@GlobalConstants.KITCHEN_ROLE_NAME" checked />

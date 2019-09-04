@@ -20,7 +20,6 @@ namespace GourmeJunk.Web.Areas.Identity.Pages.Account
         private readonly UserManager<GourmeJunkUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-        private readonly RoleManager<GourmeJunkRole> _roleManager;
 
         public RegisterModel(
             UserManager<GourmeJunkUser> userManager,
@@ -33,7 +32,6 @@ namespace GourmeJunk.Web.Areas.Identity.Pages.Account
             _signInManager = signInManager;           
             _logger = logger;
             _emailSender = emailSender;
-            _roleManager = roleManager;
         }
 
         [BindProperty]
