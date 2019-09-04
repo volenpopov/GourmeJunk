@@ -7,7 +7,7 @@
 }
 
 <br />
-<div class="backgroundWhite mx-5">
+<div class="backgroundWhite orderConfirmedContainerAdjust mx-md-5">
 
     <div class="text-center">
         <h2 class="text-info d-inline mx-2">Order Confirmed</h2>
@@ -16,9 +16,8 @@
     @if (Model.Id != null)
     {
         <div style="color:maroon" class="p-3 text-center">
-            Your order has been confirmed! Please see the order summary below.
-            <br />
-            Feel free to contact us if you have any questions.
+            <p class="mb-0">Your order has been confirmed! Please see the order summary below.</p>            
+            <p class="mb-0">Feel free to contact us if you have any questions.</p>
         </div>
         <partial name="_IndividualOrderDetails" model="Model" />    
     }

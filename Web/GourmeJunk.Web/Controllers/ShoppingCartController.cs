@@ -133,7 +133,7 @@ namespace GourmeJunk.Web.Controllers
         [Authorize]
         public IActionResult OrderSummary()
         {
-            var orderSummaryViewModel = TempData.Get<OrderSummaryViewModel>(nameof(OrderSummaryViewModel));
+            var orderSummaryViewModel = TempData.Get<OrderSummaryViewModel>(nameof(OrderSummaryViewModel)) ?? new OrderSummaryViewModel();
             TempData.Remove(nameof(OrderSummaryViewModel));
             
             return View(orderSummaryViewModel);

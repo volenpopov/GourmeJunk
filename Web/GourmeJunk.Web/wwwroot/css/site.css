@@ -157,3 +157,12 @@ body {
         font-size: 15px;
     }
 }
+
+@media only screen and (max-width: 850px) {
+    .orderConfirmedContainerAdjust {
+        overflow: hidden;
+        display: inline-block;
+    }
+}
+
+
