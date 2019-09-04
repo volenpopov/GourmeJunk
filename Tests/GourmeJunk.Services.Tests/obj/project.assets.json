@@ -3521,7 +3521,8 @@
           "GourmeJunk.Common": "1.0.0",
           "GourmeJunk.Data.Models": "1.0.0",
           "GourmeJunk.Models.Common": "1.0.0",
-          "GourmeJunk.Services.Mapping": "1.0.0"
+          "GourmeJunk.Services.Mapping": "1.0.0",
+          "Microsoft.Extensions.Identity.Stores": "2.2.0"
         },
         "compile": {
           "bin/placeholder/GourmeJunk.Models.ViewModels.dll": {}

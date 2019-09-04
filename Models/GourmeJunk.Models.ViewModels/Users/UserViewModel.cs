@@ -1,8 +1,10 @@
-﻿using GourmeJunk.Data.Models;
+﻿using AutoMapper;
+using GourmeJunk.Data.Models;
 using GourmeJunk.Models.Common;
 using GourmeJunk.Services.Mapping;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace GourmeJunk.Models.ViewModels.Users
 {
@@ -17,9 +19,8 @@ namespace GourmeJunk.Models.ViewModels.Users
         public string LastName { get; set; }
 
         public string Email { get; set; }
-
-        //TODO: display role
-        //public string Authorization { get; set; }
+        
+        public string Authorization { get; set; }
 
         public Nullable<DateTimeOffset> LockoutEnd { get; set; }
     }

@@ -4,11 +4,9 @@ E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\bin\D
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\bin\Debug\netstandard2.0\GourmeJunk.Data.Common.dll
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\bin\Debug\netstandard2.0\GourmeJunk.Data.Models.dll
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\bin\Debug\netstandard2.0\GourmeJunk.Services.Mapping.dll
-E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\bin\Debug\netstandard2.0\Microsoft.Extensions.Identity.Stores.dll
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\bin\Debug\netstandard2.0\GourmeJunk.Data.Models.pdb
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\bin\Debug\netstandard2.0\GourmeJunk.Services.Mapping.pdb
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\bin\Debug\netstandard2.0\GourmeJunk.Data.Common.pdb
-E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\bin\Debug\netstandard2.0\Microsoft.Extensions.Identity.Stores.xml
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\obj\Debug\netstandard2.0\GourmeJunk.Models.ViewModels.csprojAssemblyReference.cache
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\obj\Debug\netstandard2.0\GourmeJunk.Models.ViewModels.csproj.CoreCompileInputs.cache
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\obj\Debug\netstandard2.0\GourmeJunk.Models.ViewModels.AssemblyInfoInputs.cache
@@ -18,7 +16,5 @@ E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\obj\D
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\obj\Debug\netstandard2.0\GourmeJunk.Models.ViewModels.pdb
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\bin\Debug\netstandard2.0\GourmeJunk.Models.Common.dll
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\bin\Debug\netstandard2.0\GourmeJunk.Models.Common.pdb
-E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.dll
-E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.xml
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\bin\Debug\netstandard2.0\GourmeJunk.Common.dll
 E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.ViewModels\bin\Debug\netstandard2.0\GourmeJunk.Common.pdb

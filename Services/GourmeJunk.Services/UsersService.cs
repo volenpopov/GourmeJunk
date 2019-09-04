@@ -9,6 +9,7 @@ using GourmeJunk.Models.ViewModels.Users;
 using GourmeJunk.Services.Common;
 using GourmeJunk.Services.Contracts;
 using GourmeJunk.Services.Mapping;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace GourmeJunk.Services
@@ -18,15 +19,18 @@ namespace GourmeJunk.Services
         private readonly IDeletableEntityRepository<GourmeJunkUser> usersRepository;
         private readonly IRepository<ShoppingCart> shoppingCartsRepository;
         private readonly IDeletableEntityRepository<ShoppingCartMenuItems> shoppingCartMenuItemsRepository;
+        private readonly UserManager<GourmeJunkUser> userManager;
 
         public UsersService(
             IDeletableEntityRepository<GourmeJunkUser> usersRepository,
             IRepository<ShoppingCart> shoppingCartsRepository,
-            IDeletableEntityRepository<ShoppingCartMenuItems> shoppingCartMenuItemsRepository)
+            IDeletableEntityRepository<ShoppingCartMenuItems> shoppingCartMenuItemsRepository,
+            UserManager<GourmeJunkUser> userManager)
         {
             this.usersRepository = usersRepository;
             this.shoppingCartsRepository = shoppingCartsRepository;
             this.shoppingCartMenuItemsRepository = shoppingCartMenuItemsRepository;
+            this.userManager = userManager;
         }
 
         public async Task<IEnumerable<UserViewModel>> GetAllUsersViewModels()
@@ -36,6 +40,14 @@ namespace GourmeJunk.Services
                 .To<UserViewModel>()
                 .Where(usr => usr.Email != GlobalConstants.ADMINISTRATOR__EMAIL)
                 .ToArrayAsync();
+
+            foreach (var userModel in usersViewModels)
+            {
+                var user = await this.userManager.FindByIdAsync(userModel.Id);
+                var roleName = this.userManager.GetRolesAsync(user).Result.First();
+
+                userModel.Authorization = roleName;
+            }
 
             return usersViewModels;
         }
