@@ -19,10 +19,10 @@
     <div class="border backgroundWhite">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group row">
-            <div class="col-2">
+            <div class="col-md-2">
                 <label asp-for="Name" class="col-form-label text-secondary font-weight-bold"></label>
             </div>
-            <div class="col-5">
+            <div class="col-md-5">
                 <input asp-for="Name" class="form-control" />
             </div>
             <span asp-validation-for="Name" class="text-danger"></span>
@@ -31,7 +31,7 @@
             <div class="col-2">
                 <label class="col-form-label text-secondary font-weight-bold">Image</label>
             </div>
-            <div class="col-5">
+            <div class="col-md-5">
                 <input type="file" id="projectImage" name="files" multiple class="btn btn-outline-secondary"/>
             </div>
         </div>
@@ -39,7 +39,7 @@
             <div class="col-2">
                 <label asp-for="CouponType" class="col-form-label text-secondary font-weight-bold"></label>
             </div>
-            <div class="col-5">
+            <div class="col-md-5">
                 <select asp-for="CouponType" asp-items="Html.GetEnumSelectList<CouponType>()" class="form-control"></select>
             </div>
         </div>
@@ -47,30 +47,30 @@
             <div class="col-2">
                 <label asp-for="Discount" class="col-form-label text-secondary font-weight-bold"></label>
             </div>
-            <div class="col-5">
+            <div class="col-md-5">
                 <input asp-for="Discount" class="form-control" />
             </div>
             <span asp-validation-for="Discount" class="text-danger"></span>
         </div>
         <div class="form-group row">
-            <div class="col-2">
+            <div class="col-md-2">
                 <label asp-for="MinimumOrderAmount" class="col-form-label text-secondary font-weight-bold"></label>
             </div>
-            <div class="col-5">
+            <div class="col-md-5">
                 <input asp-for="MinimumOrderAmount" class="form-control" />
             </div>
             <span asp-validation-for="MinimumOrderAmount" class="text-danger"></span>
         </div>
         <div class="form-group row">
-            <div class="col-2">
+            <div class="col-md-2">
                 <label asp-for="IsActive" class="col-form-label text-secondary font-weight-bold"></label>
             </div>
-            <div class="col-5">
-                <input type="checkbox" asp-for="IsActive" class="form-control" style="transform: scale(2)" />
+            <div class="col-md-5">
+                <input type="checkbox" asp-for="IsActive" class="text-left ml-2" style="transform: scale(2)" />
             </div>
         </div>
         <div class="form-group row">
-            <div class="col-5 offset-2">
+            <div class="col-md-5 offset-md-2 offset-0">
                 <partial name="_CreateAndBackToListButton" />
             </div>
         </div>
