@@ -164,7 +164,7 @@ namespace GourmeJunk.Services
                 ? menuItem.SubCategory.Name
                 : null;
 
-            var menuItemDetailsViewModel = new MenuItemViewModelExtended
+            var menuItemViewModelExtended = new MenuItemViewModelExtended
             {
                 Id = menuItemId,
                 Name = menuItem.Name,
@@ -179,7 +179,7 @@ namespace GourmeJunk.Services
                     : null
             };
 
-            return menuItemDetailsViewModel;
+            return menuItemViewModelExtended;
         }
 
         public async Task DeleteMenuItemAsync(string menuItemId)

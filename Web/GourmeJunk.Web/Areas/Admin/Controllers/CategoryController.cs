@@ -30,20 +30,24 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            return View(new CategoryCreateViewModel());
         }
 
         [HttpPost]
-        [ModelStateValidationActionFilter]
         public async Task<IActionResult> Create(CategoryCreateInputModel model)
         {
             var alreadyExists = await this.categoriesService.CheckIfCategoryExistsAsync(model.Name);
 
-            if (alreadyExists)
-            {               
-                model.StatusMessage = string.Format(WebConstants.Error.ENTITY_ALREADY_EXISTS, model.Name);
+            if (!ModelState.IsValid || alreadyExists)
+            {
+                var categoryCreateViewModel = new CategoryCreateViewModel { Name = model.Name};
 
-                return View(model);
+                if (alreadyExists)
+                {
+                    categoryCreateViewModel.StatusMessage = string.Format(WebConstants.Error.ENTITY_ALREADY_EXISTS, model.Name);                    
+                }                
+
+                return View(categoryCreateViewModel);
             }
 
             await this.categoriesService.CreateCategoryAsync(model);
@@ -73,7 +77,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
 
                 if (alreadyExists)
                 {
-                    categoryEditViewModel.StatusMessage = string.Format(WebConstants.Error.ENTITY_ALREADY_EXISTS, model.Name);                    
+                    categoryEditViewModel.StatusMessage = string.Format(WebConstants.Error.ENTITY_ALREADY_EXISTS, model.Name);
                 }
 
                 return View(categoryEditViewModel);
@@ -103,7 +107,7 @@ namespace GourmeJunk.Web.Areas.Admin.Controllers
         public async Task<IActionResult> DeletePost(string id)
         {
             await this.categoriesService.DeleteCategoryAsync(id);
-            
+
             return RedirectToAction(nameof(Index));
         }
     }
