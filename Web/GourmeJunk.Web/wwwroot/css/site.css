@@ -127,7 +127,7 @@ body {
 
 @media only screen and (max-width: 425px) {
     .couponImgShrink {
-        width: 250px;
+        width: 100%;
         height: 35px;
     }
 }
