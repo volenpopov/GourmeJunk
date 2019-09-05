@@ -35,7 +35,6 @@ $(function () {
             success: function (data) {
                 $('#orderStatusContent').html(data);
                 $('#orderStatusModal').modal('show');
-
             },
             error: function () {
                 alert("Dynamic content load failed.");

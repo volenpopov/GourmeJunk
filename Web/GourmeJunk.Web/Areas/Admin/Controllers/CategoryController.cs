@@ -3,7 +3,6 @@ using GourmeJunk.Models.InputModels._AdminInputModels;
 using GourmeJunk.Models.ViewModels.Categories;
 using GourmeJunk.Services.Contracts;
 using GourmeJunk.Web.Common;
-using GourmeJunk.Web.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
