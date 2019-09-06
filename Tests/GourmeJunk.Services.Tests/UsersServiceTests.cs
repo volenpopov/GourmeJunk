@@ -232,7 +232,7 @@ namespace GourmeJunk.Services.Tests
                     FirstName = TEST_USER_FIRSTNAME,
                     LastName = TEST_USER_LASTNAME,
                     Email = TEST_USER_EMAIL,
-                    Address = TEST_USER_ADDRESS
+                    Address = TEST_USER_ADDRESS                    
                 });
 
             await this.DbContext.Users.AddAsync(

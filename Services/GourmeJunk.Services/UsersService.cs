@@ -44,7 +44,7 @@ namespace GourmeJunk.Services
             foreach (var userModel in usersViewModels)
             {
                 var user = await this.userManager.FindByIdAsync(userModel.Id);
-                var roleName = this.userManager.GetRolesAsync(user).Result.First();
+                var roleName = this.userManager.GetRolesAsync(user).Result.FirstOrDefault();
 
                 userModel.Authorization = roleName;
             }
