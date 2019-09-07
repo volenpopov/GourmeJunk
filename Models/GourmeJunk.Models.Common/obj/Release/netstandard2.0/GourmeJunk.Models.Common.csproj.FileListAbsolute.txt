@@ -1,0 +1,9 @@
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.Common\bin\Release\netstandard2.0\GourmeJunk.Models.Common.deps.json
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.Common\bin\Release\netstandard2.0\GourmeJunk.Models.Common.dll
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.Common\bin\Release\netstandard2.0\GourmeJunk.Models.Common.pdb
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.Common\obj\Release\netstandard2.0\GourmeJunk.Models.Common.csprojAssemblyReference.cache
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.Common\obj\Release\netstandard2.0\GourmeJunk.Models.Common.csproj.CoreCompileInputs.cache
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.Common\obj\Release\netstandard2.0\GourmeJunk.Models.Common.AssemblyInfoInputs.cache
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.Common\obj\Release\netstandard2.0\GourmeJunk.Models.Common.AssemblyInfo.cs
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.Common\obj\Release\netstandard2.0\GourmeJunk.Models.Common.dll
+E:\Volen\Programming\Github\GourmeJunk\Models\GourmeJunk.Models.Common\obj\Release\netstandard2.0\GourmeJunk.Models.Common.pdb
