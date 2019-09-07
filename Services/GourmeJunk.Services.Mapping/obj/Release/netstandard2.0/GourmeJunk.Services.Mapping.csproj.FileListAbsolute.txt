@@ -1,9 +1,0 @@
-E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services.Mapping\bin\Release\netstandard2.0\GourmeJunk.Services.Mapping.deps.json
-E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services.Mapping\bin\Release\netstandard2.0\GourmeJunk.Services.Mapping.dll
-E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services.Mapping\bin\Release\netstandard2.0\GourmeJunk.Services.Mapping.pdb
-E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services.Mapping\obj\Release\netstandard2.0\GourmeJunk.Services.Mapping.csprojAssemblyReference.cache
-E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services.Mapping\obj\Release\netstandard2.0\GourmeJunk.Services.Mapping.csproj.CoreCompileInputs.cache
-E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services.Mapping\obj\Release\netstandard2.0\GourmeJunk.Services.Mapping.AssemblyInfoInputs.cache
-E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services.Mapping\obj\Release\netstandard2.0\GourmeJunk.Services.Mapping.AssemblyInfo.cs
-E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services.Mapping\obj\Release\netstandard2.0\GourmeJunk.Services.Mapping.dll
-E:\Volen\Programming\Github\GourmeJunk\Services\GourmeJunk.Services.Mapping\obj\Release\netstandard2.0\GourmeJunk.Services.Mapping.pdb

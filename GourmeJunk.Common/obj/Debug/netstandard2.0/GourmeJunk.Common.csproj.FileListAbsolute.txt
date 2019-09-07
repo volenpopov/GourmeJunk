@@ -1,9 +1,0 @@
-E:\Volen\Programming\Github\GourmeJunk\GourmeJunk.Common\bin\Debug\netstandard2.0\GourmeJunk.Common.deps.json
-E:\Volen\Programming\Github\GourmeJunk\GourmeJunk.Common\bin\Debug\netstandard2.0\GourmeJunk.Common.dll
-E:\Volen\Programming\Github\GourmeJunk\GourmeJunk.Common\bin\Debug\netstandard2.0\GourmeJunk.Common.pdb
-E:\Volen\Programming\Github\GourmeJunk\GourmeJunk.Common\obj\Debug\netstandard2.0\GourmeJunk.Common.csprojAssemblyReference.cache
-E:\Volen\Programming\Github\GourmeJunk\GourmeJunk.Common\obj\Debug\netstandard2.0\GourmeJunk.Common.csproj.CoreCompileInputs.cache
-E:\Volen\Programming\Github\GourmeJunk\GourmeJunk.Common\obj\Debug\netstandard2.0\GourmeJunk.Common.AssemblyInfoInputs.cache
-E:\Volen\Programming\Github\GourmeJunk\GourmeJunk.Common\obj\Debug\netstandard2.0\GourmeJunk.Common.AssemblyInfo.cs
-E:\Volen\Programming\Github\GourmeJunk\GourmeJunk.Common\obj\Debug\netstandard2.0\GourmeJunk.Common.dll
-E:\Volen\Programming\Github\GourmeJunk\GourmeJunk.Common\obj\Debug\netstandard2.0\GourmeJunk.Common.pdb
