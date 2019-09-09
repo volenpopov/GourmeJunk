@@ -22,9 +22,10 @@
     <div class="col-12">
         <form asp-page-handler="Confirmation" asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <div class="row justify-content-center">
-                <div class="col-4">
+                <div class="col-md-4">
                     <h4 class="text-center">Create a new account.</h4>
                     <hr />
+                    <span class="text-danger">@Html.ValidationSummary(true)</span>
                     <div class="form-group">
                         <label asp-for="Input.FirstName" class="font-weight-bold text-secondary"></label>
                         <input asp-for="Input.FirstName" class="form-control" />
