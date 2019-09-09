@@ -161,6 +161,7 @@ namespace GourmeJunk.Services
             else
             {
                 model.StatusMessage = string.Format(ServicesDataConstants.ORDER_TOTAL_NOT_COVERING_MIN_COUPON_AMOUNT, coupon.MinimumOrderAmount);
+                model.CouponName = string.Empty;
                 return model;
             }
 
