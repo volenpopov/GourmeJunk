@@ -32,6 +32,11 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body class="search-background">
+    <div class="siteInfo">
+        <button type="button" class="siteInfoBtn btn" data-toggle="modal" data-target="#siteInfoModal">
+           <i class="fas fa-info-circle"></i> Information
+        </button>
+    </div>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-lg-3">
             <a class="navbar-brand text-light" asp-controller="Home" asp-action="Index">GourmeJunk</a>
@@ -97,8 +102,8 @@
                             </li>
 
                             @if (User.IsInRole(GlobalConstants.KITCHEN_ROLE_NAME)
-                             || User.IsInRole(GlobalConstants.RECEPTION_ROLE_NAME)
-                             || User.IsInRole(GlobalConstants.ADMINISTRATOR_ROLE_NAME))
+                            || User.IsInRole(GlobalConstants.RECEPTION_ROLE_NAME)
+                            || User.IsInRole(GlobalConstants.ADMINISTRATOR_ROLE_NAME))
                             {
                                 <li class="nav-item dropdown text-white-50 mr-3 mr-lg-1">
                                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -130,8 +135,8 @@
                 </ul>
             </div>
         </nav>
-    </header>    
-    
+    </header>
+
     <div class="container-fluid">
         <main role="main" class="p-3">
             @RenderBody()
@@ -143,6 +148,39 @@
             &copy; 2019 - GourmeJunk
         </div>
     </footer>
+
+    <!-- SiteInfo Modal -->
+    <div class="modal fade" id="siteInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title font-weight-bold" id="exampleModalLabel">GourmeJunk - Demo</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="font-weight-bold">Test account:</h5>
+                    <p class="mb-1">Username/email: test@gourmejunk.com</p>
+                    <p>Password: 123456</p>
+
+                    <h5 class="font-weight-bold">How to pay for an order:</h5>
+                    <p class="mb-1">The website is using Stripe Web API (in Test Mode) for online payments. In order to pay, please, use the following credentials:</p>
+                    <ul>
+                        <li>Email: any random email</li>
+                        <li>Card Number: 4242424242424242</li>
+                        <li>Date: any random future date</li>
+                        <li>CVC: any random 3-digit number</li>
+                    </ul>
+
+                    <p class="mb-0 font-weight-bold">For more info visit the website's git repository: <a target="_blank" href="https://github.com/volenpopov/GourmeJunk">Git Repo</a></p>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn btn-secondary flex-grow-1" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
