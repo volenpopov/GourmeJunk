@@ -43,6 +43,8 @@ namespace GourmeJunk.Web.Controllers
                 shoppingCartOrderViewModel.CouponName = couponCode;
 
                 shoppingCartOrderViewModel = await this.shoppingCartService.ApplyCouponToCartAsync(shoppingCartOrderViewModel);
+
+                HttpContext.Session.SetString(WebConstants.SESSION_NAME_COUPON_CODE, string.Empty);
             }
 
             return View(shoppingCartOrderViewModel);
