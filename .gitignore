@@ -250,3 +250,6 @@ paket-files/
 **/appsettings.production.json
 Web/GourmeJunk.Web/appsettings.json
 
+# ignore Project Resources
+Resources/
+
