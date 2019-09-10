@@ -42,6 +42,7 @@
                 <div class="form-group">
                     <label asp-for="Input.ConfirmPassword" class="font-weight-bold text-secondary"></label>
                     <input asp-for="Input.ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                 </div>
 
                 @if (User.IsInRole(GlobalConstants.ADMINISTRATOR_ROLE_NAME))
