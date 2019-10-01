@@ -59,6 +59,11 @@ namespace GourmeJunk.Web
                 .AddDefaultTokenProviders()
                 .AddDefaultUI(UIFramework.Bootstrap4);
 
+            services.AddResponseCompression(options =>
+            {
+                options.EnableForHttps = true;
+            });
+
             services.AddMvc(options =>
                 {
                     options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
@@ -138,6 +143,7 @@ namespace GourmeJunk.Web
                 .GetSection(WebConstants.Stripe.STRIPE_SECTION_NAME)[WebConstants.Stripe.SECRET_KEY_SECTION_NAME];
 
             app.UseHttpsRedirection();
+            app.UseResponseCompression();
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseSession();
