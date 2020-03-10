@@ -56,8 +56,7 @@ namespace GourmeJunk.Web
                 .AddEntityFrameworkStores<GourmeJunkDbContext>()
                 .AddUserStore<GourmeJunkUserStore>()
                 .AddRoleStore<GourmeJunkRoleStore>()
-                .AddDefaultTokenProviders()
-                .AddDefaultUI(UIFramework.Bootstrap4);
+                .AddDefaultTokenProviders();
 
             services.AddResponseCompression(options =>
             {
