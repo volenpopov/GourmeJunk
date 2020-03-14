@@ -149,11 +149,13 @@ namespace GourmeJunk.Web
             app.UseSession();
             app.UseAuthentication();
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseEndpoints(
+               endpoints =>
+               {
+                   endpoints.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                   endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                   endpoints.MapRazorPages();
+               });
         }
     }
 }
