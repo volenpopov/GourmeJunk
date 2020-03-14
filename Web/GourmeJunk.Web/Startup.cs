@@ -145,6 +145,7 @@ namespace GourmeJunk.Web
             app.UseResponseCompression();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseRouting();
             app.UseSession();
             app.UseAuthentication();
 
