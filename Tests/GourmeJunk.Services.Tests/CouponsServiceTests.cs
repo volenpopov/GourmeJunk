@@ -5,7 +5,6 @@ using GourmeJunk.Models.ViewModels.Home;
 using GourmeJunk.Services.Common;
 using GourmeJunk.Services.Contracts;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
