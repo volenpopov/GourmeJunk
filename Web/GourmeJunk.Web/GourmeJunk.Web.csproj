@@ -24,9 +24,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\GourmeJunk.Data\GourmeJunk.Data.csproj" />
     <ProjectReference Include="..\..\GourmeJunk.Common\GourmeJunk.Common.csproj" />
-    <ProjectReference Include="..\..\GourmeJunk.Services.Mapping\GourmeJunk.Services.Mapping.csproj" />
-    <ProjectReference Include="..\..\Models\GourmeJunk.Models.InputModels\GourmeJunk.Models.InputModels.csproj" />
     <ProjectReference Include="..\..\Services\GourmeJunk.Services.Mapping\GourmeJunk.Services.Mapping.csproj" />
+    <ProjectReference Include="..\..\Models\GourmeJunk.Models.InputModels\GourmeJunk.Models.InputModels.csproj" />
     <ProjectReference Include="..\..\Services\GourmeJunk.Services\GourmeJunk.Services.csproj" />
   </ItemGroup>
 
