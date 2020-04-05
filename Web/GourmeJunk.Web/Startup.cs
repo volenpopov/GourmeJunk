@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Stripe;
 using System;
 using System.Reflection;
@@ -56,8 +57,7 @@ namespace GourmeJunk.Web
                 .AddEntityFrameworkStores<GourmeJunkDbContext>()
                 .AddUserStore<GourmeJunkUserStore>()
                 .AddRoleStore<GourmeJunkRoleStore>()
-                .AddDefaultTokenProviders()
-                .AddDefaultUI(UIFramework.Bootstrap4);
+                .AddDefaultTokenProviders();
 
             services.AddResponseCompression(options =>
             {
@@ -68,10 +68,9 @@ namespace GourmeJunk.Web
                 {
                     options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                 })
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                 .AddRazorPagesOptions(options =>
                 {
-                    options.AllowAreas = true;
                     options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
                     options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
                 });
@@ -112,7 +111,7 @@ namespace GourmeJunk.Web
             });
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             AutoMapperConfig.RegisterMappings(typeof(CategoryViewModel).GetTypeInfo().Assembly);
 
@@ -146,14 +145,18 @@ namespace GourmeJunk.Web
             app.UseResponseCompression();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseRouting();
             app.UseSession();
             app.UseAuthentication();
+            app.UseAuthorization();
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseEndpoints(
+               endpoints =>
+               {
+                   endpoints.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                   endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                   endpoints.MapRazorPages();
+               });
         }
     }
 }
