@@ -1,7 +1,7 @@
 # GourmeJunk - demo restaurant for online food ordering
 (Course project for my ASP.NET Core course at SoftUni)
 
-## Tech Stack: ASP.NET Core MVC 2.2, EF Core, SQL Server, JavaScript, JQuery, Bootstrap
+## Tech Stack: ASP.NET Core MVC 3.1, EF Core, SQL Server, JavaScript, JQuery, Bootstrap
 
 ### Summary:
 
