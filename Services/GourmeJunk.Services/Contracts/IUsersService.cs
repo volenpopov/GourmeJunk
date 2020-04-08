@@ -18,5 +18,7 @@ namespace GourmeJunk.Services.Contracts
         Task<int> GetUserIndividualItemsCount(string email);
 
         Task<string> GetUserFirstLastNameByIdAsync(string userId);
+
+        Task<bool> CheckIfUserEmailAlreadyExists(string email);
     }
 }
