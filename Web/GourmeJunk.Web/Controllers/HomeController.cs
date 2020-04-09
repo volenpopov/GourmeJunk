@@ -59,8 +59,7 @@ namespace GourmeJunk.Web.Controllers
 
             return View(indexViewModel);
         }
-
-        [Authorize]
+        
         public async Task<IActionResult> Details(string id)
         {
             var shoppingCartViewModel = await this.shoppingCartService.GetShoppingCartMenuItemDetailsViewModelAsync(id);

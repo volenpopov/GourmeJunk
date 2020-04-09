@@ -1,5 +1,10 @@
-﻿@using GourmeJunk.Models.ViewModels.ShoppingCarts
-@model  ShoppingCartMenuItemDetailsViewModel
+﻿@using Microsoft.AspNetCore.Identity
+@using GourmeJunk.Data.Models
+@using GourmeJunk.Models.ViewModels.ShoppingCarts
+
+@inject SignInManager<GourmeJunkUser> signInManager
+
+@model ShoppingCartMenuItemDetailsViewModel
 
 @{
     ViewData["Title"] = "MenuItem Details";
@@ -65,7 +70,7 @@
                     <label asp-for="Count" class="text-info font-weight-bold"></label>
                 </div>
                 <div class="col-md-8">
-                    <input asp-for="Count"  class="form-control" />
+                    <input asp-for="Count" class="form-control" />
                     <span asp-validation-for="Count" class="text-danger"></span>
                 </div>
             </div>
@@ -76,7 +81,11 @@
                     <a asp-action="Index" class="btn btn-secondary form-control">Back to List</a>
                 </div>
                 <div class="col-md-4">
-                    <button type="submit" value="Add to Cart" class="btn btn-primary form-control">Add to Cart</button>
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                        <button type="submit" value="Add to Cart" class="btn btn-primary form-control">Add to Cart</button>
+                    }
+                    
                 </div>
             </div>
         </div>
@@ -88,6 +97,6 @@
     <input asp-for="@Model.MenuItem.Id" hidden />
 </form>
 
-@section Scripts{    
+@section Scripts{
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
