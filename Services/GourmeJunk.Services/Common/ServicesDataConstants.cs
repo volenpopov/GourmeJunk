@@ -40,7 +40,7 @@
 
         public const int CART_INDEX_MENUITEM_DESCRIPTION_MAX_CHARS = 100;
 
-        public const string COUPON_NOT_FOUND_ERROR = "Error: Coupon with name \"{0}\" was not found. Please try again.";
+        public const string COUPON_NOT_FOUND_ERROR = "Error: Coupon with name \"{0}\" wOrder/ManageOrderas not found. Please try again.";
 
         public const string ORDER_TOTAL_NOT_COVERING_MIN_COUPON_AMOUNT = "Error: Minimum order amount for this coupon is: ${0:f2}.";
 
