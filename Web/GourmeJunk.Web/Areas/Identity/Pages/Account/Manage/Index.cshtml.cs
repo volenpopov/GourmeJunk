@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text.Encodings.Web;
-using System.Threading.Tasks;
-using GourmeJunk.Data.Models;
+﻿using GourmeJunk.Data.Models;
+using GourmeJunk.Services.Contracts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Encodings.Web;
+using System.Threading.Tasks;
 
 namespace GourmeJunk.Web.Areas.Identity.Pages.Account.Manage
 {
@@ -17,15 +16,18 @@ namespace GourmeJunk.Web.Areas.Identity.Pages.Account.Manage
         private readonly UserManager<GourmeJunkUser> _userManager;
         private readonly SignInManager<GourmeJunkUser> _signInManager;
         private readonly IEmailSender _emailSender;
+        private readonly IUsersService usersService;
 
         public IndexModel(
             UserManager<GourmeJunkUser> userManager,
             SignInManager<GourmeJunkUser> signInManager,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IUsersService usersService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
+            this.usersService = usersService;
         }
 
         public string Username { get; set; }
@@ -90,22 +92,21 @@ namespace GourmeJunk.Web.Areas.Identity.Pages.Account.Manage
             var email = await _userManager.GetEmailAsync(user);
             if (Input.Email != email)
             {
+                var emailAlreadyExistsawait = await this.usersService.CheckIfUserEmailAlreadyExists(Input.Email);
+
+                if (emailAlreadyExistsawait)
+                {
+                    await _signInManager.RefreshSignInAsync(user);
+                    StatusMessage = "Error: The email you are trying to update to is already taken";
+                    return RedirectToPage();
+                }
+
                 var setEmailResult = await _userManager.SetEmailAsync(user, Input.Email);
+
                 if (!setEmailResult.Succeeded)
                 {
                     var userId = await _userManager.GetUserIdAsync(user);
                     throw new InvalidOperationException($"Unexpected error occurred setting email for user with ID '{userId}'.");
-                }
-            }
-
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-            if (Input.PhoneNumber != phoneNumber)
-            {
-                var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
-                if (!setPhoneResult.Succeeded)
-                {
-                    var userId = await _userManager.GetUserIdAsync(user);
-                    throw new InvalidOperationException($"Unexpected error occurred setting phone number for user with ID '{userId}'.");
                 }
             }
 

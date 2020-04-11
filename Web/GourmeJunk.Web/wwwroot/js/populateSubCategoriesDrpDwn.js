@@ -1,11 +1,14 @@
 ﻿let categoryDropdown = document.getElementById("CategoryId");
+let subCategoryDrpDwn = document.getElementById("SubCategoryId");
+
+if (!subCategoryDrpDwn.value) {
+    updateSubCategoryDrpDwn();
+}
 
 categoryDropdown.addEventListener("change", updateSubCategoryDrpDwn);
 
-function updateSubCategoryDrpDwn() {    
+function updateSubCategoryDrpDwn() {     
     let selectedCategory = categoryDropdown.value;
-
-    let subCategoryDrpDwn = document.getElementById("SubCategoryId");
 
     //Clear subcategory list
     while (subCategoryDrpDwn.firstChild) {

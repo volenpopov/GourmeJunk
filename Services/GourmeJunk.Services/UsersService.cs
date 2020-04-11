@@ -114,6 +114,13 @@ namespace GourmeJunk.Services
             return user;
         }
 
+        public async Task<bool> CheckIfUserEmailAlreadyExists(string email)
+        {
+            return await this.usersRepository
+                .All()
+                .AnyAsync(user => user.Email == email);
+        }
+
         private async Task<string> GetUserIdByEmailAsync(string email)
         {
             var user = await this.usersRepository

@@ -39,7 +39,7 @@
     </div>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-lg-3">
-            <a class="navbar-brand text-light" asp-controller="Home" asp-action="Index">GourmeJunk</a>
+            <a class="navbar-brand text-light" href="/">GourmeJunk</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -96,7 +96,7 @@
                         @if (signInManager.IsSignedIn(User))
                         {
                             <li class="mr-3 mr-lg-1" style="color:white">
-                                <a asp-controller="Order" asp-action="OrderHistory" class="nav-link">
+                                <a href="/Order/OrderHistory" class="nav-link">
                                     <span class="text-white">Order History</span>
                                 </a>
                             </li>
@@ -112,11 +112,11 @@
                                     <div class="dropdown-menu" aria-labelledby="navbarDropDownMenuLink">
                                         @if (User.IsInRole(GlobalConstants.KITCHEN_ROLE_NAME) || User.IsInRole(GlobalConstants.ADMINISTRATOR_ROLE_NAME))
                                         {
-                                            <a class="dropdown-item" asp-action="ManageOrders" asp-controller="Order">Manage Orders</a>
+                                            <a class="dropdown-item" href="/Order/ManageOrders">Manage Orders</a>
                                         }
                                         @if (User.IsInRole(GlobalConstants.RECEPTION_ROLE_NAME) || User.IsInRole(GlobalConstants.ADMINISTRATOR_ROLE_NAME))
                                         {
-                                            <a class="dropdown-item" asp-action="OrderPickup" asp-controller="Order">Orders Pickup</a>
+                                            <a class="dropdown-item" href="/Order/OrderPickup">Orders Pickup</a>
                                         }
                                     </div>
                                 </li>
