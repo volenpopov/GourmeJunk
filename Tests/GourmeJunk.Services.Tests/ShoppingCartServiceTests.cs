@@ -174,7 +174,7 @@ namespace GourmeJunk.Services.Tests
                 });
 
             //Pesho-Lasagna
-            var shoppingCartMenuItem = await this.DbContext.ShoppingCartMenuItems.FirstAsync();
+            var shoppingCartMenuItem = await this.DbContext.ShoppingCartMenuItems.LastAsync();
 
             Assert.Equal(TEST_USER_TEST_MENUITEM_COUNT, shoppingCartMenuItem.Count);
 
@@ -213,7 +213,9 @@ namespace GourmeJunk.Services.Tests
             //Pesho
             var user = await this.DbContext.Users.FirstAsync();
             var userCart = await this.DbContext.ShoppingCarts.FirstAsync();
-            var userCartItems = await this.DbContext.ShoppingCartMenuItems.ToArrayAsync();
+            var userCartItems = await this.DbContext.ShoppingCartMenuItems
+                .OrderBy(item => item.MenuItem.Name)
+                .ToArrayAsync();
 
             var actual = await this.shoppingCartServiceMock.GetShoppingCartViewModelAsync(user.Id);
 
@@ -292,7 +294,7 @@ namespace GourmeJunk.Services.Tests
             await this.AddTestingUsersWithShoppingCartToDb();
             await this.AddTestingCouponsToDb();
 
-            var inactiveCoupon = await this.DbContext.Coupons.LastAsync();
+            var inactiveCoupon = await this.DbContext.Coupons.SingleOrDefaultAsync(coupon => !coupon.IsActive);
             var cartViewModel = new ShoppingCartViewModel { CouponName = inactiveCoupon.Name };
 
             var actual = await this.shoppingCartServiceMock.ApplyCouponToCartAsync(cartViewModel);
@@ -402,7 +404,7 @@ namespace GourmeJunk.Services.Tests
 
             var menuItem = await this.DbContext.MenuItems.FirstAsync();
             var user = await this.DbContext.Users.FirstAsync();
-            var cartItem = await this.DbContext.ShoppingCartMenuItems.FirstAsync();
+            var cartItem = await this.DbContext.ShoppingCartMenuItems.LastAsync();
 
             Assert.Equal(TEST_USER_TEST_MENUITEM_COUNT, cartItem.Count);
 
@@ -422,7 +424,8 @@ namespace GourmeJunk.Services.Tests
 
             var menuItem = await this.DbContext.MenuItems.FirstAsync();
             var user = await this.DbContext.Users.FirstAsync();
-            var cartItem = await this.DbContext.ShoppingCartMenuItems.FirstAsync();
+            var cartItem = await this.DbContext.ShoppingCartMenuItems
+                .SingleOrDefaultAsync(menuItem => menuItem.MenuItem.Name == "Lasagna");
 
             Assert.Equal(TEST_USER_TEST_MENUITEM_COUNT, cartItem.Count);
 

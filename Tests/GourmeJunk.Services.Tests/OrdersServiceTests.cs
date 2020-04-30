@@ -159,7 +159,7 @@ namespace GourmeJunk.Services.Tests
                 Comments = TEST_ORDER_COMMENTS                
             };
 
-            var itemsIds = await this.DbContext.MenuItems.Select(item => item.Id).ToArrayAsync();            
+            var itemsIds = await this.DbContext.MenuItems.Select(item => item.Id).OrderByDescending(x => x).ToArrayAsync();            
             var itemsCount = await this.DbContext.ShoppingCartMenuItems.Select(cartItem => cartItem.Count.ToString()).ToArrayAsync();
 
             var actualOrderId = await this.ordersServiceMock.CreateOrderAsync(
@@ -395,7 +395,7 @@ namespace GourmeJunk.Services.Tests
             await this.AddTestingOrderAndOrderMenuItemsToDb();
 
             var order = await this.DbContext.Orders.FirstAsync();
-            var orderItems = await this.DbContext.OrderMenuItems.ToArrayAsync();
+            var orderItems = await this.DbContext.OrderMenuItems.OrderBy(x => x.MenuItem.Name).ToArrayAsync();
             var actual = await this.ordersServiceMock.GetManageOrdersListViewModelAsync(TEST_PRODUCT_PAGE);
 
             Assert.Equal(order.Id, actual.Orders.First().Id);

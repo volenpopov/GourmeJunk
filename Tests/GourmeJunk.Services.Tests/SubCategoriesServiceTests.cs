@@ -47,6 +47,7 @@ namespace GourmeJunk.Services.Tests
             };
 
             var actual = await this.subCategoriesServiceMock.GetAllSubCategoriesViewModelsAsync();
+            actual = actual.OrderBy(subCategory => subCategory.Name).ToArray();
 
             Assert.IsType<SubCategoryViewModel[]>(actual);
             Assert.Equal(expected.Length, actual.Count());
@@ -187,7 +188,9 @@ namespace GourmeJunk.Services.Tests
             await this.AddTestingCategoriesAndSubcategoriesToDb();
 
             //Delete Beverages-Alcoholic pair
-            var subCategory = await this.DbContext.SubCategories.FirstAsync();
+            var subCategory = await this.DbContext.SubCategories
+                .SingleOrDefaultAsync(subCategory => subCategory.Name == "Alcoholic");
+
             subCategory.IsDeleted = true;
 
             //Beverages
@@ -284,10 +287,13 @@ namespace GourmeJunk.Services.Tests
             var category = await this.DbContext.Categories.FirstAsync();
 
             //Beverages-Alcoholic
-            var firstSubcategory = await this.DbContext.SubCategories.FirstAsync();
+            var firstSubcategory = await this.DbContext.SubCategories
+                .SingleOrDefaultAsync(subCategory => subCategory.Name == "Alcoholic");
 
             //Beverages-NonAlcoholic
-            var secondSubcategory = await this.DbContext.SubCategories.LastAsync();
+            var secondSubcategory = await this.DbContext.SubCategories
+                .SingleOrDefaultAsync(subCategory => subCategory.Name == "NonAlcoholic");
+
             secondSubcategory.IsDeleted = true;
 
             await this.DbContext.SaveChangesAsync();
